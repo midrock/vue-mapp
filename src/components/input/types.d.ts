@@ -1,7 +1,6 @@
 import InputElement from "./input-element";
 import { VueMappOption } from './option';
 
-
 export type VMInputState =
     | 'init'
     | 'disabled'
