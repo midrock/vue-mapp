@@ -7,3 +7,4 @@ build/
 /package-lock.json
 /postcss.config.js
 /yarn.lock
+tsconfig.json
