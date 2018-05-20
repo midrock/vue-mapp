@@ -1,0 +1,10 @@
+form.vm-form(
+    :class="{ 
+        'is--readonly': readonly
+    }"
+    @input="changed = true"
+    @change="changed = true"
+    @submit.prevent="submit"
+    @keydown.enter="onEnterSubmit"
+)
+    slot

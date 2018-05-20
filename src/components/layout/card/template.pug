@@ -1,0 +1,24 @@
+.vm-card
+    .vm-card__wrapper(
+        :class="{
+            'is--hoverup': hoverup,
+            'is--noshadow': noshadow    
+        }"
+    )
+        .vm-card__header(
+            v-if="$slots.title || $slots.header"
+        )
+            .vm-card__title(
+                v-if="$slots.title"
+            ) 
+                slot(name="title")
+
+            slot(name="header")
+
+            .vm-card__icons
+                slot(name="icons")
+
+        .vm-card__content
+            slot="content"
+        
+        slot

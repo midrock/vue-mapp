@@ -1,0 +1,121 @@
+vm-menu.vm-date(
+    ref="menu"
+    contentClass="vm-date__popup"
+)
+    vm-input(
+        slot="trigger"
+        :label="label"
+        :value="fieldValue"
+        :placeholder="placeholder"
+        :box="box"
+        :size="size"
+        readonly
+    )
+        vm-button.vm-date__trigger(
+            slot="right"
+            icon="event"
+            :disabled="disabled"
+        )
+
+    .vm-date__header.box-primary
+        .vm-date__header-year(
+            :class="{ 'is--active': state === 'year' }"
+            @click="changeState('year')"
+        ) {{ inputYear }}
+
+        .vm-date__header-date(
+            :class="{ 'is--active': /day|month/.test(state) }"
+            @click="changeState('day')"
+        )
+            .vm-date__header-daymonth
+                span.vm-date__header-day {{ inputDay }}
+                span.vm-date__header-month {{ inputMonth | decMonth }}
+            .vm-date__header-weekday {{ inputDate | weekday }}
+
+        .vm-date__header-time(
+            v-if="type === 'time'"
+            :class="{
+                'is--active': state === 'time'    
+            }"
+            @click="changeState('time')"
+        )
+            span {{ inputHours | pad }}
+            span :
+            span {{ inputMinutes | pad }}
+
+        vm-button.vm-date__header-today(
+            @click="today"
+        ) Сегодня
+
+    .vm-date__wrapper
+        .vm-date__toolbar(v-if="state !== 'year'")
+            vm-button(
+                icon="keyboard_arrow_left"
+                @click="toolbarLeftClick"
+            )
+
+            .vm-date__toolbar-title(
+                @click="prevState"
+            ) {{ toolbarTitle }}
+
+            vm-button(
+                icon="keyboard_arrow_right"
+                @click="toolbarRightClick"
+            )
+
+        .vm-date__content
+            ul.vm-date__years(
+                v-show="state === 'year'"
+                ref="years"
+            ) 
+                li.vm-date__years-item.fill-action(
+                    v-for="year in years"
+                    :key="year"
+                    :class="{ 'is--active': year === inputYear }"
+                    @click="setYear(year)"
+                ) {{ year }}
+            
+            .vm-date__months(
+                v-if="state === 'month'"
+            )
+                vm-button(
+                    v-for="(month, idx) in months"
+                    :key="id"
+                    :disabled="month.disabled"
+                    @click="setMonth(idx)"
+                ) {{ month.name }}
+
+            .vm-date__days(
+                v-if="state === 'day'"
+            )
+                .vm-date__days-weekdays
+                    .vm-date__days-weekday(
+                        v-for="idx in [0, 1, 2, 3, 4, 5, 6]"
+                    ) {{ idx | shortWeekdayNameByIndex }}
+                
+                .vm-date__days-items
+                    .vm-date__day(
+                        v-for="(day, idx) in days"
+                        :key="idx"
+                        @click="setDay(day)"
+                    )
+                        .vm-date__day-wrapper(
+                            :class="{
+                                'is--outside': day.prev || day.next,
+                                'is--active': day.value === inputDay && !day.next && !day.prev,
+                                'is--now': day.value === (new Date()).getDate()  
+                            }"
+                        ) {{ day.value || '' }}
+            
+            .vm-date__time(
+                v-if="state === 'time'"
+            )
+                .vm-date__time-wrapper
+                    .vm-date__time-item {{ inputHours | pad }}
+                    .vm-date__time-div :
+                    .vm-date__time-item {{ inputMinuts | pad }}
+
+        .vm-date__footer
+            vm-button(
+                @click="clear"
+            ) Очистить

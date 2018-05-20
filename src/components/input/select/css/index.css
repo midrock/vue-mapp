@@ -1,0 +1,76 @@
+$select-toolbar-height: 56px;
+
+.vm-select {
+
+    &__arrow {
+        
+        .vm-icon {
+            font-size: 30px;
+        }
+    }
+
+    .vm-option {
+        box: horizontal middle;
+        padding: 14px 16px;
+        min-height: 48px;
+
+        .vm-checkbox__label {
+            margin-left: 24px;
+        }
+    }
+
+
+    &__toolbar {
+        box: horizontal middle;
+        position: relative;
+        flex: 0 0 auto;
+
+        .vm-input {
+            height: $select-toolbar-height;
+        }
+
+        .vm-icon {
+            font-size: 22px;
+        }
+
+        + .vm-select__options {
+            height: calc(100% - $select-toolbar-height);
+        }
+
+        input {
+            padding-left: 16px;
+        }
+    }
+
+    &__options {
+        padding: 8px 0;
+        overflow: auto;
+        height: 100%;
+
+        &:not(.is--multiline) {
+
+            .vm-option__label,
+            .vm-checkbox__label {
+                @apply --text-nowrap;
+            }
+        }
+
+        &-empty {
+            box: vertical center middle;
+            height: 48px;
+        }
+    }
+
+    &__footer {
+        padding: 8px;
+        box: horizontal right;
+    }
+
+    &.is--multiple {
+
+    }
+
+    &.is--opened {
+        
+    }
+}

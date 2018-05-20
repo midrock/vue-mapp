@@ -1,0 +1,17 @@
+.vm-radio {
+
+    &.is--checked {
+
+        .vm-radio__icon {
+            border-color: $primary;
+        }
+    }
+
+    .vm-radio__icon {
+        border-color: $default-text-light;
+
+        .primary-box & {
+            border-color: $primary-text;
+        }
+    }
+}

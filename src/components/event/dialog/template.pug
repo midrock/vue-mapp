@@ -1,0 +1,16 @@
+vm-modal.vm-dialog(
+    :class="classes"
+)
+    .vm-dialog__header(v-if="title")
+        vm-title {{ title }}
+    .vm-dialog__content(
+        v-html="content"
+    )
+        slot
+    .vm-dialog__footer
+        vm-button.vm-dialog__action(
+            v-for="action in actions"
+            primary
+            @click="actionClick(action)"
+        ) {{ action.text }}
+        slot(name="action")

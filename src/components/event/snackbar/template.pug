@@ -1,0 +1,16 @@
+transition(
+    name="vm-snackbar"
+    @after-leave="afterLeave"
+    @after-enter="afterEnter"
+)
+    .vm-snackbar(
+        v-if="active"
+        :class="{
+            'is--center': center    
+        }"
+    )
+        .vm-snackbar__text {{ text }}
+        vm-button(
+            v-if="actionText"
+            @click="hide"
+        ) {{ actionText }}

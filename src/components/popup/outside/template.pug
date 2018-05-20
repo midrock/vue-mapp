@@ -1,0 +1,15 @@
+.vm-outside(
+    :class="{
+        'is--active': active
+    }"
+)
+    .vm-outside__content(
+        :tabindex="-1"
+        :class="['is--' + place, contentClass]"
+    )
+        slot
+
+    .vm-outside__overlay(
+        v-if="!nooverlay"
+        @click="clickOnOverlay"
+    )

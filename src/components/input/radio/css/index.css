@@ -1,0 +1,37 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-radio {
+    width: auto;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 6px 24px 6px 0;
+    flex-shrink: 0;
+    line-height: 20px;
+
+    &__icon {
+        size: 20px;
+        position: relative;
+        border-radius: 50%;
+        border: 2px / solid;
+        border-style: solid;
+        flex-shrink: 0;
+        box-sizing: border-box;
+
+        &:after {
+            position: absolute 3px;
+            border-radius: 50%;
+            border: 5px / solid / inherit;
+
+            .vm-radio.is--checked & {
+                content: '';
+            }
+        }
+    }
+
+    &__label {
+        margin-left: 16px;
+    }
+}

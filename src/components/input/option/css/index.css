@@ -1,0 +1,6 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-option {
+    cursor: pointer;
+}

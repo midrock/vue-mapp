@@ -1,0 +1,60 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-snackbar {
+    min-width: 288px;
+    max-width: 568px;
+    min-height: 48px;
+    max-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 2px;
+    will-change: background-color, color, transform;
+    left: 24px;
+    bottom: 24px;
+    font-size: 14px;
+
+    &.is--center {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+        border-radius: 2px 2px 0 0;
+    }
+
+    &__text {
+        padding: 14px 24px;
+        align-self: flex-start;
+        line-height: 24px;
+    }
+
+    &-enter, &-leave-to {
+        transform: translateY(120%);
+    }
+
+    &-enter-active, &-leave-active {
+        opacity .5s
+        transform: translateY(0);
+    }
+
+    &-enter-active {
+        transition: transform .32s $transition;
+    }
+
+    &-leave-active {
+        transition: transform .16s $transition;
+    }
+
+    .vm-layout & {
+        font-size: 1em;
+    }
+
+    button {
+        min-width: auto;
+        margin: 0 16px;
+        flex-shrink: 0;
+    }
+}

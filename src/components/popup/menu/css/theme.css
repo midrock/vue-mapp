@@ -1,0 +1,14 @@
+.vm-menu {
+
+    &__content {
+        background: $default-bg-light;
+    }
+
+    &__arrow {
+        border-color: $default-divider transparent transparent;
+
+        &:after {
+            border-color: transparent transparent $default-bg-light;
+        }
+    }
+}

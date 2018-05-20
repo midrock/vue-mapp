@@ -1,0 +1,40 @@
+.grow { 
+    flex-grow: 1; 
+}
+
+.lighter { 
+    opacity: .64; 
+}
+
+.thin { 
+    font-weight: 300; 
+}
+
+.medium { 
+    font-weight: 500; 
+}
+
+.bold { 
+    font-weight: 700; 
+}
+
+.italic { 
+    font-style: italic; 
+}
+
+.underline { 
+    font-style: underline; 
+}
+
+.disabled { 
+    opacity: .64;
+    cursor: default;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+.readonly {
+    opacity: .88;
+    cursor: default;
+    will-change: opacity;
+}

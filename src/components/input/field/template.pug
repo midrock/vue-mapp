@@ -1,0 +1,8 @@
+.vm-field(
+    :readonly="status === 'readonly'"
+    :disabled="status === 'disabled'"   
+)    
+    .vm-field__label(v-if="label") {{ label }}
+    .vm-field__content
+        slot
+    .vm-field__message {{ message }}

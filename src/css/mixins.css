@@ -1,0 +1,16 @@
+
+@define-mixin action {
+    transition: background .05s cubic-bezier(.25,.8,.25,1);
+    will-change: background, color;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover:after {
+        background: rgba(0,0,0,.05);
+    }
+
+    &:active:after {
+        background: rgba(0,0,0,.8);
+    }
+}

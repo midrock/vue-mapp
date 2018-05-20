@@ -1,0 +1,22 @@
+.vm-button {
+    background: transparent;
+    color: inherit;
+    @mixin action;
+
+    &.box-primary.is--raised:not([disabled]) {
+        background: $primary;
+        color: $primary-text;
+    }
+
+    &:not(.is--icon):after {
+        content: '';
+    }
+
+    &.is--raised[disabled] {
+        background: $default-bg-dark;
+    }
+
+    &.box-primary[disabled] {
+        color: inherit;
+    }
+}

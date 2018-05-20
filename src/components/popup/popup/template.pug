@@ -1,0 +1,19 @@
+.vm-popup
+    
+    .vm-popup__content(
+        ref="content"
+        :style="[
+            contentStyles,
+            {
+                'max-width': width && width + 'px',
+                'max-height': height && height + 'px'
+            }
+        ]"
+        @click="clickOnContent"
+    )
+        slot
+    
+    .vm-popup__overlay(
+        v-if="!nooverlay"
+        @click="clickOnOverlay"
+    )

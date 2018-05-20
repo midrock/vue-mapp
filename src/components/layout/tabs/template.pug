@@ -1,0 +1,19 @@
+.vm-tabs
+    .vm-tabs__header(
+        :class="align ? `is--${align}` : null"
+    )
+        slot(name="header-left")
+        .vm-tabs__header-wrapper
+            button.vm-tab(
+                type="button"
+                v-for="(tab, idx) in tabs"
+                :key="tab._uid"
+                :disabled="tab.disabled"
+                :class="{
+                    'is--active': tab === activeTab    
+                }"
+                @click="setActiveTab(tab)"
+            )
+                span.vm-tab__label {{ tab.label }}
+        slot(name="header-right")
+    slot

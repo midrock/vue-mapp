@@ -1,0 +1,65 @@
+vm-app.vm-layout(
+    id="vm-layout"
+    :class="{
+        'is--fixed': $_asideFixed,
+        'is--hidden': loading    
+    }"
+    @touchstart="onTouchStart",
+    @touchend="onTouchEnd",
+    @touchcancel="onTouchCancel"
+)
+    nav.vm-layout__nav(
+        ref="aside"
+        :class="{
+            'is--hidden': !asideActive && !$_asideFixed    
+        }"
+    )
+        slot(name="sidebar")
+
+    .vm-layout__wrapper
+
+        header.vm-layout__header.box-primary(
+            ref="header"
+        )
+            .vm-layout__header-top
+                button.vm-layout__header-aside(
+                    v-if="!$_asideFixed"
+                    @click="asideActive = !asideActive"
+                )
+                    i.material-icons menu
+
+                .vm-layout__title(
+                    :class="{
+                        'is--vertical': $_subtitleUnderTitle    
+                    }"
+                )
+                    slot(name="title")
+                    span(v-if="$_showTitle") {{ title }}
+                    .vm-layout__title-divider(
+                        v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
+                    ) -
+                    span(v-if="subtitle") {{ subtitle }}
+                    .is-grow
+                    .vm-layout__header-features(
+                        v-if="$slots['header-top']"
+                    )
+                        slot(name="header-top")
+
+            .vm-layout__header-bottom(
+                v-show="$_showHeaderBottom"
+            )
+                slot(name="header-bottom")
+        
+        main.vm-layout__content(
+            ref="main"
+            :style="{
+                height: contentHeight + 'px',
+                width: contentWidth + 'px'    
+            }"
+        )
+            slot
+
+        .vm-layout__overlay(
+            v-if="asideActive && !$_asideFixed"
+            @click="asideActive = !asideActive"
+        )

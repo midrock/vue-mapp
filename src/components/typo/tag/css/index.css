@@ -1,0 +1,14 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-tag {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 8px;
+    height: 24px;
+    line-height: 1;
+    border-radius: 2px;
+    font-size: $text-small-2;
+}

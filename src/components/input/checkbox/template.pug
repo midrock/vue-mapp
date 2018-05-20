@@ -1,0 +1,27 @@
+.vm-checkbox(
+    :disabled="status === 'disabled'"
+    :readonly="status === 'readonly'"
+    :class="{
+        'is--checked': checked,
+        'is--right': iconRight    
+    }"
+    @click="click"
+)
+    .vm-checkbox__icon
+        .vm-checkbox__checkmark(v-if="checked")
+
+    .vm-checkbox__label(
+        v-if="label || $slots.default"
+    ) 
+        | {{ label }}
+        slot
+    
+    input(
+        v-show="false"
+        type="checkbox"
+        ref="input"
+        :disabled="freezed"
+        :checked="checked"
+        :name="name"
+        @click="click"
+    )

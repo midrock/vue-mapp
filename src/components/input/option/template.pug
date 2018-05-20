@@ -1,0 +1,15 @@
+component.vm-option(
+    v-show="!hidden"
+    :is="container.optionComponent || 'div'"
+    :class="[
+        classes,
+        {
+            'is--selected': selected
+        }
+    ]"
+    :model="selected"
+    :disabled="disabled"
+    :readonly="readonly"
+    @click="click"
+)
+    slot

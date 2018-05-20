@@ -1,0 +1,45 @@
+.vm-layout {
+    @mixin themebox default;
+
+    &[data-system="windows"], &[data-system="linux"], .vm-scroll {
+
+        ::-webkit-scrollbar {
+            size: 8px;
+            background-color: $scrollbar-background;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background-color: $scrollbar-background;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: $scrollbar-thumb;
+
+            &:hover {
+                background-color: $scrollbar-thumb-hover;
+            }
+        }
+    }
+
+    &__nav {
+        background: $default-bg-light;
+    }
+
+    .bg {
+
+        &-default {
+            background: $default-bg;
+        }
+    }
+
+    .text {
+        &-primary { color: $primary; }
+        &-accent  { color: $accent;  }
+        &-success { color: $success; }
+        &-warning { color: $warning; }
+    }
+}

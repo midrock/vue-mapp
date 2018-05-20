@@ -1,0 +1,9 @@
+.github/
+.vscode/
+npm-debug.log
+yarn-error.log
+build/
+/.travis.yml
+/package-lock.json
+/postcss.config.js
+/yarn.lock

@@ -1,0 +1,7 @@
+.vm-loader {
+
+    &__spin {
+        border-color: $loader-bg !important;
+        border-top-color: $loader-active !important;
+    }
+}

@@ -1,0 +1,9 @@
+.vm-chip
+    .vm-chip__label(
+        @click="click"
+    )
+        slot
+    vm-button.vm-chip__close(
+        icon="cancel"
+        @click="close"
+    )

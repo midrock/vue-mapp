@@ -1,0 +1,10 @@
+.vm-outside {
+
+    &__content {
+        background: $default-bg-light;
+    }
+
+    &__overlay {
+        background: rgba(0,0,0,.01);
+    }
+}

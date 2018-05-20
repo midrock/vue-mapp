@@ -1,0 +1,21 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-field {
+    margin-bottom: 24px;
+
+    &__label {
+        font-size: 0.85714286em;
+        font-weight: 500;
+        margin-bottom: 6px;
+        opacity: .8;
+    }
+
+    &__message {
+        margin-top: 4px;
+        font-size: 12px;
+        min-height: 20px;
+        line-height: 20px;
+        opacity: .8;
+    }
+}

@@ -1,0 +1,67 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-outside {
+    position: absolute;
+
+    &__mirage {
+        display: none !important;
+    }
+    
+    &__content {
+        position: fixed;
+        z-index: 30;
+        will-change: transform;
+        overflow: hidden;
+        outline: none;
+        box-shadow: $shadow-6;
+        transition: $transition;
+        visibility: hidden;
+
+        &.is--left {
+            left: 0;
+            top: 0;
+            height: 100%;
+            transform: translateX(-100%);
+        }
+
+        &.is--right {
+            top: 0;
+            right: 0;
+            height: 100%;
+            transform: translateX(100%);
+        }
+
+        &.is--bottom {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            transform: translateX(100%);
+        }
+
+        &.is--top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: translateX(-100%);
+        }
+
+        .vm-outside.is--active & {
+            visibility: visible;
+            transform: translate(0);
+        }
+    }
+
+    &__overlay {
+        display: none;
+        position: fixed;
+        z-index: 25;
+        size: 100%;
+        left: 0;
+        top: 0;
+
+        .vm-outside.is--active & {
+            display: block;
+        }
+    }
+}

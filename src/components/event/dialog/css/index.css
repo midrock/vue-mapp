@@ -1,0 +1,47 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-dialog {
+
+    &__header {
+        padding: 0 24px 16px;
+    }
+
+    &__content {
+        font-size: 14px;
+        width: 440px;
+        padding: 0 24px;
+        opacity: .8;
+        hyphens: auto;
+
+        .vm-layout & {
+            font-size: 1em;
+        }
+    }
+
+    &__footer {
+        padding: 8px;
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &.is--large-1 {
+
+        .vm-modal__content {
+            width: 650px;
+        }
+    }
+
+    &.is--large-2 {
+
+        .vm-modal__content {
+            width: 900px;
+        }
+    }
+
+    .vm-modal__content {
+        padding-top: 24px;
+        max-width: calc(100% - 32px);
+    }
+}

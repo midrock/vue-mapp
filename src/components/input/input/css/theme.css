@@ -1,0 +1,71 @@
+.vm-input {
+
+    ::placeholder {
+        color: $default-text-dark;
+    }
+
+    &[data-vm-check="error"] {
+
+        .vm-input__message {
+            color: $accent;
+            opacity: 1;
+        }
+    }
+
+    &__label {
+        color: $default-text-light;
+
+        .vm-input[data-vm-required] &:after {
+            color: $accent;
+        }
+
+        .vm-input.is--box.is--expanded & {
+            color: $default-text-light;
+        }
+
+        .vm-input.is--box.is--expanded.is--focused & {
+            color: $primary;
+        }
+    }
+
+    &__container {
+
+        path {
+            stroke: $default-divider;
+
+            .vm-input.is--focused & {
+                stroke: $primary;
+            }
+        }
+    }
+
+    &__divider {
+        background: $default-divider;
+
+        &-loader {
+            background: $warning;
+        }
+    }
+
+    &[disabled] {
+
+        .vm-input__divider {
+            background: transparent;
+            border-color: $default-text-light;
+        }
+    }
+
+    &.is--focused {
+
+        .vm-input__divider {
+            background: $primary;
+        }
+    }
+
+    &.is--error {
+
+        .vm-input__divider {
+            background: $accent;
+        }
+    }
+}

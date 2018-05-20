@@ -1,0 +1,52 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+$toggle-height: 14px;
+$toggle-thum-size: 20px;
+
+.vm-toggle {
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding: 6px 24px 6px 0;
+
+    &.is--right {
+        flex-direction: row-reverse;
+        padding-right: 0;
+    }
+
+    &__thumb {
+        width: 34px;
+        height: $toggle-height;
+        position: relative;
+        border-radius: $toggle-height;
+        transition: all .15s linear;
+
+        &:after {
+            content: '';
+            z-index: 2;
+            size: $toggle-thum-size;
+            position: absolute -25% 0 0;
+            border-radius: 50%;
+            box-shadow: $shadow-1;
+            transform: translateX(-2px);
+            transition: transform .15s linear;
+            will-change: transform, background;
+
+            .vm-toggle.is--checked & {
+                transform: translateX(80%);
+            }
+        }
+    }
+
+    &__label {
+        margin-left: 16px;
+
+        .vm-toggle.is--right & {
+            flex-grow: 1;
+            margin-left: 0;
+        }
+    }
+}

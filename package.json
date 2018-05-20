@@ -1,0 +1,71 @@
+{
+    "name": "vue-mapp",
+    "version": "0.0.1",
+    "description": "Web components based on Material design principles",
+    "author": "midrock",
+    "license": "MIT",
+    "typings": "types/index.d.ts",
+    "main": "es5/index.js",
+    "repository": "midrock/vue-mapp",
+    "scripts": {
+        "build": "cross-env NODE_ENV=prod ts-node ./build/es5.ts",
+        "dev": "cross-env NODE_ENV=dev ts-node ./build/es5.ts",
+        "test": "jest"
+    },
+    "dependencies": {
+        "tslib": "^1.8.1",
+        "vue": "^2.5.13",
+        "vue-property-decorator": "^6.0.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^22.2.2",
+        "@types/node": "^8.5.2",
+        "@types/pug": "^2.0.4",
+        "@vue/component-compiler-utils": "^1.2.1",
+        "autoprefixer": "^7.2.3",
+        "chalk": "^2.3.0",
+        "cross-env": "^5.1.4",
+        "cssnano": "^3.10.0",
+        "fs-extra": "^5.0.0",
+        "jest": "^22.4.3",
+        "postcss": "^6.0.21",
+        "postcss-apply": "^0.8.0",
+        "postcss-custom-media": "^6.0.0",
+        "postcss-discard-duplicates": "^2.1.0",
+        "postcss-flexbox": "^1.0.3",
+        "postcss-flexbugs-fixes": "^3.2.0",
+        "postcss-for": "^2.1.1",
+        "postcss-import": "^11.0.0",
+        "postcss-load-config": "^1.2.0",
+        "postcss-mixins": "^6.2.0",
+        "postcss-nested": "^3.0.0",
+        "postcss-simple-vars": "^4.1.0",
+        "postcss-size": "^2.0.0",
+        "pug": "^2.0.3",
+        "ts-jest": "^22.4.2",
+        "ts-node": "^4.1.0",
+        "typescript": "^2.5.3",
+        "uglify-js": "^3.3.23",
+        "vue-template-compiler": "^2.5.13",
+        "vue-template-es2015-compiler": "^1.6.0",
+        "vue-test-utils": "^1.0.0-beta.11"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
+    },
+    "browserslist": [
+        "> 5%",
+        "last 2 versions"
+    ]
+}

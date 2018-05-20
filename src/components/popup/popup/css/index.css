@@ -1,0 +1,25 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-popup {
+   
+    &__content {
+        position: fixed;
+        display: block;
+        max-height: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        z-index: 1000;
+        box-shadow: $shadow-4;
+        border-radius: 2px;
+        overflow: auto;
+        font-size: 14px;
+    }
+
+    &__overlay {
+        position: fixed;
+        size: 100%;
+        left: 0;
+        top: 0;
+        z-index: 100;
+    }
+}

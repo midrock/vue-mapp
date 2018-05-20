@@ -1,0 +1,10 @@
+.vm-dialog {
+
+    .vm-modal__content {
+        background: $default-bg-light;
+    }
+    
+    .vm-button.text-primary {
+        color: $primary;
+    }
+}

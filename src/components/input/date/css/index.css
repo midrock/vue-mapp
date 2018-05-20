@@ -1,0 +1,262 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+$date-toolbar-height: 56px;
+
+.vm-date {
+
+    &__popup {
+        width: 460px;
+    }
+
+    &__header {
+        width: 160px;
+        flex: 0 0 auto;
+        padding: 20px;
+        font-weight: 500;
+        position: relative;
+        display: none;
+
+        @media(--sm-view) {
+            display: block;
+        }
+
+        & > div {
+            opacity: .72;
+            cursor: pointer;
+
+            &.is--active {
+                opacity: 1;
+                cursor: default;
+            }
+        }
+
+        &-year, &-time {
+            font-size: 16px;
+        }
+
+        &-time {
+            margin-top: 20px;
+
+            span:nth-child(2) {
+                padding: 0 2px;
+            }
+        }
+
+        &-date {
+            margin-top: 16px;
+        }
+
+        &-daymonth {
+            font-size: 22px;
+            line-height: 1.22em;
+            margin-top: 12px;
+        }
+
+        &-month {
+            margin-left: 8px;
+            font-size: 0.8em;
+
+            .vm-date__wrapper[data-vm-state="month"] & {
+                opacity: 1;
+                cursor: default;
+            }
+        }
+
+        &-today {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+        }
+
+        &-weekday {
+            line-height: 32px;
+        }
+    }
+
+    &__content {
+        height: 240px;
+    }
+
+    &__wrapper {
+        flex: 1 1 auto;
+        max-width: 300px;
+        width: 300px;
+    }
+
+    &__footer {
+        box: horizontal right;
+        padding: 0 16px 8px;
+    }
+
+    &__toolbar {
+        box: horizontal middle;
+        height: $date-toolbar-height;
+        padding: 0 10px;
+
+        button {
+            width: 48px;
+            height: 100%;
+            flex: 0 0 auto;
+        }
+
+        &-title {
+            cursor: pointer;
+            height: 100%;
+            flex: 1 1 auto;
+            text-align: center;
+            line-height: $date-toolbar-height;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+    }
+
+    &__years {
+        height: 100%;
+        overflow-y: auto;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        &-item {
+            text-align: center;
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            
+
+            &.is--active {
+                font-size: 26px;
+                height: 64px;
+                line-height: 64px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__months {
+        padding: 0 16px;
+        font-weight: 500;
+
+        button {
+            width: 33.3333%;
+            margin: 10px 0;
+        }
+    }
+
+    &__time {
+        height: calc(100% - $date-toolbar-height);
+        box: horizonatal center middle;
+
+        &-wrapper {
+            box: horizontal;
+        }
+
+        &-div {
+            margin: 0 16px;
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        &-item {
+            font-size: 48px;
+        }
+    }
+
+    &__day {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 12px;
+        flex-basis: 14.2857142%;
+        padding: 2px;
+
+
+        &-wrapper {
+            size: 100%;
+            border-radius: 2px;
+            line-height: 28px;
+            cursor: pointer;
+            will-change: opacity;
+
+            &.is--outside {
+                opacity: .32;
+                
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__days {
+        padding: 0 16px 12px;
+
+        &-weekdays {
+            box: horizontal;
+            width: 100%;
+            flex: 0 0 100%;
+            opacity: .64;
+            margin-bottom: 4px;
+        }
+
+        &-weekday {
+            cursor: default;
+        }
+
+        &-item[data-vm-day] {
+            cursor: pointer;
+            position: relative;
+        }
+
+        &-item, &-weekday {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 12px;
+            flex-basis: 14.2857142%;
+            line-height: 32px;
+        }
+
+        &-item {
+            border-radius: 2px;
+
+            &:after {
+                content: attr(data-vm-day);
+            }
+
+
+            &.is--now, &.is--active {
+                position: relative;
+
+                &:after {
+                    border-radius: 2px;
+                    position: absolute;
+                    size: calc(100% - 4px);
+                    top: 2px;
+                    left: 2px;
+                }
+            }
+
+            &.is--now:after {
+                border-width: 1px;
+                border-style: solid;
+            }
+        }
+
+        &-items {
+            box: horizontal wrap;
+        }
+    }
+
+    input {
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    .vm-popup__content {
+        box: horizontal;
+    }
+}

@@ -1,0 +1,121 @@
+@import 'theme-list/default';
+@import 'mixins';
+
+.vm-list {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    list-style: none;
+
+    &__item {
+        min-height: 40px;
+        height: auto;
+        overflow: hidden;
+        flex-shrink: 0;
+        position: relative;
+
+        &:before, &:after {
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            left: 0;
+        }
+
+        &.is--opened {
+
+            &:before, &:after {
+                content: '';
+            }
+        }
+
+        &.is--opened + &.is--opened {
+            
+            &:before {
+                display: none;
+            }
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+
+        &-head {
+            box: horizontal middle space-between;
+            min-height: 2.85714286em;
+            margin: 0;
+            padding: 10px 16px;
+            padding-right: 12px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            color: inherit !important;
+            text-transform: none;    
+            text-decoration: none;
+            line-height: 24px;
+            @mixin action;
+
+            &:after {
+                content: '';
+            }
+
+            i:first-child {
+                position: absolute;
+                left: 16px;
+                top: 10px;
+                font-size: 24px;
+                opacity: .56;
+
+                .vm-list__item.is--active & {
+                    opacity: 1;
+                }
+            }
+
+            .vm-list.is--nav > .vm-list__item > & {
+                font-weight: 500;
+            }
+
+            .vm-list.is--icon & {
+                padding-left: 64px;
+            }
+        }
+
+        & & &-head {
+            padding-left: 48px;
+
+            .vm-list.is--icon & {
+                padding-left: 64px;
+            }
+        }
+
+        &-expander {
+            position: static !important;
+
+            .vm-list__item.is--closed & {
+                transform: rotateZ(180deg) translate3D(0, 0, 0);
+            }
+        }
+    }
+
+    &__expand {
+        
+        .vm-list__item.is--closed & {
+            height: 0 !important;
+        }
+    }
+
+    &.is--nowrap {
+
+        .vm-list__item * {
+            @apply --text-nowrap;
+        }
+    }
+
+    .vm-divider {
+        margin: 8px 0;
+    }
+}

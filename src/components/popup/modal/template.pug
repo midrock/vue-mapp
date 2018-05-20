@@ -1,0 +1,10 @@
+.vm-modal(
+    @click.self="clickOnOverlay"
+    @scroll="setScrollListener()"
+)
+    .vm-modal__spacer
+    .vm-modal__content
+        .vm-modal__header(v-if="$slots.header")
+        slot
+        .vm-modal__footer(v-if="$slots.footer")
+    .vm-modal__spacer

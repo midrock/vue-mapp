@@ -1,0 +1,17 @@
+.vm-app {
+    
+    &[data-device="desktop"] {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &[data-device="mobile"] {
+        font-size: 16px;
+        line-height: 22px;
+
+        * {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-tap-highlight-color:  transparent;
+        }
+    }
+}

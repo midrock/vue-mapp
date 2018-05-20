@@ -1,0 +1,19 @@
+.vm-menu
+    .vm-menu__trigger(
+        ref="trigger"
+        @click="clickOnTrigger"
+        @mouseover="mouseoverTrigger"
+        @mouseout="mouseoutTrigger"
+    )
+        slot(
+            name="trigger"
+        )
+    vm-popup(
+        v-if="opened"
+        v-bind="$attrs"
+        ref="popup"
+        @overlay="clickOnOverlay"
+        @outofcontent="mouseoutContent"
+        @outclick="onOutClick"
+    )
+        slot

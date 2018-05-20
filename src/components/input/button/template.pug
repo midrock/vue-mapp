@@ -1,0 +1,17 @@
+button.vm-button(
+    :disabled="disabled"
+    :type="type"
+    :class="{
+        'box-primary': primary && raised,
+        'text-primary': primary && !raised,
+        'is--raised': raised,
+        'is--icon': icon,
+        'is--loading': loading
+    }"
+    @click="click"
+)
+    vm-loader(v-if="loading")
+    vm-icon(v-if="icon") {{ icon }}
+    
+    .vm-button__label(v-else)
+        slot

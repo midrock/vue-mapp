@@ -1,0 +1,56 @@
+.vm-input(
+    :class="classes"
+    :disabled="status === 'disabled'"
+    :data-vm-check="novalidate || validateStatus === 'init' ? null : validateStatus"
+    :data-vm-required="$_required"
+)
+    .vm-input__container(ref="container")
+        .vm-input__label(
+            v-if="$_label"
+            ref="label"
+            :class="{
+                'is--noanimate': noanimate    
+            }"
+        ) {{ $_label }}
+
+        .vm-input__left(v-if="$slots.left")
+            slot(name="left")
+
+        input.vm-input__entry(
+            ref="input"
+            :disabled="status === 'disabled'"
+            :type="$_type"
+            :name="name"
+            :placeholder="placeholder"
+            :maxlength="$_maxlength === Infinity ? null : $_maxlength"
+            :readonly="status === 'readonly'"
+            :value="inputValue"
+            :spellcheck="spellcheck"
+            :autocomplete="autocomplete"
+            @focus="onFocus"
+            @blur="onBlur"
+            @input="onInput"
+        )
+
+        .vm-input__right(
+            v-if="$slots.right || (showClearButton && inputValue)"
+        )
+            slot(name="right")
+            vm-button(
+                v-if="showClearButton && inputValue"
+                icon="keyboard_backspace"
+                @click="clear"
+            )
+
+        svg(v-if="$_box")
+            path.vm-input__outline(ref="svgboxpath")
+
+    .vm-input__divider(v-if="!$_box")
+        .vm-input__divider-loader(
+            v-if="loading || validateStatus === 'process'"
+        )
+
+    .vm-input__message(
+        v-if="$_description"
+        :class="nowrap ? 'is--nowrap' : null"
+    ) {{ $_description}}

@@ -1,0 +1,12 @@
+.vm-snackbar {
+    background: $snackbar-bg;
+    color: $snackbar-color;
+
+    .vm-button {
+        color: $snackbar-button-text;
+
+        &:hover {
+            background: $snackbar-button;
+        }
+    }
+}

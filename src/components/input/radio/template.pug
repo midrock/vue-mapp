@@ -1,0 +1,12 @@
+.vm-radio(
+    :disabled="status === 'disabled'"
+    :class="{
+        'is--checked': emitValue
+    }"
+    @click="click"
+)
+    .vm-radio__icon
+    .vm-radio__label(
+        v-if="$slots.default || label"
+    ) {{ label }}
+        slot

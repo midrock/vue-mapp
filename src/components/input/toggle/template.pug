@@ -1,0 +1,13 @@
+.vm-toggle(
+    :disabled="status === 'disabled'"
+    :class="{
+        'is--checked': emitValue,
+        'is--right': iconRight    
+    }"
+    @click="toggle"
+)
+    .vm-toggle__thumb
+    .vm-radio__label(
+        v-if="$slots.default || label"
+    ) {{ label }}
+        slot

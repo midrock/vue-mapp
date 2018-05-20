@@ -1,0 +1,59 @@
+@define-mixin screen $pfx {
+    @for $i from 1 to 12 {
+        .$(pfx)-$i {
+            flex-basis: $block-$(i);
+            max-width: $block-$(i);
+        }
+    }
+}
+
+.vm-column {
+    position: relative;
+    box: vertical;
+
+    &[data-align*="center"]  { align-items: center; }
+    &[data-align*="left"]    { align-items: flex-start; }
+    &[data-align*="right"]   { align-items: flex-end; }
+    &[data-align*="between"] { justify-content: space-between; }
+    &[data-align*="around"]  { justify-content: space-around; }
+    &[data-align*="top"]     { justify-content: flex-start; }
+    &[data-align*="middle"]  { justify-content: center; }
+    &[data-align*="bottom"]  { justify-content: flex-end; }
+
+    .vm-row {
+        max-width: initial;
+    }
+}
+
+.vm-row {
+    position: relative;
+    box: horizontal wrap;
+
+    &[data-align*="center"]  { justify-content: center; }
+    &[data-align*="left"]    { justify-content: flex-start; }
+    &[data-align*="right"]   { justify-content: flex-end; }
+    &[data-align*="between"] { justify-content: space-between; }
+    &[data-align*="around"]  { justify-content: space-around; }
+    &[data-align*="top"]     { align-items: flex-start; }
+    &[data-align*="middle"]  { align-items: center; }
+    &[data-align*="bottom"]  { align-items: flex-end; }
+}
+
+@mixin screen xs;
+
+@media (--sm-view) {
+    @mixin screen sm;
+}
+
+@media (--md-view) {
+    @mixin screen md;
+}
+
+@media (--lg-view) {
+    @mixin screen lg;
+}
+
+@media (--xl-view) {
+    @mixin screen xl;
+}
+

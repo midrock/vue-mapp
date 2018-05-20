@@ -1,0 +1,65 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-switch {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        height: 12px;
+        font-size: 0.85714286em;
+        font-weight: 500;
+        line-height: 12px;
+        opacity: .8;
+        margin-bottom: 8px;
+    }
+
+    &__options {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        border-radius: 2px;
+    }
+
+    &__message {
+        font-size: 12px;
+        min-height: 20px;
+        line-height: 18px;
+        margin-top: 8px;
+        opacity: .8;
+    }
+
+    &.is--multiple {
+
+        .vm-option {
+            margin-right: 8px;
+        }  
+    }
+
+    &.is--tight {
+
+        .vm-option {
+            border-radius: 0;
+            margin: 0;
+        }
+    }
+
+    .vm-option {
+        box: horizontal center middle;
+        padding: 6px 10px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 2px;
+
+        &.is--first {
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+
+        &.is--last {
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+    }
+}

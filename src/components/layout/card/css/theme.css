@@ -1,0 +1,6 @@
+.vm-card {
+
+    &__wrapper {
+        background: $default-bg-light;
+    }
+}

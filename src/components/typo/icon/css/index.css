@@ -1,0 +1,10 @@
+.vm-icon {
+    display: inline-block;
+    font-size: 24px;
+    fill: currentColor;
+    vertical-align: middle;
+    text-rendering: optimizeLegibility;
+    user-select: none;
+    min-width: 1em;
+    min-height: 1em;
+}

@@ -1,0 +1,36 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+$menu-base-width: 56px;
+
+.vm-menu {
+    position: relative;
+
+    &__wrapper {
+        font-size: 14px;
+    }
+
+    &__arrow {
+        position: absolute;
+        top: -8px;
+        left: calc(50% - 8px);
+        border-style: solid;
+        border-color: transparent transparent rgba(224, 224, 224, .6);
+        border-width: 0 8px 8px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            left: -7px;
+            top: 1px;
+            border-width: 0 7px 7px;
+        }
+
+        &.is-down {
+            top: auto;
+            bottom: -8px;
+            transform: rotateX(180deg);
+        }
+    }
+}

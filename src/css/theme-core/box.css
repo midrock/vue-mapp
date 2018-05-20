@@ -1,0 +1,36 @@
+
+@define-mixin themebox $name {
+    background: $$(name)-bg;
+    color: $$(name)-text;
+
+    * { 
+        border-color: $$(name)-divider; 
+    }
+
+    a { 
+        color: $$(name)-link; 
+    }
+
+    .bg {
+        &-light   { background: $$(name)-bg-light; }
+        &-dark    { background: $$(name)-bg-dark;  }
+        &-text    { background: $$(name)-text;     }
+    }
+
+    .text {
+        &-light   { color: $$(name)-text-light; }
+        &-dark    { color: $$(name)-text-dark;  }
+    }
+}
+
+.box {
+    @mixin themebox default;
+}
+
+.box-primary {
+    @mixin themebox primary;
+}
+
+.box-accent {
+    @mixin themebox accent;
+}

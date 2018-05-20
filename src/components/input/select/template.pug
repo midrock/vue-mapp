@@ -1,0 +1,95 @@
+.vm-select(
+    :class="{
+        'is--multiple': multiple,
+        'is--opened': opened
+    }"
+)
+    vm-input(
+        slot="trigger"
+        :value="fieldValue"
+        :expanded="!isEmpty"
+        :label="label"
+        :disabled="disabled"
+        :readonly="multiple || !filterInField"
+        :box="box"
+        :size="size"
+        :showClearButton="hideArrow && showClearButton && !loading"
+        @input="onFilterInput"
+        @focus="onFieldFocus"
+        @blur="opened ? null : hide"
+    )
+        template(
+            v-if="multiple" 
+            slot="left"
+        )
+            vm-chip(
+                static
+                v-for="option in selectedOptions"
+                @click="$emit('chipclick')"
+            ) {{ option.text }}
+
+        vm-button.vm-select__arrow(
+            v-if="!hideArrow"
+            slot="right"
+            icon="arrow_drop_down"
+            @click="opened = !opened"
+        )
+
+        vm-loader(
+            v-if="loading"
+            slot="right"
+        )
+
+    vm-popup(
+        v-if="filterInField && isAsync ? $slots.default : opened"
+        v-bind="$attrs"
+        ref="popup"
+        rootClass="vm-select"
+        fillTrigger
+        :closeOnSelect="!multiple"
+        :floatTrigger="filterInField"
+        @outside="hide"
+    )
+        .vm-select__toolbar(
+            v-if="filter && !filterInField"
+        )
+            vm-input(
+                ref="popupInput"
+                placeholder="Поиск"
+                size=""
+                :box="false"
+                :value="popupFilterValue"
+                @input="onFilterInput"
+            )
+                vm-button(
+                    v-if="popupInput"
+                    slot="right"
+                    title="Очистить фильтр"
+                    icon="keyboard_backspace"
+                    @click="clearPopupFilter"
+                )
+
+                vm-button.vm-select__toolbar-close(
+                    slot="right"
+                    title="Закрыть"
+                    icon="close"
+                    @click="opened = false"
+                )
+
+        .vm-select__options(
+            ref="options"
+            :class="{
+                'is--multiline': multiline
+            }"
+        )
+            slot
+            .vm-select__options-empty(
+                v-if="noFilteredOptions"
+            ) Записи не найдены
+
+        template(
+            v-if="showClearButton && !filterInField"
+        )
+            vm-divider
+            .vm-select__footer
+                vm-button Сбросить

@@ -1,0 +1,17 @@
+.vm-list {
+
+    &__item {
+
+        &:before, &:after {
+            background: $default-divider;
+        }
+
+        &.is--active {
+            color: $primary;
+        }
+
+        &-expander {
+            color: $default-text-light;
+        }
+    }
+}

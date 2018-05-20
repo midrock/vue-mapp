@@ -1,0 +1,26 @@
+.vm-select {
+
+    &__item {
+        background: $default-bg-dark;
+    }
+
+    &__toolbar {
+
+        &:after {
+            background: $default-divider;
+        }
+
+        &.is--focused:after {
+            background: $primary;
+        }
+    }
+
+    .vm-option {
+        @mixin action;
+
+        &.is--selected {
+            background: rgba(0,0,0,.05);
+        }
+    }
+}
+

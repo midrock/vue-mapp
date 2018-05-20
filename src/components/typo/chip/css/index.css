@@ -1,0 +1,23 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-chip {
+    box: horizontal middle;
+    white-space: nowrap;
+    border-radius: 28px;
+    font-size: $text-small-1;
+    padding-right: 4px;
+    padding-left: 12px;
+    height: 32px;
+    max-width: calc(100% - 8px);
+    margin: 2px 4px 2px 0;
+
+    &__label {
+        @apply --text-nowrap;
+    }
+
+    &__close {
+        font-size: 20px;
+        margin-left: 8px;
+    }
+}

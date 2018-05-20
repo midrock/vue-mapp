@@ -1,0 +1,13 @@
+.vm-tape {
+    
+    &-wrapper {
+        width: 100%;
+    }
+
+    &-stack {
+        
+        &.is--hidden {
+            visibility: hidden;
+        }
+    }
+}

@@ -1,0 +1,258 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+.vm-input {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    height: 48px;
+
+    &__container {
+        box: horizontal middle;
+        position: relative;
+        height: 100%;
+
+        svg {
+            position: absolute;
+            size: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        display: block;
+        pointer-events: none;
+        will-change: opacity, top;
+        height: auto;
+        top: calc(50% - 1.2em / 2);
+        font-size: 1em;
+        line-height: 1.2;
+        @apply --text-nowrap;
+
+        &.is--noanimate  {
+            animation: none !important;
+        }
+
+        .vm-input[data-vm-required] &:after {
+            content: '*';
+            margin-left: 4px;
+        }
+
+        .vm-input.is--expanded & {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.2em;
+            top: -12px;
+            animation: inputlabel .1s cubic-bezier(.25,.5,.8,1);
+        }
+
+        .vm-input.is--box.is--expanded & {
+            top: -7px;
+            animation: inputlabelbox .1s cubic-bezier(.25,.5,.8,1);
+        }
+    }
+
+    &__outline {
+        stroke-width: 1px;
+        fill: transparent;
+
+        .vm-input.is--box.is--focused & {
+            stroke-width: 2px;
+        }
+    }
+
+    &__left, &__right {
+        box: horizontal;
+        flex: 0 0 auto;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    &__left {
+        margin-right: 8px;
+    }
+
+    &__right {
+        margin-left: 16px;
+        padding-right: 4px;
+
+        button {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .vm-loader {
+            width: 100%;
+
+            &__spin {
+                border-width: 2px;
+                size: 22px;
+            }
+        }
+    }
+
+    &__divider {
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        &-loader {
+            width: 20%;
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: indeterminate 1.5s infinite cubic-bezier(.25,.5,.8,1);
+            z-index: 1;
+        }
+    }
+
+    &__message {
+        font-size: 12px;
+        min-height: 18px;
+        line-height: 18px;
+        margin-top: 6px;
+        opacity: .8;
+
+        &.is--nowrap {
+            @apply --text-nowrap;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        size: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &[disabled] {
+
+        .vm-input__divider {
+            border-width: 0 0 1px;
+            border-style: dashed;
+        }
+    }
+
+    &.is--focused {
+
+        .vm-input__divider {
+            height: 2px;
+        }
+    }
+
+    &.is--box {
+
+        .vm-input__right {
+            width: 56px;
+        }
+
+        .vm-input__label {
+            left: 16px;
+        }
+
+        .vm-input__container {
+            border-radius: 4px;
+            min-height: 48px;
+        }
+
+        input {
+            padding: 0 16px;
+        }
+    }
+
+    &.is--large-1 {
+        font-size: 1.14285714em;
+        height: 56px;
+    }
+
+    &.is--large-2 {
+        font-size: 1.28571429em;
+        height: 64px;
+    }
+
+    .vm-layout & {
+        font-size: 1em;
+    }
+
+    input {
+        size: 100%;
+        padding: 0;
+        display: block;
+        border: none;
+        flex-grow: 1;
+        background: none;
+        font-family: inherit;
+        font-size: 1em;
+        line-height: 1em;
+        z-index: 1;
+        @apply --text-nowrap;
+
+        &[disabled] {
+            opacity: 1;
+        }
+
+        &[readonly] {
+
+            &:hover {
+                text-overflow: initial;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            opacity: .54;
+        }
+
+        &::-webkit-input-placeholder {
+            font-size: 1em;
+            text-shadow: none;
+            -webkit-text-fill-color: initial;
+        }
+    }
+}
+
+@keyframes indeterminate {
+    0% {
+        left: -100%;
+        width: 50%;
+    }
+    100% {
+        left: 100%;
+        width: 50%;
+    }
+}
+
+@keyframes inputlabel {
+    0% {
+        top: -10px;
+        opacity: 0;
+    }
+
+    100% {
+        top: -12px;
+        opacity: .8;
+    }
+}
+
+@keyframes inputlabelbox {
+    0% {
+        top: -4px;
+        opacity: 0;
+    }
+
+    100% {
+        top: -6px;
+        opacity: .8;
+    }
+}

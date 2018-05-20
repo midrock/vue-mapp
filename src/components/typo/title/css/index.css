@@ -1,0 +1,38 @@
+.vm-title {
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: .5em 0;
+
+    .vm-layout & {
+        font-size: 1.42857143em;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &.is--large {
+
+        &-1 {
+            font-size: 1.57142857em;
+            line-height: 1.18181818em;
+        }
+
+        &-2 {
+            font-size: 1.71428571em;
+            line-height: 1.33333333em;
+        }
+
+        &-3 {
+            font-size: 1.85714286em;
+            line-height: 1.15384615em;
+        }
+
+        &-4 {
+            font-size: 2em;
+            line-height: 1.14285714em;
+        }
+    }
+}
