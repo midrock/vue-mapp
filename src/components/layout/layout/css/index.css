@@ -1,4 +1,6 @@
 @import 'theme-list/default';
+@import 'theme-core/html';
+@import 'theme-core/box';
 @import 'mixins';
 @import './theme.css';
 
@@ -7,6 +9,16 @@
     size: 100%;
     min-width: 320px;
     overflow: hidden;
+
+    &[data-device="desktop"] {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &[data-device="mobile"] {
+        font-size: 16px;
+        line-height: 22px;
+    }
 
     &.is--hidden {
         visibility: hidden;
