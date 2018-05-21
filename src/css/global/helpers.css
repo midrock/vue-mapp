@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .grow { 
     flex-grow: 1; 
 }
@@ -37,4 +39,12 @@
     opacity: .88;
     cursor: default;
     will-change: opacity;
+}
+
+.action {
+    @mixin action;
+
+    &:not(disabled):not(readonly):after {
+        content: '';
+    }
 }

@@ -6,11 +6,18 @@
     cursor: pointer;
     z-index: 1;
 
+    &:after {
+        size: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
     &:hover:after {
         background: rgba(0,0,0,.05);
     }
 
     &:active:after {
-        background: rgba(0,0,0,.8);
+        background: rgba(0,0,0,.08);
     }
 }
