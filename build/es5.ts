@@ -63,6 +63,7 @@ ts('pack/event.ts', 'pack/event.js');
 ts('pack/layout.ts', 'pack/layout.js');
 ts('pack/typo.ts', 'pack/typo.js');
 ts('pack/popup.ts', 'pack/popup.js');
+ts('pack/list.ts', 'pack/list.js');
 
 export function compileCss() {
     postcss('css/global/helpers.css', 'helpers.css');
