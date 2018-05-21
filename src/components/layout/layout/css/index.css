@@ -168,7 +168,7 @@
 
     &__content {
         overflow: auto;
-        box: horizontal center top;
+        box: horizontal left top;
         position: relative;
     }
 

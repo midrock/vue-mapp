@@ -5,12 +5,11 @@
     position: relative;
     width: 100%;
     font-size: 14px;
-    height: 48px;
 
     &__container {
         box: horizontal middle;
         position: relative;
-        height: 100%;
+        height: 32px;
 
         svg {
             position: absolute;
@@ -25,32 +24,12 @@
         display: block;
         pointer-events: none;
         will-change: opacity, top;
-        height: auto;
         top: calc(50% - 1.2em / 2);
-        font-size: 1em;
         line-height: 1.2;
         @apply --text-nowrap;
 
         &.is--noanimate  {
             animation: none !important;
-        }
-
-        .vm-input[data-vm-required] &:after {
-            content: '*';
-            margin-left: 4px;
-        }
-
-        .vm-input.is--expanded & {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.2em;
-            top: -12px;
-            animation: inputlabel .1s cubic-bezier(.25,.5,.8,1);
-        }
-
-        .vm-input.is--box.is--expanded & {
-            top: -7px;
-            animation: inputlabelbox .1s cubic-bezier(.25,.5,.8,1);
         }
     }
 
@@ -96,9 +75,10 @@
     &__divider {
         height: 1px;
         position: absolute;
-        bottom: 0;
+        bottom: -1px;
         left: 0;
         width: 100%;
+        
 
         &-loader {
             width: 20%;
@@ -115,7 +95,7 @@
         font-size: 12px;
         min-height: 18px;
         line-height: 18px;
-        margin-top: 6px;
+        margin-top: 4px;
         opacity: .8;
 
         &.is--nowrap {
@@ -150,12 +130,25 @@
 
     &.is--box {
 
+        .vm-input__container {
+            height: 56px;
+        }
+
         .vm-input__right {
             width: 56px;
         }
 
         .vm-input__label {
             left: 16px;
+        }
+
+        .vm-input__message {
+            padding: 0 16px;
+        }
+
+        &.is--expanded .vm-input__label {
+            top: -7px;
+            animation: inputlabelbox .1s cubic-bezier(.25,.5,.8,1);
         }
 
         .vm-input__container {
@@ -178,6 +171,17 @@
         height: 64px;
     }
 
+    &.is--expanded {
+
+        .vm-input__label {
+            font-size: 0.85714em;;
+            font-weight: 500;
+            line-height: 1.2em;
+            top: -12px;
+            animation: inputlabel .1s cubic-bezier(.25,.5,.8,1);
+        }
+    }
+
     .vm-layout & {
         font-size: 1em;
     }
@@ -191,7 +195,6 @@
         background: none;
         font-family: inherit;
         font-size: 1em;
-        line-height: 1em;
         z-index: 1;
         @apply --text-nowrap;
 

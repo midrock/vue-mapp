@@ -100,7 +100,12 @@ export class VueMappInput extends InputElement {
     }
 
     @Watch('$_expanded') 
-    updateBoxSvg() {
+    onExpand() {
+        this.$nextTick(this.drawBoxSvg);
+    }
+
+    @Watch('$_box')
+    onBoxViewChanged() {
         this.$nextTick(this.drawBoxSvg);
     }
 
@@ -111,14 +116,6 @@ export class VueMappInput extends InputElement {
             this.VMInputCheckState = null;
         }
     }
-
-
-
-    /*
-     * GETTERS
-     */ 
-
-
 
     private get $_template(): Template {
 
@@ -186,8 +183,7 @@ export class VueMappInput extends InputElement {
                 'is--focused': this.focused,
                 'is--expanded': this.$_expanded,
                 'is--dirty': !!this.inputValue,
-                'is--box': this.$_box,
-                'is--label': this.label
+                'is--box': this.$_box
             }
         ]
     }

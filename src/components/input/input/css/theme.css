@@ -15,7 +15,7 @@
     &__label {
         color: $default-text-light;
 
-        .vm-input[data-vm-required] &:after {
+        span {
             color: $accent;
         }
 

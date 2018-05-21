@@ -11,7 +11,9 @@
             :class="{
                 'is--noanimate': noanimate    
             }"
-        ) {{ $_label }}
+        ) 
+            | {{ $_label }}
+            span(v-if="$_required") *
 
         .vm-input__left(v-if="$slots.left")
             slot(name="left")
@@ -44,11 +46,11 @@
 
         svg(v-if="$_box")
             path.vm-input__outline(ref="svgboxpath")
-
-    .vm-input__divider(v-if="!$_box")
-        .vm-input__divider-loader(
-            v-if="loading || validateStatus === 'process'"
-        )
+        
+        .vm-input__divider(v-if="!$_box")
+            .vm-input__divider-loader(
+                v-if="loading || validateStatus === 'process'"
+            )
 
     .vm-input__message(
         v-if="$_description"
