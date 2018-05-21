@@ -15,7 +15,7 @@ if (config.devMode) {
     fse.emptyDirSync(config.css);
 }
 
-component('layout/app', 'layout');
+component('layout/app', 'app');
 component('layout/layout', 'layout');
 component('layout/card', 'card');
 component('layout/divider', 'divider');
@@ -50,6 +50,7 @@ component('popup/modal', 'modal');
 component('popup/popup', 'popup');
 component('popup/outside', 'outside');
 
+ts('index.ts', 'index.js');
 ts('components/input/input-element.ts', 'input-element.js');
 ts('helpers/optimize.ts', 'helpers/optimize.js');
 ts('helpers/parse.ts', 'helpers/parse.js');
@@ -60,6 +61,7 @@ ts('helpers/calc.ts', 'helpers/calc.js');
 ts('pack/input.ts', 'pack/input.js');
 ts('pack/event.ts', 'pack/event.js');
 ts('pack/layout.ts', 'pack/layout.js');
+ts('pack/typo.ts', 'pack/typo.js');
 ts('pack/popup.ts', 'pack/popup.js');
 
 export function compileCss() {
