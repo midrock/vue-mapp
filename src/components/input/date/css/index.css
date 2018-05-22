@@ -252,7 +252,6 @@ $date-toolbar-height: 56px;
     }
 
     input {
-        text-transform: capitalize;
         cursor: pointer;
     }
 

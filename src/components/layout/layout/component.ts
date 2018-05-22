@@ -79,6 +79,11 @@ export class VueMappLayout extends Vue {
         this.contentWidth = window.innerWidth - asideWidth;
     }
 
+    private onScreenChanged(screen: string) {
+        this.screen = screen;
+        this.$emit('screen', screen);
+    }
+
     private onWindowResize(): void {
         const winHeight = window.innerHeight;
         const winWidth = window.innerWidth;
