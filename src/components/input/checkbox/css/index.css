@@ -10,7 +10,6 @@
     cursor: pointer;
     font-size: 1em;
     padding: 6px 24px 6px 0;
-    line-height: 24px;
 
     [readonly] & {
         cursor: default;

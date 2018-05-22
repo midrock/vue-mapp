@@ -2,8 +2,7 @@ button.vm-button(
     :disabled="disabled"
     :type="type"
     :class="{
-        'box-primary': primary && raised,
-        'text-primary': primary && !raised,
+        'is--primary': primary,
         'is--raised': raised,
         'is--icon': icon,
         'is--loading': loading

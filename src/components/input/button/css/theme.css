@@ -3,10 +3,23 @@
     color: inherit;
     @mixin action;
 
-    &.box-primary.is--raised:not([disabled]) {
-        background: $primary;
-        color: $primary-text;
+    &.is--primary {
+
+        &:not([disabled]) {
+            color: $primary;
+
+            &.is--raised {
+                background: $primary;
+                color: $primary-text;
+
+                .vm-loader__spin {
+                    border-color: $primary-divider;
+                    border-top-color: $primary-text-dark;
+                }
+            }
+        }
     }
+
 
     &:not(.is--icon):after {
         content: '';
@@ -14,9 +27,5 @@
 
     &.is--raised[disabled] {
         background: $default-bg-dark;
-    }
-
-    &.box-primary[disabled] {
-        color: inherit;
     }
 }

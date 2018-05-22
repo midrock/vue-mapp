@@ -15,15 +15,19 @@
         size: 20px;
         position: relative;
         border-radius: 50%;
-        border: 2px / solid;
+        border-width: 2px;
         border-style: solid;
         flex-shrink: 0;
         box-sizing: border-box;
 
         &:after {
-            position: absolute 3px;
+            position: absolute;
+            left: 3px;
+            top: 3px;
             border-radius: 50%;
-            border: 5px / solid / inherit;
+            border-width: 5px;
+            border-style: solid;
+            border-color: inherit;
 
             .vm-radio.is--checked & {
                 content: '';

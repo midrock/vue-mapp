@@ -1,7 +1,7 @@
 .vm-loader {
 
-    &__spin {
-        border-color: $loader-bg !important;
-        border-top-color: $loader-active !important;
+    .vm-loader__spin {
+        border-color: $default-divider;
+        border-top-color: $primary;
     }
 }

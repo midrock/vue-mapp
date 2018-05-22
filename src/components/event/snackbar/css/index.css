@@ -32,7 +32,7 @@
     }
 
     &-enter, &-leave-to {
-        transform: translateY(120%);
+        transform: translateY(150%);
     }
 
     &-enter-active, &-leave-active {

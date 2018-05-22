@@ -18,8 +18,9 @@ export default class VueMappField extends InputElement {
 
     @Watch('emitValue')
     updateValue(newValue, oldValue) {
-        if (this.freezed) return;
-        this.$emit('input', newValue);
+        if (!this.freezed) {
+            this.$emit('input', newValue);
+        }
     }
 
     @Watch('value')
