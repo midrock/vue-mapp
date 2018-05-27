@@ -37,6 +37,7 @@ export class VueMappApp extends Vue {
 
         if (this.screen !== screenMarker) {
             this.screen = screenMarker;
+            this.$emit('screen', screenMarker);
         }
     }
     private setAgentInfo(): void {
@@ -79,7 +80,7 @@ export class VueMappApp extends Vue {
 
     mounted() {
         window.addEventListener('resize', throttle(this.setScreenParams));
-        
+        this.setScreenParams();
         // @ts-ignore
         document.fonts.onloadingdone = function (fontFaceSetEvent) {
 

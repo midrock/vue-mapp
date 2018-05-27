@@ -18,7 +18,9 @@
             .vm-card__icons
                 slot(name="icons")
 
-        .vm-card__content
-            slot="content"
-        
+        .vm-card__content(
+            v-if="$slots.content"
+        )
+            slot(name="content")
+            
         slot

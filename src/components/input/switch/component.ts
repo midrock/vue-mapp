@@ -25,7 +25,7 @@ export class VueMappSwitch extends InputElement {
     @Prop([String, Boolean]) multiple: string | boolean;
 
     setOption(option: VueMappOption): void {
-        const { selectedOption, form, multiple } = this;
+        const { selectedOption, form, multiple, tight } = this;
 
         let emitValue: any = null;
 
@@ -54,7 +54,7 @@ export class VueMappSwitch extends InputElement {
             this.selectedOption = option;
         }
 
-        if (multiple && this.tight) {
+        if (multiple && tight) {
             this.setOptionClasses(option);
         }
 
