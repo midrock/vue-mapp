@@ -38,11 +38,11 @@ vm-app.vm-layout(
                         v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
                     ) -
                     span(v-if="subtitle") {{ subtitle }}
-                    .is-grow
-                    .vm-layout__header-features(
-                        v-if="$slots['header-top']"
-                    )
-                        slot(name="header-top")
+                .grow
+                .vm-layout__header-features(
+                    v-if="$slots['header-top']"
+                )
+                    slot(name="header-top")
 
             .vm-layout__header-bottom(
                 v-show="$_showHeaderBottom"

@@ -52,7 +52,7 @@
         top: 0;
         box-shadow: $shadow-4;
         height: 100%;
-        width: 256px;
+        width: 272px;
         transition: transform .4s cubic-bezier(.25,.8,.25,1);
 
         &.is--hidden {
