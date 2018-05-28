@@ -139,8 +139,15 @@ export default class VueMappDate extends InputElement {
             value = jsonDate.slice(0, 10);
         }
 
-        this.emitValue = value;
-        this.$emit('select', this.emitValue);
+        if (this.emitValue !== value) {
+            this.emitValue = value;
+            this.$emit('select', this.emitValue);
+            
+            if (this.form) {
+                this.form.changed = true;
+            }
+        }
+
         this.$refs.menu.hide();
     }
 
