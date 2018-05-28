@@ -12,11 +12,12 @@
 @import '../../components/input/select/css/theme.css';
 @import '../../components/input/switch/css/theme.css';
 @import '../../components/input/toggle/css/theme.css';
-@import '../../components/layout/card/css/theme.css';
 @import '../../components/list/list/css/theme.css';
-@import '../../components/layout/tabs/css/theme.css';
 @import '../../components/popup/menu/css/theme.css';
 @import '../../components/popup/modal/css/theme.css';
 @import '../../components/popup/outside/css/theme.css';
 @import '../../components/popup/popup/css/theme.css';
 @import '../../components/typo/tag/css/theme.css';
+@import '../../components/layout/card/css/theme.css';
+@import '../../components/layout/tabs/css/theme.css';
+@import '../../components/layout/layout/css/theme.css';

@@ -35,7 +35,7 @@ vm-app.vm-layout(
                 )
                     slot(name="title")
                     span(v-if="$_showTitle") {{ title }}
-                    .vm-layout__title-divider(
+                    span.vm-layout__title-divider(
                         v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
                     ) -
                     span(v-if="subtitle") {{ subtitle }}

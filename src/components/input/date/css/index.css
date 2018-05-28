@@ -1,7 +1,9 @@
 @import 'theme-list/default';
+@import 'mixins';
 @import './theme.css';
 
 $date-toolbar-height: 56px;
+$date-content-height: 240px;
 
 .vm-date {
 
@@ -63,19 +65,13 @@ $date-toolbar-height: 56px;
             }
         }
 
-        &-today {
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-        }
-
         &-weekday {
             line-height: 32px;
         }
     }
 
     &__content {
-        height: 240px;
+        
     }
 
     &__wrapper {
@@ -85,20 +81,16 @@ $date-toolbar-height: 56px;
     }
 
     &__footer {
+        border-style: solid;
+        border-width: 1px 0 0;
         box: horizontal right;
-        padding: 0 16px 8px;
+        padding: 8px 16px;
     }
 
     &__toolbar {
         box: horizontal middle;
         height: $date-toolbar-height;
         padding: 0 10px;
-
-        button {
-            width: 48px;
-            height: 100%;
-            flex: 0 0 auto;
-        }
 
         &-title {
             cursor: pointer;
@@ -109,10 +101,16 @@ $date-toolbar-height: 56px;
             font-weight: 500;
             text-transform: capitalize;
         }
+
+        .vm-button {
+            width: 48px !important;
+            height: 100%;
+            flex: 0 0 auto;
+        }
     }
 
     &__years {
-        height: 100%;
+        height: calc($date-toolbar-height + $date-content-height);
         overflow-y: auto;
         list-style-type: none;
         padding: 0;
@@ -125,7 +123,11 @@ $date-toolbar-height: 56px;
             line-height: 40px;
             cursor: pointer;
             text-decoration: none;
-            
+            @mixin action;
+
+            &:after {
+                content: '';
+            }
 
             &.is--active {
                 font-size: 26px;
@@ -139,6 +141,7 @@ $date-toolbar-height: 56px;
     &__months {
         padding: 0 16px;
         font-weight: 500;
+        height: $date-content-height;
 
         button {
             width: 33.3333%;
@@ -169,7 +172,7 @@ $date-toolbar-height: 56px;
         text-align: center;
         text-transform: uppercase;
         font-weight: 500;
-        font-size: 12px;
+        font-size: 13px;
         flex-basis: 14.2857142%;
         padding: 2px;
 
@@ -193,6 +196,7 @@ $date-toolbar-height: 56px;
 
     &__days {
         padding: 0 16px 12px;
+        height: $date-content-height;
 
         &-weekdays {
             box: horizontal;
@@ -253,6 +257,12 @@ $date-toolbar-height: 56px;
 
     input {
         cursor: pointer;
+    }
+
+    .vm-date__header-today {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
     }
 
     .vm-popup__content {

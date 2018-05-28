@@ -38,12 +38,6 @@ export class VueMappInput extends InputElement {
 
     private noanimate: boolean = false;
    
-    @Prop([String, Number]) length: number | string;
-    @Prop([String, Number]) maxlength: number | string;
-    @Prop([String, Number]) minlength: number | string;    
-    @Prop([String, Number]) min: string | number;
-    @Prop([String, Number]) max: string | number;
-    @Prop([String, Number]) value: string | number;
     @Prop(String) name: string;
     @Prop(String) label: string;
     @Prop(String) description: string;
@@ -56,8 +50,14 @@ export class VueMappInput extends InputElement {
     @Prop(Boolean) novalidate: boolean;
     @Prop(Boolean) expanded: boolean;
     @Prop(Boolean) loading: boolean;
-    @Prop([String, Boolean]) showClearButton: boolean | string;
     @Prop(Function) test: Test;
+    @Prop([String, Boolean]) showClearButton: boolean | string;
+    @Prop([String, Number]) length: number | string;
+    @Prop([String, Number]) maxlength: number | string;
+    @Prop([String, Number]) minlength: number | string;
+    @Prop([String, Number]) min: string | number;
+    @Prop([String, Number]) max: string | number;
+    @Prop([String, Number]) value: string | number;
 
     @Prop({ 
         type: String,

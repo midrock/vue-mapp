@@ -28,4 +28,20 @@
     &.is--raised[disabled] {
         background: $default-bg-dark;
     }
+
+    &.is--icon {
+        color: $default-text-light;
+
+        &:hover {
+            color: $primary;
+        }
+
+        .box-primary & {
+            color: $primary-text;
+
+            &:hover {
+                color: $primary-text-light;
+            }
+        }
+    }
 }

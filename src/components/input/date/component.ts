@@ -84,6 +84,8 @@ export default class VueMappDate extends InputElement {
         }
     }
 
+    @Prop(String) placeholder: string;
+
     @Prop({
         type: String,
         default: 'day'

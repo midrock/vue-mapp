@@ -60,6 +60,10 @@
         .vm-input__divider {
             background: $primary;
         }
+
+        .vm-input__label {
+            color: $primary;
+        }
     }
 
     &.is--error {

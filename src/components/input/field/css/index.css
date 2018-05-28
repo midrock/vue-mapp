@@ -7,7 +7,7 @@
     &__label {
         font-size: 0.85714286em;
         font-weight: 500;
-        margin-bottom: 6px;
+        line-height: 1.2;
         opacity: .8;
     }
 

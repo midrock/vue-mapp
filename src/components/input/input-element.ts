@@ -25,21 +25,17 @@ export default class InputElement extends Vue {
     @Prop() value: any;
     @Prop() model: any;
     @Prop(String) label: string;
-    @Prop(String) placeholder: string;
     @Prop(String) name: string;
     @Prop(String) size: string;
-
+    @Prop([String, Boolean]) init: string | boolean;
+    @Prop([String, Boolean]) disabled: string | boolean;
+    @Prop([String, Boolean]) readonly: string | boolean;
+    @Prop([String, Boolean]) novalidate: string | boolean;
     @Prop({
         type: [String, Boolean],
         default: null
     })
     box: string | boolean | null;
-
-    @Prop([String, Boolean]) init: string | boolean;
-    @Prop([String, Boolean]) disabled: string | boolean;
-    @Prop([String, Boolean]) readonly: string | boolean;
-    @Prop([String, Boolean]) novalidate: string | boolean;
-    @Prop([String, Boolean]) loading: string | boolean;
     
     get status(): VMInputState {
         const { form, field, injectStatus } = this;

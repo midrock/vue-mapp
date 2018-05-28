@@ -1,4 +1,4 @@
 @import './theme-core/html';
-@import './theme-core/box';
 @import './mixins';
 @import './theme-core/components';
+@import './theme-core/box';

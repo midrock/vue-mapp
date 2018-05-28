@@ -64,12 +64,7 @@
 
     &.is--icon {
         min-width: auto;
-        opacity: .72;
-
-        &:hover {
-            opacity: 1;
-        }
-
+        
         &[disabled] {
             opacity: .32;
         }
