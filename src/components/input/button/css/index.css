@@ -9,7 +9,8 @@
     align-items: center;
     min-width: 88px;
     margin: 0;
-    padding: 0;
+    padding: 0 8px;
+    height: 36px;
     border: none;
     border-radius: 2px;
     outline: none;
@@ -25,16 +26,13 @@
     overflow: hidden;
     cursor: pointer;
     user-select: none;
+    
     @apply --text-nowrap;
+    
 
     &__label {
         box: horizontal center;
         flex: 1 1 auto;
-    }
-
-    &:not(.is--icon) {
-        height: 36px;
-        padding: 0 8px;
     }
 
     &[disabled], &.is--loading {
@@ -44,6 +42,10 @@
         &:not(.is-raised):before {
             background: transparent !important;
         }
+    }
+
+    &.is--icon {
+        padding: 0 6px;
     }
 
     &.is--loading {

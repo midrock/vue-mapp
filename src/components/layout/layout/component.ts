@@ -29,16 +29,25 @@ export class VueMappLayout extends Vue {
 
     @Prop(String) title: string;
     @Prop(String) subtitle: string;
+    @Prop({
+        type: Boolean,
+        default: true
+    }) showHeader: boolean;
     @Prop(Boolean) hideTitleOnAsideFixed: boolean;
     @Prop([String, Boolean]) subtitleUnderTitle: string | boolean;
     @Prop({ 
-        type: String,
+        type: [String, Boolean],
         default: 'lg'
     }) 
     asideFixed: VMScreen;
 
     private get $_asideFixed(): boolean {
-        return SCREEN[this.screen] >= SCREEN[this.asideFixed];
+
+        if (typeof this.asideFixed === 'boolean') {
+            return this.asideFixed;
+        } else {
+            return SCREEN[this.screen] >= SCREEN[this.asideFixed];
+        }
     }
 
     private get $_showTitle(): boolean {
@@ -63,6 +72,11 @@ export class VueMappLayout extends Vue {
         this.setContentHeight();
     }
 
+    @Watch('showHeader')
+    private onChangeHeader() {
+        this.setContentHeight();
+    }
+
     @Watch('$_asideFixed')
     private onAsideFixedChanged() {
         this.$nextTick(() => {
@@ -71,7 +85,10 @@ export class VueMappLayout extends Vue {
     }
 
     private setContentHeight(): void {
-        this.contentHeight = window.innerHeight - this.$refs.header.clientHeight;
+        const { header } = this.$refs;
+        const headerHeight = header ? header.clientHeight: 0;
+
+        this.contentHeight = window.innerHeight - headerHeight;
     }
 
     private setContentWidth(): void {

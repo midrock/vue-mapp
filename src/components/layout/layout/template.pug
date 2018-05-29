@@ -19,6 +19,7 @@ vm-app.vm-layout(
     .vm-layout__wrapper
 
         header.vm-layout__header.box-primary(
+            v-if="showHeader"
             ref="header"
         )
             .vm-layout__header-top

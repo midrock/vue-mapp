@@ -16,7 +16,7 @@ export default class VueMappOutside extends Vue {
     
     @Prop({
         type: [Number, String],
-        default: 256
+        default: 272
     }) size: string | number;
 
     @Prop({
@@ -51,6 +51,13 @@ export default class VueMappOutside extends Vue {
         }
     }
 
+    private get contentStyles(): object {
+
+        return {
+            width: this.size + 'px'
+        }
+    }
+
     private closeOnFocusLost(e) {
         const focusLost = !checkEventElement(e, /vm\-outside/);
         
@@ -61,14 +68,7 @@ export default class VueMappOutside extends Vue {
 
     private clickOnOverlay(e): void {
         this.$emit('overlay', e);
+        this.$emit('update:active', false);
         this.hide();
-    }
-
-    mounted() {
-        document.body.appendChild(this.$el);
-    }
-
-    beforeDestroy() {
-        this.$el.remove();
     }
 }

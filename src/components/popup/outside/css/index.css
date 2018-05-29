@@ -2,7 +2,10 @@
 @import './theme.css';
 
 .vm-outside {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
 
     &__mirage {
         display: none !important;
@@ -15,8 +18,7 @@
         overflow: hidden;
         outline: none;
         box-shadow: $shadow-6;
-        transition: $transition;
-        visibility: hidden;
+        transition: all .2s $transition;
 
         &.is--left {
             left: 0;
@@ -29,7 +31,7 @@
             top: 0;
             right: 0;
             height: 100%;
-            transform: translateX(100%);
+            transform: translateX(105%);
         }
 
         &.is--bottom {
@@ -47,8 +49,7 @@
         }
 
         .vm-outside.is--active & {
-            visibility: visible;
-            transform: translate(0);
+            transform: translateX(0);
         }
     }
 
@@ -59,9 +60,11 @@
         size: 100%;
         left: 0;
         top: 0;
+        z-index: -1;
 
         .vm-outside.is--active & {
             display: block;
+            z-index: 50;
         }
     }
 }

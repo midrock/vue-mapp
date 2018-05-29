@@ -21,7 +21,7 @@
     }
 
 
-    &:not(.is--icon):after {
+    &:after {
         content: '';
     }
 

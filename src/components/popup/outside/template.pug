@@ -5,6 +5,7 @@
 )
     .vm-outside__content(
         :tabindex="-1"
+        :style="contentStyles"
         :class="['is--' + place, contentClass]"
     )
         slot
