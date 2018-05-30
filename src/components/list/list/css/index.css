@@ -64,7 +64,7 @@
                 content: '';
             }
 
-            i:first-child {
+            & > i:first-child {
                 position: absolute;
                 left: 16px;
                 top: 10px;

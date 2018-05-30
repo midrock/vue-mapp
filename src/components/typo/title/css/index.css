@@ -9,10 +9,6 @@
         font-size: 1.42857143em;
     }
 
-    &:first-child {
-        margin-top: 0;
-    }
-
     &.is--large {
 
         &-1 {

@@ -30,6 +30,7 @@ $card-padding: 20px;
         box: horizontal middle;
         height: $card-header-height;
         padding-left: $card-padding;
+        padding-right: calc($card-padding / 2);
 
         + .vm-card__content {
             padding-top: 0;
@@ -47,14 +48,6 @@ $card-padding: 20px;
 
     &__icons {
         margin-left: $card-padding;
-
-        .vm-button.is--icon {
-            size: 32px;
-
-            &:last-child {
-                margin-right: 10px;
-            }
-        }
     }
 
     &__content {

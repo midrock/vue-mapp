@@ -34,12 +34,13 @@ vm-app.vm-layout(
                         'is--vertical': $_subtitleUnderTitle    
                     }"
                 )
-                    slot(name="title")
-                    span(v-if="$_showTitle") {{ title }}
-                    span.vm-layout__title-divider(
-                        v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
-                    ) -
-                    span(v-if="subtitle") {{ subtitle }}
+                    slot(v-if="$slots.title" name="title")
+                    template(v-else)
+                        span(v-if="$_showTitle") {{ title }}
+                        span.vm-layout__title-divider(
+                            v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
+                        ) -
+                        span(v-if="subtitle") {{ subtitle }}
                 .grow
                 .vm-layout__header-features(
                     v-if="$slots['header-top']"

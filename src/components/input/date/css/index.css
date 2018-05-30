@@ -104,6 +104,10 @@ $date-content-height: 240px;
             width: 48px !important;
             height: 100%;
             flex: 0 0 auto;
+
+            &:after {
+                content: none;
+            }
         }
     }
 

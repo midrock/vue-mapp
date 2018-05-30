@@ -1,5 +1,5 @@
-import { VueConstructor } from 'vue/types';
+// import { VueConstructor } from 'vue';
 
-declare function VueMapp (Vue: VueConstructor, options?: object): void;
+declare function VueMapp (Vue: any, options?: any): void;
 
 export default VueMapp;

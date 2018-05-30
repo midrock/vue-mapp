@@ -62,7 +62,12 @@
 
         button {
             width: 100%;
+            height: auto;
             padding: 8px;
+            
+            &:after {
+                content: none;
+            }
         }
 
         .vm-loader {
