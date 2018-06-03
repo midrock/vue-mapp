@@ -97,7 +97,6 @@ vm-menu.vm-date(
                     .vm-date__day(
                         v-for="(day, idx) in days"
                         :key="idx"
-                        @click="setDay(day)"
                     )
                         .vm-date__day-wrapper(
                             :class="{
@@ -105,6 +104,7 @@ vm-menu.vm-date(
                                 'is--active': day.value === inputDay && !day.next && !day.prev,
                                 'is--now': day.value === (new Date()).getDate()  
                             }"
+                            @click="setDay(day)"
                         ) {{ day.value || '' }}
             
             .vm-date__time(

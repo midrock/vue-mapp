@@ -17,6 +17,7 @@ export default class VueMappButton extends Vue {
     @Prop([String, Boolean]) primary: string | boolean;
     @Prop([String, Boolean]) raised: string | boolean;
     @Prop([String, Boolean]) disabled: string | boolean;
+    @Prop([String, Boolean]) fullWidth: string | boolean;
     @Prop({
         type: String,
         default: 'button'

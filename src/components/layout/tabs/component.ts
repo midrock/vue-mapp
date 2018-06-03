@@ -1,10 +1,15 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { CreateElement, VueConstructor } from 'vue/types/vue';
+import { VueMappTab } from 'component/layout/tab';
 
 @Component({
-    name: 'vm-tabs'
+    name: 'vm-tabs',
+    provide() {
+        return {
+            tabs: this
+        }
+    }
 })
-export class VueMappTabs extends Vue {
+export default class VueMappTabs extends Vue {
 
     tabs: VueMappTab[] = [];
     activeTab: VueMappTab | null = null;
@@ -33,6 +38,11 @@ export class VueMappTabs extends Vue {
         }
     }
 
+    private tabClick(tab: VueMappTab) {
+        this.setActiveTab(tab);
+        tab.$emit('click');
+    }
+
     public addTab(tab: VueMappTab) {
         this.tabs.push(tab);
     }
@@ -44,7 +54,6 @@ export class VueMappTabs extends Vue {
 
         this.activeTab = tab;
         tab.active = true;
-        this.$emit('tabClick', tab);
     }
 
     public removeTab(tab: VueMappTab) {
@@ -56,56 +65,10 @@ export class VueMappTabs extends Vue {
     }
 
     mounted() {
-        if (!this.activeTab) {
-            const firstTab = this.tabs[0];
-            
-            this.setActiveTab(firstTab);
+        const { tabs } = this;
+
+        if (!this.activeTab && tabs.length) {            
+            this.setActiveTab(tabs[0]);
         }
-    }
-}
-
-@Component({
-    name: 'vm-tab'
-})
-export class VueMappTab extends Vue {
-
-    container: VueMappTabs;
-    active: boolean = false;
-    
-    _uid: string;
-    $parent: VueMappTabs;
-
-    @Prop({
-        type: String,
-        required: true
-    }) label: string;
-    @Prop(String) name: string;
-    @Prop([String, Boolean]) init: string | boolean;
-    @Prop([String, Boolean]) disabled: string | boolean;
-    
-    render(h: CreateElement) {
-        return h('div', {
-            staticClass: 'vm-tab__content',
-            style: {
-                display: this.active ? null : 'none'
-            }
-        }, this.$slots.default);
-    }
-
-    created() {
-        const parent = this.$parent;
-        
-        if (parent && parent.$options.name === 'vm-tabs') {
-            this.container = parent;
-            parent.addTab(this);
-
-            if (this.init) {
-                parent.setActiveTab(this);
-            }
-        }
-    }
-
-    beforeDestroy() {
-        this.container.removeTab(this);
     }
 }

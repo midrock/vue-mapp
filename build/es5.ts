@@ -20,6 +20,7 @@ component('layout/layout', 'layout');
 component('layout/card', 'card');
 component('layout/divider', 'divider');
 component('layout/tabs', 'tabs');
+component('layout/tab', 'tab');
 
 component('list/list', 'list');
 

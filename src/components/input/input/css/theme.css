@@ -12,6 +12,13 @@
         }
     }
 
+    &__right {
+
+        .vm-button:not(:hover) {
+            color: $default-text-light;
+        }
+    }
+
     &__label {
         color: $default-text-light;
 

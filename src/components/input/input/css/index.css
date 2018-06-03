@@ -1,6 +1,20 @@
 @import 'theme-list/default';
 @import './theme.css';
 
+
+@define-mixin inputSize $fontSize, $fontSizeLabelExpanded, $topLabel, $topLabelExpanded {
+    font-size: $fontSize;
+
+    .vm-input__label {
+        top: $topLabel;
+    }
+
+    &.is--expanded .vm-input__label {
+        top: $topLabelExpanded;
+        font-size: $fontSizeLabelExpanded;
+    }
+}
+
 .vm-input {
     position: relative;
     width: 100%;
@@ -57,8 +71,7 @@
     }
 
     &__right {
-        margin-left: 16px;
-        padding-right: 4px;
+        margin-left: 12px;
 
         button {
             width: 100%;
@@ -68,6 +81,10 @@
             &:after {
                 content: none;
             }
+        }
+
+        .vm-icon {
+            font-size: 22px;
         }
 
         .vm-loader {
@@ -171,15 +188,7 @@
     }
 
     &.is--large-1 {
-        font-size: 1.14285714em;
-
-        .vm-input__label {
-            top: 19px;
-        }
-
-        &.is--expanded .vm-input__label {
-            top: -8px;
-        }
+        @mixin inputSize 1.14285714em, 0.85714em, 19px, -8px;
     }
 
     &.is--large-2 {
@@ -189,7 +198,7 @@
     &.is--expanded {
 
         .vm-input__label {
-            font-size: 0.85714em;;
+            font-size: 0.85714em;
             font-weight: 500;
             line-height: 1.2em;
             top: -12px;

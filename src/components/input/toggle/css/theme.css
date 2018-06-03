@@ -15,7 +15,7 @@
         background: $default-divider;
 
         &:after {
-            background: $grey-50;
+            background: $default-bg;
         }
     }
 }

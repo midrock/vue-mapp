@@ -1,0 +1,18 @@
+.vm-tab {
+
+    &.is--active {
+        color: $primary;
+
+        &:after {
+            background: $primary;
+        }
+
+        .primary-box & {
+            color: $primary-text;
+
+            &:after {
+                background: $primary-text;
+            }
+        }
+    }
+}

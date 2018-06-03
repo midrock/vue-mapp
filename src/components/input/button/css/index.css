@@ -31,7 +31,7 @@
     
 
     &__label {
-        box: horizontal center;
+        box: horizontal center middle;
         flex: 1 1 auto;
     }
 
@@ -42,6 +42,10 @@
         &:not(.is-raised):before {
             background: transparent !important;
         }
+    }
+
+    &.is--full {
+        width: 100%;
     }
 
     &.is--icon {

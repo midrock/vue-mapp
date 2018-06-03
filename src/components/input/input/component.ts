@@ -510,7 +510,7 @@ export class VueMappInput extends InputElement {
         } = getComputedStyle(container);
 
         const radius: number = parseFloat(borderRadius || borderTopLeftRadius || '0');
-        const cornerWidth = radius + 1.2;
+        const cornerWidth = radius + 1;
         const height = container.offsetHeight;
         const width = container.offsetWidth;
         const labelWidth = label ? label.offsetWidth + 12 : 0;
