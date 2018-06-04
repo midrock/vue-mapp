@@ -11,6 +11,8 @@
         border-bottom-width: 1px;
         border-bottom-style: solid;
         align-items: flex-end;
+        overflow-x: auto;
+        overflow-y: hidden;
 
         & > div {
             box: horizontal;
@@ -29,7 +31,10 @@
         }
 
         &.is--center {
-            justify-content: center;
+
+            .vm-tabs__header-wrapper {
+                margin: auto;
+            }
         }
 
         &.is--justify {
