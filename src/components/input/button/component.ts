@@ -14,9 +14,11 @@ export default class VueMappButton extends Vue {
 
     @Prop(String) icon: string;
     @Prop(Boolean) loading: boolean;
+    @Prop([String, Boolean]) noshadow: string | boolean; 
     @Prop([String, Boolean]) primary: string | boolean;
     @Prop([String, Boolean]) raised: string | boolean;
     @Prop([String, Boolean]) disabled: string | boolean;
+    @Prop([String, Boolean]) readonly: string | boolean;
     @Prop([String, Boolean]) fullWidth: string | boolean;
     @Prop({
         type: String,
@@ -27,7 +29,7 @@ export default class VueMappButton extends Vue {
 
     click($event: Event): void {
         
-        if (!this.disabled) {
+        if (!this.disabled && !this.readonly) {
             this.$emit('click', $event);
         }
     }

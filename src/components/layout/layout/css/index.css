@@ -128,8 +128,8 @@
             padding: 0 8px;
             margin-left: 40px;
 
-            button {
-                min-height: 36px;
+            .vm-button {
+                margin-left: 8px;
             }
         }
     }

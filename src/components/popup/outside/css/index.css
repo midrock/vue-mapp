@@ -64,7 +64,6 @@
 
         .vm-outside.is--active & {
             display: block;
-            z-index: 50;
         }
     }
 }

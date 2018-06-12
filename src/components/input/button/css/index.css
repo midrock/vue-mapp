@@ -61,7 +61,10 @@
 
     &.is--raised {
         padding: 0 16px;
-        box-shadow: $shadow-2;
+
+        &:not(.is--noshadow) {
+            box-shadow: $shadow-2;
+        }
 
         &[disabled] {
             box-shadow: none;

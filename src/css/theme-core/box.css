@@ -7,10 +7,6 @@
         border-color: $$(name)-divider; 
     }
 
-    a { 
-        color: $$(name)-link; 
-    }
-
     .bg {
         &-light   { background: $$(name)-bg-light; }
         &-dark    { background: $$(name)-bg-dark;  }

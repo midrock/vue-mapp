@@ -1,26 +1,32 @@
 .vm-select {
 
-    &__item {
-        background: $default-bg-dark;
+  &__item {
+    background: $default-bg-dark;
+  }
+
+  &__toolbar {
+
+    &:after {
+      background: $default-divider;
     }
 
-    &__toolbar {
+    &.is--focused:after {
+      background: $primary;
+    }
+  }
 
-        &:after {
-            background: $default-divider;
-        }
+  .vm-option {
+    @mixin action;
 
-        &.is--focused:after {
-            background: $primary;
-        }
+    &:not([disabled]) {
+      &:after { 
+        content: '';
+      }
     }
 
-    .vm-option {
-        @mixin action;
-
-        &.is--selected {
-            background: rgba(0,0,0,.05);
-        }
+    &.is--selected {
+      background: rgba(0,0,0,.05);
     }
+  }
 }
 

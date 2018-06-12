@@ -24,6 +24,11 @@ body {
     margin: 0;
 }
 
+a {
+    color: inherit;
+    outline: none;
+}
+
 audio,
 img,
 svg,
