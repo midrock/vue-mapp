@@ -4,7 +4,7 @@ import { parseSizeAttr } from 'src/helpers/parse';
 @Component({
   name: 'vm-loader'
 })
-export class VueMappLoader extends Vue {
+export default class VueMappLoader extends Vue {
 
   @Prop(Number) size: number;
 
