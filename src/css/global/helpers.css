@@ -46,6 +46,7 @@
 }
 
 .nowrap {
+    flex-wrap: nowrap;
     @apply --text-nowrap;
 }
 

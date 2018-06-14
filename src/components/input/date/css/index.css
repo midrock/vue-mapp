@@ -272,4 +272,11 @@ $date-content-height: 240px;
     .vm-popup__content {
         box: horizontal;
     }
+
+    .vm-input {
+
+        .vm-field & {
+            padding-top: 0;
+        }
+    }
 }
