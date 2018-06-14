@@ -28,6 +28,10 @@
     font-style: underline; 
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 .disabled { 
     opacity: .64;
     cursor: default;
@@ -39,6 +43,10 @@
     opacity: .88;
     cursor: default;
     will-change: opacity;
+}
+
+.nowrap {
+    @apply --text-nowrap;
 }
 
 .action {

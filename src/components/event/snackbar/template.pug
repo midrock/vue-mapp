@@ -12,5 +12,5 @@ transition(
         .vm-snackbar__text {{ text }}
         vm-button(
             v-if="actionText"
-            @click="hide"
+            @click="runAction"
         ) {{ actionText }}

@@ -33,13 +33,16 @@ export default class VueMappSnackbar extends Vue {
     }
 
     hide() {
-        this.$emit('action', event);
-
         this.active = false;
 
         if (this.timer) {
             clearTimeout(this.timer);
         }
+    }
+
+    runAction() {
+        this.$emit('action', event);
+        this.hide();
     }
 
     afterLeave() {
