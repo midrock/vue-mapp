@@ -2,67 +2,72 @@
 @import './theme.css';
 
 .vm-switch {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    height: 12px;
+    font-size: 0.85714286em;
+    font-weight: 500;
+    line-height: 12px;
+    opacity: .8;
+    margin-bottom: 8px;
+  }
+
+  &__options {
+    width: auto;
+    height: auto;
     display: flex;
-    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 2px;
+  }
 
-    &__label {
-        height: 12px;
-        font-size: 0.85714286em;
-        font-weight: 500;
-        line-height: 12px;
-        opacity: .8;
-        margin-bottom: 8px;
-    }
-
-    &__options {
-        width: auto;
-        height: auto;
-        display: flex;
-        flex-wrap: nowrap;
-        border-radius: 2px;
-    }
-
-    &__message {
-        font-size: 12px;
-        min-height: 20px;
-        line-height: 18px;
-        margin-top: 8px;
-        opacity: .8;
-    }
-
-    &.is--multiple {
-
-        .vm-option {
-            margin-right: 8px;
-        }  
-    }
-
-    &.is--tight {
-
-        .vm-option {
-            border-radius: 0;
-            margin: 0;
-        }
-    }
+  &.is--margin {
 
     .vm-option {
-        box: horizontal center middle;
-        padding: 0 10px; 
-        cursor: pointer;
-        position: relative;
-        border-radius: 2px;
-        height: 32px;
-        line-height: 32px;
-        min-width: 32px;
-
-        &.is--first {
-            border-top-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-        }
-
-        &.is--last {
-            border-top-right-radius: 2px;
-            border-bottom-right-radius: 2px;
-        }
+      border-radius: 2px;
+      margin-right: 8px;
     }
+  }
+
+  &.is--multiple {
+
+    .vm-option {
+    
+      &.is--first {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+
+        &:not(.is--last) {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+    &.is--last {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+
+      &:not(.is--first) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    }
+
+    .vm-option:not(.is--first):not(.is--last) {
+      border-radius: 0;
+    }
+  }
+
+  .vm-option {
+    box: horizontal center middle;
+    padding: 0 10px; 
+    cursor: pointer;
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    min-width: 32px;
+    border-radius: 2px;        
+  }
 }

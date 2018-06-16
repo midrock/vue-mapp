@@ -58,6 +58,7 @@ ts('helpers/parse.ts', 'helpers/parse.js');
 ts('helpers/find.ts', 'helpers/find.js');
 ts('helpers/dom.ts', 'helpers/dom.js');
 ts('helpers/calc.ts', 'helpers/calc.js');
+ts('helpers/modify.ts', 'helpers/modify.js');
 
 ts('pack/input.ts', 'pack/input.js');
 ts('pack/event.ts', 'pack/event.js');

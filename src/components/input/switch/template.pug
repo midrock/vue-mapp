@@ -1,10 +1,9 @@
 .vm-switch(
     :class="{
-        'is--tight': multiple && tight,
+        'is--margin': multiple && margin,
         'is--multiple': multiple
     }"
 )
     .vm-switch__label(v-if="label") {{ label }}
     .vm-switch__options(ref="options")
         slot
-    .vm-switch__message(v-if="message") {{ message }}
