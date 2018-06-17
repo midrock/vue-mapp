@@ -1,76 +1,141 @@
-$select-toolbar-height: 56px;
+@import 'theme-list/default';
+@import './theme.css';
+
+$select-toolbar-height: 46px;
 
 .vm-select {
 
-    &__arrow {
-        
-        .vm-icon {
-            font-size: 30px;
-        }
+  &__arrow {
+    
+    .vm-icon {
+      font-size: 28px;
     }
+  }
 
+
+  &:not(.is--multiple) {
+    
     .vm-option {
-        box: horizontal middle;
-        padding: 14px 16px;
-        min-height: 48px;
 
-        .vm-checkbox__label {
-            margin-left: 24px;
-        }
+       &.is--selected {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .vm-option {
+    box: horizontal middle;
+    padding: 12px 16px;
+    min-height: 44px;
+
+    &:not([disabled]):after {
+       content: '';
     }
 
+    .vm-checkbox__label {
+      margin-left: 24px;
+    }
+  }
 
-    &__toolbar {
-        box: horizontal middle;
-        position: relative;
-        flex: 0 0 auto;
 
-        .vm-input {
-            height: $select-toolbar-height;
-        }
+  &__toolbar {
+    box: horizontal middle;
+    position: relative;
+    flex: 0 0 auto;
 
-        .vm-icon {
-            font-size: 22px;
-        }
-
-        + .vm-select__options {
-            height: calc(100% - $select-toolbar-height);
-        }
-
-        input {
-            padding-left: 16px;
-        }
+    .vm-input {
+      margin: 0;
+      padding: 0;
     }
 
-    &__options {
-        padding: 8px 0;
-        overflow: auto;
-        height: 100%;
-
-        &:not(.is--multiline) {
-
-            .vm-option__label,
-            .vm-checkbox__label {
-                @apply --text-nowrap;
-            }
-        }
-
-        &-empty {
-            box: vertical center middle;
-            height: 48px;
-        }
+    .vm-input__right {
+      padding-right: 8px;
     }
 
-    &__footer {
-        padding: 8px;
-        box: horizontal right;
+    + .vm-select__options {
+      height: calc(100% - $select-toolbar-height);
     }
 
-    &.is--multiple {
+    input {
+      padding-left: 16px;
+      min-height: $select-toolbar-height;
+    }
+  }
 
+  &__options {
+    padding: 6px 0;
+    overflow: auto;
+    height: 100%;
+
+    &:not(.is--multiline) {
+
+      .vm-option__label,
+      .vm-checkbox__label {
+        @apply --text-nowrap;
+      }
     }
 
-    &.is--opened {
+    &-empty {
+      box: vertical center middle;
+      height: 48px;
+    }
+  }
+
+  &__footer {
+    padding: 8px;
+    box: horizontal right;
+  }
+
+  &.is--multiple {
+    
+    .vm-input__main {
+
+      & > * {
+        margin: 0 4px 4px 0;
+      }
+    }
+
+    .vm-chip + input {
+      margin-left: 6px;
+    }
+
+    .vm-input {
+
+      &.is--active {
         
+        input {
+          min-width: 104px;
+        }
+      }
     }
+
+    .vm-input__main {
+      margin-top: 4px;
+    }
+
+    &.is--dirty {
+      
+      & > .vm-input:not(.is--active) {
+        
+        input {
+          max-width: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.is--opened {
+    
+  }
+
+  .vm-input {
+
+    &.is--inline {
+
+      input {
+        cursor: pointer;
+      }
+    }
+  }
 }

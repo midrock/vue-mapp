@@ -20,11 +20,6 @@
         }
     }
 
-
-    &:after {
-        content: '';
-    }
-
     &.is--raised[disabled] {
         background: $default-bg-dark;
     }

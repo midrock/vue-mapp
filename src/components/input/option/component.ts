@@ -1,6 +1,7 @@
 import InputElement from 'component/input/input-element';
-import { Component, Inject, Prop } from 'vue-property-decorator';
+import { Component, Inject, Prop, Watch } from 'vue-property-decorator';
 import { VMOptionContainer } from '../types';
+import { removeFromArray } from 'src/helpers/modify';
 
 @Component({
   name: 'vm-option',
@@ -61,9 +62,6 @@ export class VueMappOption extends InputElement {
   }
 
   beforeDestroy() {
-    const { options } = this.container;
-    const optionIndex = options.indexOf(this);
-
-    options.splice(optionIndex, 1);
+    removeFromArray(this.container.options, this);
   }
 }

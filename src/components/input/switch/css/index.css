@@ -30,7 +30,15 @@
     }
   }
 
-  &.is--multiple {
+  &.is--uppercase {
+
+    .vm-option {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  &.is--multiple:not(.is--margin) {
 
     .vm-option {
     

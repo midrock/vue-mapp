@@ -63,7 +63,7 @@ export default class VueMappPopup extends Vue {
         this.setPosition();
     }
 
-    private saveOpenedContentRect() {
+    saveOpenedContentRect() {
         const { fillTrigger, trigger, $refs } = this;
         const triggerRect = trigger.getBoundingClientRect();
         const contentRect = $refs.content.getBoundingClientRect();
@@ -75,7 +75,7 @@ export default class VueMappPopup extends Vue {
         this.openedContentRect = $refs.content.getBoundingClientRect();
     }
 
-    private setPosition(): void {
+   setPosition(): void {
 
         const style: { 
             [key: string] : number 
@@ -157,7 +157,7 @@ export default class VueMappPopup extends Vue {
     }
 
     private clickOnOverlay(e): void {
-        this.$emit('overlay', e);
+        this.$emit('outside', e);
     }
 
     private clickOnContent(): void {

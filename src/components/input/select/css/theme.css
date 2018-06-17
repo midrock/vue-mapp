@@ -17,15 +17,15 @@
 
   .vm-option {
     @mixin action;
+  }
 
-    &:not([disabled]) {
-      &:after { 
-        content: '';
+  &:not(.is--multiple) {
+    
+    .vm-option {
+
+      &.is--selected {
+        color: $primary;
       }
-    }
-
-    &.is--selected {
-      background: rgba(0,0,0,.05);
     }
   }
 }

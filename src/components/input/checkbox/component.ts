@@ -53,6 +53,9 @@ export default class VueMappCheckbox extends InputElement {
             this.emitValue = !this.emitValue;
             this.$emit('input', this.emitValue, $event);
         }
+
+        this.form && this.form.change();
+        this.$emit('click');
     }
 
     created() {

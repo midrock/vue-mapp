@@ -1,7 +1,6 @@
 @import 'theme-list/default';
 @import './theme.css';
 
-
 @define-mixin inputSize $fontSize, $fontSizeLabelExpanded, $topLabel, $topLabelExpanded {
     font-size: $fontSize;
 
@@ -25,7 +24,6 @@
     &__container {
         box: horizontal middle;
         position: relative;
-        height: 32px;
 
         svg {
             position: absolute;
@@ -49,6 +47,13 @@
             animation: none !important;
         }
     }
+
+    &__main {
+        flex: 1 1 auto;
+        box: horizontal wrap;
+    }
+
+
 
     &__outline {
         stroke-width: 1px;
@@ -79,7 +84,7 @@
             padding: 8px;
             
             &:after {
-                content: none;
+                content: none !important;
             }
         }
 
@@ -179,11 +184,11 @@
 
         .vm-input__container {
             border-radius: 4px;
-            min-height: 48px;
         }
 
         input {
             padding: 0 16px;
+            min-height: 48px;
         }
     }
 
@@ -220,6 +225,8 @@
         font-family: inherit;
         font-size: 1em;
         z-index: 1;
+        min-height: 32px;
+        flex: 1 1;
         @apply --text-nowrap;
 
         &[disabled] {

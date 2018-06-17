@@ -12,7 +12,7 @@
         v-if="opened"
         v-bind="$attrs"
         ref="popup"
-        @overlay="clickOnOverlay"
+        @outside="clickOnOverlay"
         @outofcontent="mouseoutContent"
         @outclick="onOutClick"
     )

@@ -44,6 +44,13 @@
         }
     }
 
+    &:not([disabled]):not(.is--noshadow) {
+
+        &:after {
+            content: '';
+        }
+    }
+
     &.is--full {
         width: 100%;
     }
@@ -57,10 +64,17 @@
         .vm-button__label {
             visibility: hidden;
         }
+
+        & > .vm-icon {
+            visibility: hidden;
+        }
     }
 
     &.is--raised {
-        padding: 0 16px;
+        
+        &:not(.is--icon) {
+            padding: 0 16px;
+        }
 
         &:not(.is--noshadow) {
             box-shadow: $shadow-2;

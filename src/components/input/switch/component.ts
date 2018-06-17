@@ -15,13 +15,13 @@ export class VueMappSwitch extends InputElement {
   selectedOptions: VueMappOption[] = [];
   options: VueMappOption[] = [];
 
-  $refs: {
-    options: HTMLElement
-  }
-
   @Provide() optionContainer = this;
   @Prop(Boolean) margin: boolean;
   @Prop(Boolean) multiple: boolean;
+  @Prop({
+    type: Boolean,
+    default: true,
+  }) uppercase: boolean;
 
   get emitValue() {   
     if (this.multiple) {

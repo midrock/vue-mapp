@@ -17,22 +17,25 @@
 
         .vm-input__left(v-if="$slots.left")
             slot(name="left")
+        
+        .vm-input__main
+            slot(name="entry")
 
-        input.vm-input__entry(
-            ref="input"
-            :disabled="status === 'disabled'"
-            :type="$_type"
-            :name="name"
-            :placeholder="placeholder"
-            :maxlength="$_maxlength === Infinity ? null : $_maxlength"
-            :readonly="status === 'readonly'"
-            :value="inputValue"
-            :spellcheck="spellcheck"
-            :autocomplete="autocomplete"
-            @focus="onFocus"
-            @blur="onBlur"
-            @input="onInput"
-        )
+            input.vm-input__entry(
+                ref="input"
+                :disabled="status === 'disabled'"
+                :type="$_type"
+                :name="name"
+                :placeholder="placeholder"
+                :maxlength="$_maxlength === Infinity ? null : $_maxlength"
+                :readonly="status === 'readonly'"
+                :value="inputValue"
+                :spellcheck="spellcheck"
+                :autocomplete="autocomplete"
+                @focus="onFocus"
+                @blur="onBlur"
+                @input="onInput"
+            )
 
         .vm-input__right(
             v-if="$slots.right || (showClearButton && inputValue)"

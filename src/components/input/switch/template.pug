@@ -1,7 +1,8 @@
 .vm-switch(
     :class="{
         'is--margin': multiple && margin,
-        'is--multiple': multiple
+        'is--multiple': multiple,
+        'is--uppercase': uppercase
     }"
 )
     .vm-switch__label(v-if="label") {{ label }}

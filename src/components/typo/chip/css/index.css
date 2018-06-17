@@ -17,7 +17,14 @@
     }
 
     &__close {
-        font-size: 20px;
         margin-left: 8px;
+
+        i {
+            font-size: 22px;
+        }
+    }
+
+    .vm-chip__close {
+        padding: 0 2px;
     }
 }
