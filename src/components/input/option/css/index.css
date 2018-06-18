@@ -4,4 +4,8 @@
 .vm-option {
     cursor: pointer;
     user-select: none;
+
+    &__label {
+        @apply --text-nowrap;
+    }
 }

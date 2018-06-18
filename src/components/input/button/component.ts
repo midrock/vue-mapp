@@ -14,18 +14,17 @@ export default class VueMappButton extends Vue {
 
     @Prop(String) icon: string;
     @Prop(Boolean) loading: boolean;
-    @Prop([String, Boolean]) noshadow: string | boolean; 
-    @Prop([String, Boolean]) primary: string | boolean;
-    @Prop([String, Boolean]) raised: string | boolean;
-    @Prop([String, Boolean]) disabled: string | boolean;
-    @Prop([String, Boolean]) readonly: string | boolean;
-    @Prop([String, Boolean]) fullWidth: string | boolean;
+    @Prop(Boolean) noshadow: boolean; 
+    @Prop(Boolean) primary: boolean;
+    @Prop(Boolean) raised: boolean;
+    @Prop(Boolean) disabled: boolean;
+    @Prop(Boolean) readonly: boolean;
+    @Prop(Boolean) fullWidth: boolean;
     @Prop({
         type: String,
         default: 'button'
     })
     type: string;
-
 
     click($event: Event): void {
         

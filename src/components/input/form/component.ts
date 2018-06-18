@@ -83,8 +83,8 @@ export default class VueMappForm extends InputElement {
   }
 
   change() {
-
     this.$emit('change');
+    this.changed = true;
   }
 
   public enable() {

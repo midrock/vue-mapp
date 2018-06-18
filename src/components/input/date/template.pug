@@ -51,6 +51,7 @@ vm-menu.vm-date(
         .vm-date__toolbar(v-if="state !== 'year'")
             vm-button(
                 icon="keyboard_arrow_left"
+                :noshadow="true"
                 @click="toolbarLeftClick"
             )
 
@@ -60,6 +61,7 @@ vm-menu.vm-date(
 
             vm-button(
                 icon="keyboard_arrow_right"
+                :noshadow="true"
                 @click="toolbarRightClick"
             )
 

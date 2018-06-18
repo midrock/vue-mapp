@@ -5,15 +5,6 @@
   display: flex;
   flex-direction: column;
 
-  &__label {
-    height: 12px;
-    font-size: 0.85714286em;
-    font-weight: 500;
-    line-height: 12px;
-    opacity: .8;
-    margin-bottom: 8px;
-  }
-
   &__options {
     width: auto;
     height: auto;
@@ -76,6 +67,7 @@
     height: 32px;
     line-height: 32px;
     min-width: 32px;
-    border-radius: 2px;        
+    border-radius: 2px;  
+    @apply --text-nowrap;      
   }
 }

@@ -33,7 +33,7 @@ export default class InputElement extends Vue {
     @Prop(Boolean) novalidate: boolean;
     @Prop({
         type: Boolean,
-        default: false
+        default: null
     })
     box: boolean;
     
