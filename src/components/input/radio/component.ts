@@ -15,6 +15,8 @@ export default class VueMappRadio extends InputElement {
         required: true 
     }) value: any;
 
+    init: boolean = false;
+
     private get checked(): boolean {
         const fieldValue = this.field && this.field.emitValue;
         const modelValue = /undefined|null/.test(fieldValue) ? this.model : fieldValue;
