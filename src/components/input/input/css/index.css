@@ -1,292 +1,286 @@
-@import 'theme-list/default';
-@import './theme.css';
+@import "theme-list/default";
+@import "./theme.css";
 
-@define-mixin inputSize $fontSize, $fontSizeLabelExpanded, $topLabel, $topLabelExpanded {
-    font-size: $fontSize;
+@define-mixin inputSize $fontSize, $fontSizeLabelExpanded, $topLabel,
+  $topLabelExpanded {
+  font-size: $fontSize;
 
-    .vm-input__label {
-        top: $topLabel;
-    }
+  .vm-input__label {
+    top: $topLabel;
+  }
 
-    &.is--expanded .vm-input__label {
-        top: $topLabelExpanded;
-        font-size: $fontSizeLabelExpanded;
-    }
+  &.is--expanded .vm-input__label {
+    top: $topLabelExpanded;
+    font-size: $fontSizeLabelExpanded;
+  }
 }
 
 .vm-input {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 14px;
+  margin-bottom: 16px;
+
+  &__container {
+    box: horizontal middle;
     position: relative;
+
+    svg {
+      position: absolute;
+      size: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    will-change: opacity, top;
+    // top: calc(50% - 1.2em / 2);
+    top: 8px;
+    line-height: 1.2;
+    @apply --text-nowrap;
+
+    &.is--noanimate {
+      animation: none !important;
+    }
+  }
+
+  &__main {
+    flex: 1 1 auto;
+    box: horizontal wrap;
+  }
+
+  &__outline {
+    stroke-width: 1px;
+    fill: transparent;
+
+    .vm-input.is--box.is--focused & {
+      stroke-width: 2px;
+    }
+  }
+
+  &__left,
+  &__right {
+    box: horizontal;
+    flex: 0 0 auto;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &__left {
+    margin-right: 8px;
+  }
+
+  &__right {
+    margin-left: 12px;
+
+    button {
+      width: 100%;
+      height: auto;
+      padding: 8px;
+
+      &:after {
+        content: none !important;
+      }
+    }
+
+    .vm-icon {
+      font-size: 22px;
+    }
+
+    .vm-loader {
+      width: 100%;
+
+      &__spin {
+        border-width: 2px;
+        size: 22px;
+      }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
     width: 100%;
-    font-size: 14px;
-    padding-top: 14px;
-    margin-bottom: 16px;
 
-    &__container {
-        box: horizontal middle;
-        position: relative;
+    &-loader {
+      width: 20%;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      animation: indeterminate 1.5s infinite cubic-bezier(0.25, 0.5, 0.8, 1);
+      z-index: 1;
+    }
+  }
 
-        svg {
-            position: absolute;
-            size: 100%;
-            left: 0;
-            top: 0;
-        }
+  &__message {
+    font-size: 12px;
+    min-height: 18px;
+    line-height: 18px;
+    margin-top: 4px;
+    opacity: 0.8;
+
+    &.is--nowrap {
+      @apply --text-nowrap;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &[disabled] {
+    .vm-input__divider {
+      border-width: 0 0 1px;
+      border-style: dashed;
+    }
+  }
+
+  &.is--focused {
+    .vm-input__divider {
+      height: 2px;
+    }
+  }
+
+  &.is--box {
+    .vm-input__container {
+      height: 56px;
     }
 
-    &__label {
-        position: absolute;
-        display: block;
-        pointer-events: none;
-        will-change: opacity, top;
-        // top: calc(50% - 1.2em / 2);
-        top: 8px;
-        line-height: 1.2;
-        @apply --text-nowrap;
-
-        &.is--noanimate  {
-            animation: none !important;
-        }
+    .vm-input__right {
+      width: 56px;
     }
 
-    &__main {
-        flex: 1 1 auto;
-        box: horizontal wrap;
+    .vm-input__label {
+      top: 20px;
+      left: 16px;
     }
 
-
-
-    &__outline {
-        stroke-width: 1px;
-        fill: transparent;
-
-        .vm-input.is--box.is--focused & {
-            stroke-width: 2px;
-        }
+    .vm-input__message {
+      padding: 0 16px;
     }
 
-    &__left, &__right {
-        box: horizontal;
-        flex: 0 0 auto;
-        height: 100%;
-        z-index: 1;
-    }
-    
-    &__left {
-        margin-right: 8px;
+    &.is--expanded .vm-input__label {
+      top: -7px;
+      animation: inputlabelbox 0.1s cubic-bezier(0.25, 0.5, 0.8, 1);
     }
 
-    &__right {
-        margin-left: 12px;
-
-        button {
-            width: 100%;
-            height: auto;
-            padding: 8px;
-            
-            &:after {
-                content: none !important;
-            }
-        }
-
-        .vm-icon {
-            font-size: 22px;
-        }
-
-        .vm-loader {
-            width: 100%;
-
-            &__spin {
-                border-width: 2px;
-                size: 22px;
-            }
-        }
-    }
-
-    &__divider {
-        height: 1px;
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
-        
-
-        &-loader {
-            width: 20%;
-            height: 2px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            animation: indeterminate 1.5s infinite cubic-bezier(.25,.5,.8,1);
-            z-index: 1;
-        }
-    }
-
-    &__message {
-        font-size: 12px;
-        min-height: 18px;
-        line-height: 18px;
-        margin-top: 4px;
-        opacity: .8;
-
-        &.is--nowrap {
-            @apply --text-nowrap;
-        }
-    }
-
-    &__icon {
-        position: absolute;
-        top: 12px;
-        right: 0;
-        size: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &[disabled] {
-
-        .vm-input__divider {
-            border-width: 0 0 1px;
-            border-style: dashed;
-        }
-    }
-
-    &.is--focused {
-
-        .vm-input__divider {
-            height: 2px;
-        }
-    }
-
-    &.is--box {
-
-        .vm-input__container {
-            height: 56px;
-        }
-
-        .vm-input__right {
-            width: 56px;
-        }
-
-        .vm-input__label {
-            top: 20px;
-            left: 16px;
-        }
-
-        .vm-input__message {
-            padding: 0 16px;
-        }
-
-        &.is--expanded .vm-input__label {
-            top: -7px;
-            animation: inputlabelbox .1s cubic-bezier(.25,.5,.8,1);
-        }
-
-        .vm-input__container {
-            border-radius: 4px;
-        }
-
-        input {
-            padding: 0 16px;
-            min-height: 48px;
-        }
-    }
-
-    &.is--large-1 {
-        @mixin inputSize 1.14285714em, 0.85714em, 19px, -8px;
-    }
-
-    &.is--large-2 {
-        font-size: 1.28571429em;
-    }
-
-    &.is--expanded {
-
-        .vm-input__label {
-            font-size: 0.85714em;
-            font-weight: 500;
-            line-height: 1.2em;
-            top: -12px;
-            animation: inputlabel .1s cubic-bezier(.25,.5,.8,1);
-        }
-    }
-
-    .vm-layout & {
-        font-size: 1em;
+    .vm-input__container {
+      border-radius: 4px;
     }
 
     input {
-        size: 100%;
-        padding: 0;
-        display: block;
-        border: none;
-        flex-grow: 1;
-        background: none;
-        font-family: inherit;
-        font-size: 1em;
-        z-index: 1;
-        min-height: 32px;
-        flex: 1 1;
-        @apply --text-nowrap;
-
-        &[disabled] {
-            opacity: 1;
-        }
-
-        &[readonly] {
-
-            &:hover {
-                text-overflow: initial;
-            }
-        }
-
-        &:focus {
-            outline: none;
-        }
-
-        &::placeholder {
-            opacity: .54;
-        }
-
-        &::-webkit-input-placeholder {
-            font-size: 1em;
-            text-shadow: none;
-            -webkit-text-fill-color: initial;
-        }
+      padding: 0 16px;
+      min-height: 48px;
     }
+  }
+
+  &.is--large-1 {
+    @mixin inputSize 1rem, 0.75rem, 7px, -12px;
+
+    &.is--box {
+      @mixin inputSize 1.14285714em, 0.85714em, 19px, -8px;
+    }
+  }
+
+  &.is--large-2 {
+    font-size: 1.28571429em;
+  }
+
+  &.is--expanded {
+    .vm-input__label {
+      font-size: 0.85714em;
+      font-weight: 500;
+      line-height: 1.2em;
+      top: -12px;
+      animation: inputlabel 0.1s cubic-bezier(0.25, 0.5, 0.8, 1);
+    }
+  }
+
+  input {
+    size: 100%;
+    padding: 0;
+    display: block;
+    border: none;
+    flex-grow: 1;
+    background: none;
+    font-family: inherit;
+    font-size: 1em;
+    z-index: 1;
+    min-height: 32px;
+    flex: 1 1;
+    @apply --text-nowrap;
+
+    &[disabled] {
+      opacity: 1;
+    }
+
+    &[readonly] {
+      &:hover {
+        text-overflow: initial;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      opacity: 0.54;
+    }
+
+    &::-webkit-input-placeholder {
+      font-size: 1em;
+      text-shadow: none;
+      -webkit-text-fill-color: initial;
+    }
+  }
 }
 
 @keyframes indeterminate {
-    0% {
-        left: -100%;
-        width: 50%;
-    }
-    100% {
-        left: 100%;
-        width: 50%;
-    }
+  0% {
+    left: -100%;
+    width: 50%;
+  }
+  100% {
+    left: 100%;
+    width: 50%;
+  }
 }
 
 @keyframes inputlabel {
-    0% {
-        top: -10px;
-        opacity: 0;
-    }
+  0% {
+    top: -10px;
+    opacity: 0;
+  }
 
-    100% {
-        top: -12px;
-        opacity: .8;
-    }
+  100% {
+    top: -12px;
+    opacity: 0.8;
+  }
 }
 
 @keyframes inputlabelbox {
-    0% {
-        top: -4px;
-        opacity: 0;
-    }
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
 
-    100% {
-        top: -6px;
-        opacity: .8;
-    }
+  100% {
+    top: -6px;
+    opacity: 0.8;
+  }
 }

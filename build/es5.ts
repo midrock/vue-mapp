@@ -8,11 +8,11 @@ import { log, counters } from './assets/helpers';
 import { join } from 'path';
 
 if (config.devMode) {
-    log('process', 'DEV MODE');
+  log('process', 'DEV MODE');
 } else {
-    log('process', 'BUILD STARTED')
-    fse.emptyDirSync(config.es5);
-    fse.emptyDirSync(config.css);
+  log('process', 'BUILD STARTED');
+  fse.emptyDirSync(config.es5);
+  fse.emptyDirSync(config.css);
 }
 
 component('layout/app', 'app');
@@ -39,6 +39,7 @@ component('input/select', 'select');
 component('input/option', 'option');
 component('input/switch', 'switch');
 component('input/toggle', 'toggle');
+component('input/textarea', 'textarea');
 
 component('typo/icon', 'icon');
 component('typo/tag', 'tag');
@@ -59,6 +60,7 @@ ts('helpers/find.ts', 'helpers/find.js');
 ts('helpers/dom.ts', 'helpers/dom.js');
 ts('helpers/calc.ts', 'helpers/calc.js');
 ts('helpers/modify.ts', 'helpers/modify.js');
+ts('helpers/autosize.ts', 'helpers/autosize.js');
 
 ts('pack/input.ts', 'pack/input.js');
 ts('pack/event.ts', 'pack/event.js');
@@ -68,22 +70,25 @@ ts('pack/popup.ts', 'pack/popup.js');
 ts('pack/list.ts', 'pack/list.js');
 
 export function compileCss() {
-    postcss('css/global/helpers.css', 'helpers.css');
-    postcss('css/global/html.css', 'html.css');
-    postcss('css/global/layout.css', 'layout.css');
-    postcss('css/theme-list/indigo/index.css', 'themes/indigo.css');
+  postcss('css/global/helpers.css', 'helpers.css');
+  postcss('css/global/html.css', 'html.css');
+  postcss('css/global/layout.css', 'layout.css');
+  postcss('css/theme-list/indigo/index.css', 'themes/indigo.css');
 }
 
 if (config.devMode) {
-    const cssSrc = join(config.src, 'css');
-    fse.watch(cssSrc, {
-        recursive: true
-    }, async (e, filePath) => {
-        compileCss();
-    });
+  const cssSrc = join(config.src, 'css');
+  fse.watch(
+    cssSrc,
+    {
+      recursive: true,
+    },
+    async (e, filePath) => {
+      compileCss();
+    }
+  );
 } else {
-    compileCss();
+  compileCss();
 }
 
-
-// вывести резюме с ошибками 
+// вывести резюме с ошибками

@@ -9,8 +9,9 @@ import VueMappField from 'component/input/field';
 import VueMappRadio from 'component/input/radio';
 import VueMappSwitch from 'component/input/switch';
 import VueMappToggle from 'component/input/toggle';
+import VueMappTextarea from 'component/input/textarea';
 
-export default function(Vue) {
+export default function (Vue) {
     Vue.use(VueMappButton);
     Vue.use(VueMappCheckbox);
     Vue.use(VueMappForm);
@@ -22,4 +23,5 @@ export default function(Vue) {
     Vue.use(VueMappRadio);
     Vue.use(VueMappSwitch);
     Vue.use(VueMappToggle);
+    Vue.use(VueMappTextarea);
 }

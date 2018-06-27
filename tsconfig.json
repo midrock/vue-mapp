@@ -7,7 +7,8 @@
             "dom",
             "scripthost",
             "es5",
-            "es2015.promise"
+            "es2015.promise",
+            "es2015.symbol.wellknown"
         ],
         "sourceMap": false,
         "noImplicitAny": false,

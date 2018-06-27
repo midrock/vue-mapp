@@ -1,0 +1,62 @@
+
+/* PADDING HELPERS */
+
+.pad {
+  padding: $padding;
+
+  &-t {
+    padding-top: $padding;
+  }
+
+  &-r {
+    padding-right: $padding;
+  }
+
+  &-b {
+    padding-bottom: $padding;
+  }
+
+  &-l {
+    padding-left: $padding;
+  }
+
+  &-v {
+    padding-top: $padding;
+    padding-bottom: $padding;
+  }
+
+  &-h {
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}
+
+.mar {
+  margin: $margin;
+
+  &-t {
+    margin-top: $margin;
+  }
+
+  &-r {
+    margin-right: $margin;
+  }
+
+  &-b {
+    margin-bottom: $margin;
+  }
+
+  &-l {
+    margin-left: $margin;
+  }
+
+  &-v {
+    margin-top: $margin;
+    margin-bottom: $margin;
+  }
+
+  &-h {
+    margin-left: $margin;
+    margin-right: $margin;
+  }
+}

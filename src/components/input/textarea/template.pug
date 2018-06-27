@@ -1,0 +1,21 @@
+vm-input.vm-textarea(
+    :label="label"
+    :box="box"
+    :expanded="focused"
+)
+    textarea(
+        ref="textarea"
+        slot="main"
+        :disabled="status === 'disabled'"
+        :type="$_type"
+        :name="name"
+        :placeholder="placeholder"
+        :maxlength="$_maxlength === Infinity ? null : $_maxlength"
+        :readonly="status === 'readonly'"
+        :value="inputValue"
+        :spellcheck="spellcheck"
+        :autocomplete="autocomplete"
+        @focus="onFocus"
+        @blur="onBlur"
+        @input="onInput"
+    )

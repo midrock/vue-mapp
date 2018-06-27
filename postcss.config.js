@@ -27,9 +27,7 @@ module.exports = function (ctx) {
             margin: 'auto'
           },
           'text-nowrap': {
-            overflow: 'hidden',
-            'white-space': 'nowrap',
-            'text-overflow': 'ellipsis'
+            
           }
         }
       },

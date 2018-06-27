@@ -11,6 +11,6 @@ vm-modal.vm-dialog(
         vm-button.vm-dialog__action(
             v-for="action in actions"
             primary
-            @click="actionClick(action)"
+            @click="actionClick(action.click)"
         ) {{ action.text }}
         slot(name="action")

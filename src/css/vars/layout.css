@@ -1,0 +1,14 @@
+$sm: 600px;
+$md: 1024px;
+$lg: 1440px;
+$xl: 1920px;
+$margin: 20px;
+$margin-half: 10px;
+$padding: $margin;
+$pdading-half: $margin-half;
+
+@custom-media --xs-view (max-width: $sm);
+@custom-media --sm-view (min-width: $sm);
+@custom-media --md-view (min-width: $md);
+@custom-media --lg-view (min-width: $lg);
+@custom-media --xl-view (min-width: $xl);

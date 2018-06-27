@@ -1,0 +1,43 @@
+@import "theme-list/default";
+@import "./theme.css";
+
+.vm-textarea {
+  textarea {
+    size: 100%;
+    padding: 0;
+    display: block;
+    border: none;
+    flex-grow: 1;
+    background: none;
+    font-family: inherit;
+    font-size: 1em;
+    z-index: 1;
+    min-height: 32px;
+    flex: 1 1;
+    @apply --text-nowrap;
+
+    &[disabled] {
+      opacity: 1;
+    }
+
+    &[readonly] {
+      &:hover {
+        text-overflow: initial;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      opacity: 0.54;
+    }
+
+    &::-webkit-input-placeholder {
+      font-size: 1em;
+      text-shadow: none;
+      -webkit-text-fill-color: initial;
+    }
+  }
+}

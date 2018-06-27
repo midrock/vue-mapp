@@ -43,9 +43,9 @@ export class VueMappDialog extends Vue {
 
         if (action instanceof Function) {
             action();
-        } else {
-            this.$emit('action');
         }
+
+        this.$emit('action');
     }
 }
 

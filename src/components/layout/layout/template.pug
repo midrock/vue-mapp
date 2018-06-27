@@ -9,6 +9,7 @@ vm-app.vm-layout(
     @screen="onScreenChanged"
 )
     nav.vm-layout__nav(
+        v-if="aside"
         ref="aside"
         :class="{
             'is--hidden': !asideActive && !$_asideFixed    
@@ -24,7 +25,7 @@ vm-app.vm-layout(
         )
             .vm-layout__header-top
                 button.vm-layout__header-aside(
-                    v-if="!$_asideFixed"
+                    v-if="aside && !$_asideFixed"
                     @click="asideActive = !asideActive"
                 )
                     i.material-icons menu

@@ -1,0 +1,5 @@
+$sha: rgba(0,0,0,.2);
+$shu: rgba(0,0,0,.14);
+$shp: rgba(0,0,0,.12);
+
+$shadow-1: 0 1px 3px 0 $sha, 0 1px 1px 0 $shu, 0 3px 1px -2px $shp;
