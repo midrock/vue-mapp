@@ -1,4 +1,4 @@
-import InputElement, { } from 'component/input/input-element';
+import InputElement from 'component/input/input-element';
 import { Component, Prop } from 'vue-property-decorator';
 import { VMInputState } from '../types';
 import { VueMappSubmitData } from './types';
@@ -7,9 +7,9 @@ import { VueMappSubmitData } from './types';
   name: 'vm-form',
   provide() {
     return {
-      form: this
-    }
-  }
+      form: this,
+    };
+  },
 })
 export default class VueMappForm extends InputElement {
   changed: boolean = false;
@@ -18,7 +18,8 @@ export default class VueMappForm extends InputElement {
   @Prop({
     type: Boolean,
     default: true,
-  }) freezeOnSubmit: boolean;
+  })
+  freezeOnSubmit: boolean;
 
   @Prop([Boolean, String])
   submitOnEnter: string | boolean;
@@ -40,28 +41,25 @@ export default class VueMappForm extends InputElement {
     let promises: Promise<any>[] = [];
 
     this.inputComponents.forEach((cmp: InputElement) => {
-
-      if (cmp.emitValue !== undefined) {
+      if (cmp.emitValue !== undefined && cmp.name) {
         data[cmp.name] = cmp.emitValue;
       }
 
       if (cmp.validateStatus !== undefined && !cmp.novalidate) {
         promises.push(cmp.validate());
       }
-
     });
 
     Promise.all(promises).then(result => {
-
       const allValid: boolean = result.every(status => {
-        return /valid|novalidate/.test(status)
+        return /valid|novalidate/.test(status);
       });
 
       if (allValid) {
         const submitData: VueMappSubmitData<object> = {
           data: JSON.parse(JSON.stringify(data)),
           event: event || null,
-          form: this
+          form: this,
         };
 
         if (this.freezeOnSubmit) {
@@ -79,7 +77,7 @@ export default class VueMappForm extends InputElement {
       if (cmp.clear instanceof Function) {
         cmp.clear();
       }
-    })
+    });
   }
 
   change() {
