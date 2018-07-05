@@ -13,7 +13,7 @@
         v-bind="$attrs"
         ref="popup"
         @outside="clickOnOverlay"
-        @outofcontent="mouseoutContent"
+        @mouseout.native="mouseoutContent"
         @outclick="onOutClick"
     )
         slot

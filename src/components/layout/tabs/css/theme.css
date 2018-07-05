@@ -1,18 +1,14 @@
-.vm-tab {
-
-    &.is--active {
-        color: $primary;
-
-        &:after {
-            background: $primary;
-        }
-
-        .primary-box & {
-            color: $primary-text;
-
-            &:after {
-                background: $primary-text;
-            }
-        }
+.vm-tabs {
+  &__header {
+    .box-primary &:after {
+      background: $primary-divider;
     }
+
+    &.is--divider {
+
+      &:after {
+        background: $default-divider;
+      }
+    }
+  }
 }

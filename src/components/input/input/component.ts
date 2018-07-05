@@ -37,7 +37,7 @@ export class VueMappInput extends InputElement {
     }
 
     private noanimate: boolean = false;
-   
+
     @Prop(String) name: string;
     @Prop(String) label: string;
     @Prop(String) description: string;
@@ -59,10 +59,10 @@ export class VueMappInput extends InputElement {
     @Prop([String, Number]) max: string | number;
     @Prop([String, Number]) value: string | number;
 
-    @Prop({ 
+    @Prop({
         type: String,
         default: 'false'
-    }) 
+    })
     spellcheck: string;
 
     @Prop({
@@ -70,11 +70,11 @@ export class VueMappInput extends InputElement {
         default: 'off'
     })
     autocomplete: string;
-    
+
     @Prop({
         type: [String, Number],
         default: 100
-    }) 
+    })
     debounce: number | string = 100;
 
     @Prop({
@@ -95,11 +95,11 @@ export class VueMappInput extends InputElement {
     }
 
     @Watch('$_mask')
-    updateMask() { 
+    updateMask() {
         this.updateValue();
     }
 
-    @Watch('$_expanded') 
+    @Watch('$_expanded')
     onExpand() {
         this.$nextTick(this.drawBoxSvg);
     }
@@ -140,7 +140,7 @@ export class VueMappInput extends InputElement {
 
         return tests;
     }
-    
+
     private get $_type(): string {
         const type = this.type || this.$_template.type;
         return type === 'password' ? 'password' : 'text';
@@ -164,7 +164,7 @@ export class VueMappInput extends InputElement {
 
     private get classes(): (string | object)[] {
         const { form } = this;
-        
+
         const _size = (() => {
             const { size } = this;
 
@@ -177,8 +177,8 @@ export class VueMappInput extends InputElement {
             }
         })();
 
-        return  [
-           _size ? `is--large-${_size}` : '', 
+        return [
+            _size ? `is--large-${_size}` : '',
             {
                 'is--focused': this.focused,
                 'is--expanded': this.$_expanded,
@@ -195,12 +195,12 @@ export class VueMappInput extends InputElement {
             return Number(this.length) || this.$_template.length || Number.POSITIVE_INFINITY;
         }
     }
-    
+
     private get $_description(): string {
-        return this.message || 
-               this.description || 
-               this.$_template.description || 
-               '';
+        return this.message ||
+            this.description ||
+            this.$_template.description ||
+            '';
     }
 
     private get $_required(): boolean {
@@ -253,7 +253,7 @@ export class VueMappInput extends InputElement {
     get unmaskedValue(): string {
         const mask = this.$_mask;
         const value = String(this.inputValue);
-        
+
         let unmaskedValue = '';
 
         for (let i = 0; i < mask.length; i++) {
@@ -307,12 +307,12 @@ export class VueMappInput extends InputElement {
         if ((form && !form.validateOnSubmit) || !this.novalidate) {
             this.validate();
         }
-        
+
         this.$emit('blur', $event);
     }
 
     onInput($event) {
-        
+
         if (this.$refs.input.value !== this.inputValue) {
             this.VMInputCheckState = 'changed';
             this.$emit('change');
@@ -329,11 +329,11 @@ export class VueMappInput extends InputElement {
                 if (typeof inputValue === 'string') {
                     inputValue = parseInt(inputValue) || '';
                 }
-                
-            } else if (this.$_mask && 
-                       String(inputValue).length > String(this.inputValue).length ||
-                       this.$_mask.length !== String(inputValue).length ) {
-                
+
+            } else if (this.$_mask &&
+                String(inputValue).length > String(this.inputValue).length ||
+                this.$_mask.length !== String(inputValue).length) {
+
                 inputValue = this.processMask(inputValue);
             }
         } else if (!this.expanded) {
@@ -355,7 +355,7 @@ export class VueMappInput extends InputElement {
             }
         }, Number(this.debounce));
     }
-    
+
     public clear() {
         this.updateValue('');
     }
@@ -404,7 +404,7 @@ export class VueMappInput extends InputElement {
 
         return new Promise((resolve) => {
             this.VMInputCheckState = 'process';
-            
+
             const basicResult = this.validateBasic();
 
             const final = (error: string = '') => {
@@ -414,8 +414,8 @@ export class VueMappInput extends InputElement {
 
                     const message = defaultMessages[error];
 
-                    this.message = message instanceof Function ? 
-                                   message(this.params) : message;
+                    this.message = message instanceof Function ?
+                        message(this.params) : message;
                 } else {
                     this.VMInputCheckState = 'valid';
                     this.message = '';
@@ -455,17 +455,17 @@ export class VueMappInput extends InputElement {
                 check: (ctx) => {
                     const { mask, type, minlength, emitValue } = ctx;
 
-                    return !!mask || 
-                           type === 'number' || 
-                           !minlength ||
-                           String(emitValue).length >= minlength;
+                    return !!mask ||
+                        type === 'number' ||
+                        !minlength ||
+                        String(emitValue).length >= minlength;
                 },
                 message: 'inputMinLength'
             },
             {
                 check: (ctx) => {
                     const { type, min, emitValue } = ctx;
-                    return  type !== 'number' || !min || emitValue >= min;
+                    return type !== 'number' || !min || emitValue >= min;
                 },
                 message: 'inputMin'
             },
@@ -490,7 +490,7 @@ export class VueMappInput extends InputElement {
         return true;
     }
 
-    private drawBoxSvg() {
+    public drawBoxSvg() {
 
         const {
             container,
@@ -528,11 +528,11 @@ export class VueMappInput extends InputElement {
         const topWidth = width - (2 * cornerWidth) - leadingStrokeLength;
 
         let path = 'M' + (expanded ? startX + labelWidth : startX) + ',' + 1
-                + 'h' + (expanded ? topWidth - labelWidth : topWidth)
-                + pathMiddle
-                + 'h' + leadingStrokeLength;
-        
-       svgboxpath.setAttribute('d', path);
+            + 'h' + (expanded ? topWidth - labelWidth : topWidth)
+            + pathMiddle
+            + 'h' + leadingStrokeLength;
+
+        svgboxpath.setAttribute('d', path);
     }
 
     private validateTests(): Promise<string | void> {
@@ -562,7 +562,7 @@ export class VueMappInput extends InputElement {
         });
     }
 
-    
+
 
     created() {
         if (this.value || this.expanded) {

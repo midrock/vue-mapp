@@ -2,46 +2,72 @@
 @import './theme.css';
 
 .vm-tab {
-    position: relative;
-    max-width: 264px;
-    opacity: .6;
-    height: 100%;
-    cursor: pointer;
-    padding: 0 24px;
-    background: transparent;
-    outline: none;
-    border: none;
-    font-family: inherit;
-    color: inherit;
+  padding: 0;
+  box: horizontal middle;
+  position: relative;
+  max-width: 264px;
+  opacity: 0.6;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  line-height: 20px;
+
+  &:after {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+  }
+
+  &.is--active {
+    opacity: 1;
 
     &:after {
-        position: absolute;
-        z-index: 2;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
+      content: '';
     }
+  }
 
-    &.is--active {
-        opacity: 1;
-        
-        &:after {
-            content: '';
-        }
+  &.is--icon {
+    .vm-tab__icon {
+      min-width: 40px;
     }
+  }
 
-    &__label {
-        overflow: hidden;
-        font-weight: 500;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 14px;
-        user-select: none;
-        @apply --text-nowrap;
-    }
+  &__close {
+    font-size: 18px;
 
-    &::-moz-focus-inner {
-        border: 0;
+    &:hover {
+      background: rgba(0, 0, 0, 0.24);
+      border-radius: 50%;
     }
+  }
+
+  &__icon {
+    padding: 0 12px;
+    flex: 1 1 auto;
+  }
+
+  &__label {
+    overflow: hidden;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    user-select: none;
+    @apply --text-nowrap;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  .vm-icon {
+    display: block;
+  }
 }

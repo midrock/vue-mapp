@@ -1,18 +1,17 @@
 .vm-tab {
+  &.is--active {
+    color: $primary;
 
-    &.is--active {
-        color: $primary;
-
-        &:after {
-            background: $primary;
-        }
-
-        .primary-box & {
-            color: $primary-text;
-
-            &:after {
-                background: $primary-text;
-            }
-        }
+    &:after {
+      background: $primary;
     }
+
+    .box-primary & {
+      color: $primary-text;
+
+      &:after {
+        background: $primary-text;
+      }
+    }
+  }
 }

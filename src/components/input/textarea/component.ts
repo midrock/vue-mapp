@@ -10,7 +10,7 @@ import { VueMappInput } from "component/input/input";
   }
 })
 export class VueMappTextarea extends InputElement {
-  inputValue: string | number = "";
+  inputValue: string | number = '';
   focused: boolean = false;
 
   $refs: {
@@ -19,6 +19,7 @@ export class VueMappTextarea extends InputElement {
     container: HTMLDivElement;
     label: HTMLDivElement;
     svgboxpath: SVGPathElement;
+    input: any;
   };
 
   private get $_box(): boolean {
@@ -57,11 +58,19 @@ export class VueMappTextarea extends InputElement {
   }
 
   onInput($event) {
+    console.log('input')
     if (this.$refs.textarea.value !== this.inputValue) {
       // this.VMInputCheckState = 'changed';
-      this.$emit("change");
+      this.$emit('input', $event.target.value);
       this.inputValue = $event.target.value;
     }
+    this.drawBox();
+  }
+
+  drawBox() {
+    this.$nextTick(() => {
+      this.$refs.input.drawBoxSvg();
+    })
   }
 
   mounted() {

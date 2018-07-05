@@ -25,12 +25,15 @@
     }
 
     &.is--icon {
-        color: $default-text-light;
 
-        &:hover {
-            color: $primary;
+        &, .box & {
+            color: $default-text-light;
+
+            &:hover {
+                color: $primary;
+            }
         }
-
+        
         .box-primary & {
             color: $primary-text;
 

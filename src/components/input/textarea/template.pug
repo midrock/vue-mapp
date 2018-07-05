@@ -1,7 +1,8 @@
 vm-input.vm-textarea(
+    ref="input"
     :label="label"
     :box="box"
-    :expanded="focused"
+    :expanded="focused || !!inputValue"
 )
     textarea(
         ref="textarea"
@@ -12,10 +13,11 @@ vm-input.vm-textarea(
         :placeholder="placeholder"
         :maxlength="$_maxlength === Infinity ? null : $_maxlength"
         :readonly="status === 'readonly'"
-        :value="inputValue"
         :spellcheck="spellcheck"
         :autocomplete="autocomplete"
+        :value="inputValue"
         @focus="onFocus"
         @blur="onBlur"
         @input="onInput"
+        @keydown="drawBox"
     )

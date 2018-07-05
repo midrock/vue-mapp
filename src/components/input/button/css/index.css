@@ -3,111 +3,114 @@
 @import './theme.css';
 
 .vm-button {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 88px;
-    margin: 0;
-    padding: 0 8px;
-    height: 36px;
-    border: none;
-    border-radius: 2px;
-    outline: none;
-    font-family: inherit;
-    font-weight: 500;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    vertical-align: middle;
-    font-size: 14px;
-    line-height: 36px;
-    white-space: nowrap;
-    overflow: hidden;
-    cursor: pointer;
-    user-select: none;
-    
-    @apply --text-nowrap;
-    
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 88px;
+  margin: 0;
+  padding: 0 8px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  font-family: inherit;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
 
-    &__label {
-        box: horizontal center middle;
-        flex: 1 1 auto;
+  @apply --text-nowrap;
+
+  &__label {
+    box: horizontal center middle;
+    flex: 1 1 auto;
+  }
+
+  &[disabled],
+  &.is--loading {
+    cursor: default;
+    pointer-events: none;
+
+    &:not(.is-raised):before {
+      background: transparent !important;
+    }
+  }
+
+  &:not([disabled]):not(.is--icon) {
+    &:after {
+      content: '';
+    }
+  }
+
+  &.is--full {
+    width: 100%;
+  }
+
+  &.is--icon {
+    padding: 0 6px;
+
+    &:not([disabled]).is--shadow {
+      &:after {
+        content: '';
+      }
+    }
+  }
+
+  &.is--loading {
+    .vm-button__label {
+      visibility: hidden;
     }
 
-    &[disabled], &.is--loading {
-        cursor: default;
-        pointer-events: none;
+    & > .vm-icon {
+      visibility: hidden;
+    }
+  }
 
-        &:not(.is-raised):before {
-            background: transparent !important;
-        }
+  &.is--raised {
+    &:not(.is--icon) {
+      padding: 0 16px;
     }
 
-    &:not([disabled]):not(.is--noshadow) {
-
-        &:after {
-            content: '';
-        }
+    &:not(.is--noshadow) {
+      box-shadow: $shadow-2;
     }
 
-    &.is--full {
-        width: 100%;
+    &[disabled] {
+      box-shadow: none;
     }
+  }
 
-    &.is--icon {
-        padding: 0 6px;
+  &.is--icon {
+    min-width: auto;
+
+    &[disabled] {
+      opacity: 0.32;
     }
+  }
 
-    &.is--loading {
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
-        .vm-button__label {
-            visibility: hidden;
-        }
+  .vm-layout & {
+    font-size: 1em;
+  }
 
-        & > .vm-icon {
-            visibility: hidden;
-        }
-    }
-
-    &.is--raised {
-        
-        &:not(.is--icon) {
-            padding: 0 16px;
-        }
-
-        &:not(.is--noshadow) {
-            box-shadow: $shadow-2;
-        }
-
-        &[disabled] {
-            box-shadow: none;
-        }
-    }
-
-    &.is--icon {
-        min-width: auto;
-        
-        &[disabled] {
-            opacity: .32;
-        }
-    }
-
-    &::-moz-focus-inner {
-        border: 0;
-    }
-
-    .vm-layout & {
-        font-size: 1em;
-    }
-
-    .vm-loader {
-        background: inherit;
-        z-index: 5;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+  .vm-loader {
+    background: inherit;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }

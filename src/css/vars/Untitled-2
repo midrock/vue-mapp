@@ -32,3 +32,43 @@
 
 // const shadows = {
 //     'shadow-1': genShadow(['', '0 1px 1px 0', '0 2px 1px -1px']),
+
+
+
+// @define-mixin text-small-1 {
+//   'text-title': {
+    
+//   },
+//   'text-title-1': {
+//     'font-size': '1.57142857em',
+//     'line-height': '1.18181818em'
+//   },
+//   'text-title-2': {
+//     'font-size': '1.71428571em',
+//     'line-height': '1.33333333em'
+//   },
+//   'text-title-3': {
+//     'font-size': '1.85714286em',
+//     'line-height': '1.15384615em'
+//   },
+//   'text-title-4': {
+//     'font-size': '2em',
+//     'line-height': '1.14285714em'
+//   },
+//   'text-large-1': {
+//     'font-size': '1.07142857em'
+//   },
+//   'text-large-2': {
+//     'font-size': '1.14285714em'
+//   },
+//   'text-large-3': {
+//     'font-size': '1.28571429em'
+//   },
+//   
+//   'text-small-2': {
+//     'font-size': '0.85714286em'
+//   },
+//   'text-small-3': {
+//     'font-size': '0.78571429em'
+//   }
+// }

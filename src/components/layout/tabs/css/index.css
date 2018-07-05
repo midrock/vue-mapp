@@ -2,51 +2,60 @@
 @import './theme.css';
 
 .vm-tabs {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 
-    &__header {
-        box: horizontal;
-        justify-content: space-between;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        align-items: flex-end;
-        overflow-x: auto;
-        overflow-y: hidden;
+  &__header {
+    box: horizontal;
+    justify-content: space-between;
+    align-items: flex-end;
+    overflow: hidden;
 
-        & > div {
-            box: horizontal;
-            height: 48px;
+    & > div {
+      box: horizontal;
+      height: 48px;
 
-            &:last-child {
-
-                & > * {
-                    align-self: center;
-                }
-            }
+      &:last-child {
+        & > * {
+          align-self: center;
         }
-
-        &.is--right {
-            justify-content: flex-end;
-        }
-
-        &.is--center {
-
-            .vm-tabs__header-wrapper {
-                margin: auto;
-            }
-        }
-
-        &.is--justify {
-
-            & > div {
-                min-width: 100%;
-
-                .vm-tab {
-                    flex-grow: 1;
-                    max-width: 100%;
-                }
-            }
-        }
+      }
     }
+
+    &.is--divider {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+      }
+    }
+
+    &.is--right {
+      justify-content: flex-end;
+    }
+
+    &.is--center {
+      .vm-tabs__header-wrapper {
+        margin: auto;
+      }
+    }
+
+    &.is--justify {
+
+      & > div {
+        min-width: 100%;
+
+        .vm-tab {
+          flex-grow: 1;
+          flex-basis: 160px;
+          max-width: 100%;
+        }
+      }
+    }
+  }
 }

@@ -85,6 +85,8 @@ export default class VueMappDate extends InputElement {
     }
 
     @Prop(String) placeholder: string;
+    @Prop(String) emitFormat: string;
+    @Prop(String) fieldFormat: string;
 
     @Prop({
         type: String,
@@ -92,10 +94,10 @@ export default class VueMappDate extends InputElement {
     })
     type: string;
 
-    @Prop([String, Boolean])
-    closeOnSelect: string | boolean;
+    @Prop(Boolean)
+    closeOnSelect: boolean;
 
-    @Prop([String])
+    @Prop(String)
     fixedState: VMDateState;
 
     @Prop({
@@ -127,12 +129,10 @@ export default class VueMappDate extends InputElement {
     }
 
     apply() {
-        const { inputYear, inputMonth, inputDay, inputHours, inputMinutes } = this;
-        
         let value: string = '';
 
         const jsonDate = this.inputDate.toJSON();
-    
+
         if (this.type === 'month') {
             value = jsonDate.slice(0, 8);
         } else if (this.type === 'day') {
@@ -142,7 +142,7 @@ export default class VueMappDate extends InputElement {
         if (this.emitValue !== value) {
             this.emitValue = value;
             this.$emit('select', this.emitValue);
-            
+
             if (this.form) {
                 this.form.changed = true;
             }
@@ -170,9 +170,9 @@ export default class VueMappDate extends InputElement {
             return `${this.inputDay} ${dict.month[this.inputMonth][1]} ${this.inputYear}`
         }
 
-        return `${ dict.month[this.inputMonth][0] } ${this.inputYear}`;
+        return `${dict.month[this.inputMonth][0]} ${this.inputYear}`;
     }
-    
+
     changeState(state: VMDateState) {
 
         let allowed = false;
@@ -188,7 +188,7 @@ export default class VueMappDate extends InputElement {
                 allowed = /year/.test(state);
                 break;
         }
-       
+
         if (this.fixedState || !allowed) {
 
             if (this.closeOnSelect) {
@@ -212,13 +212,13 @@ export default class VueMappDate extends InputElement {
                 this.$nextTick(() => {
                     // @ts-ignore
                     const { offsetTop, offsetHeight } = scrollYearElement;
-                    
+
                     years.scrollTop = offsetTop - years.clientHeight / 2 - offsetHeight / 2;
                 });
             }
         }
     }
-    
+
     get days(): VMDateDayItem[] {
         const maxDaysInViewport: number = 7 * 6;
 
@@ -242,7 +242,7 @@ export default class VueMappDate extends InputElement {
                 value: i
             });
         }
-        
+
         const maxNextDays = maxDaysInViewport - days.length;
 
         for (let i = 1; i <= maxNextDays; i++) {
@@ -312,7 +312,7 @@ export default class VueMappDate extends InputElement {
         } else if (state === 'day') {
             this.nextMonth();
         } else if (state === 'time') {
-            
+
             if (this.inputDay === (new Date(this.inputYear, this.inputMonth + 1, 0)).getDate()) {
                 this.nextMonth();
                 this.inputDay = 1;;
@@ -326,7 +326,7 @@ export default class VueMappDate extends InputElement {
         const years: number[] = [];
         const startYear = (new Date(this.startDate)).getFullYear();
         const endYear = (new Date(this.endDate)).getFullYear();
-    
+
         for (let i = startYear; i <= endYear; i++) {
             years.push(i);
         }
@@ -369,13 +369,13 @@ export default class VueMappDate extends InputElement {
     prevState() {
         const { state, changeState } = this;
 
-        switch(state) {
+        switch (state) {
             case 'month':
                 changeState('year'); break;
             case 'day':
                 changeState('month'); break;
             case 'time':
-                changeState('day'); break;            
+                changeState('day'); break;
         }
     }
 
@@ -383,7 +383,7 @@ export default class VueMappDate extends InputElement {
         this.now();
         this.emitValue = '';
         this.$emit('select', '');
-        
+
         if (this.closeOnSelect) {
             this.$refs.menu.hide();
         }
@@ -410,6 +410,6 @@ export default class VueMappDate extends InputElement {
             this.emitValue = value;
         } else {
             this.now();
-        }        
-    } 
+        }
+    }
 }

@@ -16,23 +16,18 @@ export default class VueMappMenu extends Vue {
 
     hoverActive: boolean = false;
     opened: boolean = false;
-   
-    @Prop([String, Boolean])
-    manual: string | boolean;
+
+    @Prop(Boolean) manual: boolean;
 
     $refs: {
         popup: VueMappPopup,
         trigger: HTMLDivElement
     }
 
-    @Prop([String, Boolean])
-    showOnHover: string | boolean;
-
-    @Prop([String, Boolean])
-    closeOnClick: boolean | string;
+    @Prop(Boolean) showOnHover: boolean;
+    @Prop(Boolean) closeOnClick: boolean;
 
     show() {
-
         if (openedHoverMenu && openedHoverMenu !== this) {
             openedHoverMenu.hide();
         }
@@ -53,7 +48,7 @@ export default class VueMappMenu extends Vue {
             openedHoverMenu = null;
         }
 
-        
+
 
         this.opened = false;
         this.$emit('hide');
@@ -98,12 +93,12 @@ export default class VueMappMenu extends Vue {
         }
     }
 
-    private mouseoutTrigger(): void {
-
+    private mouseoutTrigger(e): void {
+        if (this.checkMenuElement(e)) return;
+        this.hide();
     }
 
     private mouseoutContent(): void {
-        
         if (this.hoverActive) {
             this.hoverActive = false;
             this.hide();
@@ -116,9 +111,10 @@ export default class VueMappMenu extends Vue {
     }
 
     private checkMenuElement(e: Event): boolean {
-        
+
         return !!findElementByClass({
-            element: e.target,
+            // @ts-ignore
+            element: e.toElement || e.target,
             searchClass: ['vm-popup', 'vm-menu'],
             exitElement: this.$el.parentNode
         });

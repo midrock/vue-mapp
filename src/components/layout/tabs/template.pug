@@ -1,6 +1,6 @@
 .vm-tabs
   .vm-tabs__header(
-    :class="align && `is--${align}`"
+    :class="[align && `is--${align}`, divider && 'is--divider']"
   )
     slot(name="header-left")
     .vm-tabs__header-wrapper
@@ -9,9 +9,17 @@
         type="button"
         :key="tab._uid"
         :disabled="tab.disabled"
-        :class="[tab.headClass, { 'is--active': tab === activeTab }]"
+        :class="[tab.headClass, { 'is--active': tab === activeTab, 'is--icon': tab.isIcon }]"
         @click="tabClick(tab)"
       )
-        span.vm-tab__label {{ tab.label }}
+        .vm-tab__icon 
+          vm-icon(v-if="tab.icon") {{ tab.icon }}
+          slot(name="tab-left" :tab="tab")
+        .vm-tab__label {{ tab.label }}
+        .vm-tab__icon
+          vm-icon.vm-tab__close(
+            v-if="tab.closable"
+            @click.native.stop="tab.$emit('close')"
+          ) close
     slot(name="header-right")
   slot

@@ -18,16 +18,12 @@ export default class VueMappPopup extends Vue {
   };
 
   @Prop(String) rootClass: string;
-  @Prop(String) contentClass: string;
+  @Prop([String, Array, Object]) contentClass: string | any[] | object;
   @Prop(Boolean) floatTrigger: string | boolean;
-  @Prop([String, Boolean])
-  fillTrigger: string | boolean;
-  @Prop([String, Boolean])
-  showArrow: string | boolean;
-  @Prop([String, Boolean])
-  closeOnClick: string | boolean;
-  @Prop([String, Boolean])
-  nooverlay: string | boolean;
+  @Prop(Boolean) fillTrigger: boolean;
+  @Prop(Boolean) showArrow: boolean;
+  @Prop(Boolean) closeOnClick: boolean;
+  @Prop(Boolean) nooverlay: boolean;
   @Prop([String, Number])
   size: string | number;
   @Prop([String, Number])
@@ -174,7 +170,7 @@ export default class VueMappPopup extends Vue {
 
   private checkPopup(e) {
     const findedElement = findElementByClass({
-      element: e.target,
+      element: e.toElement || e.target,
       searchClass: ["vm-popup__content", this.rootClass],
       exitElement: document.body
     });

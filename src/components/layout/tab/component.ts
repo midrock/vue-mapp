@@ -5,24 +5,36 @@ import { VueMappTabs } from 'component/layout/tabs';
   name: 'vm-tab',
   inject: {
     tabs: {
-      default: () => null
-    }
-  }
+      default: () => null,
+    },
+  },
 })
 export default class VueMappTab extends Vue {
-
   _uid: string;
   active: boolean = false;
   tabs: VueMappTabs;
 
   @Prop(String) name: string;
   @Prop(String) headClass: string;
-  @Prop([String, Boolean]) init: string | boolean;
-  @Prop([String, Boolean]) disabled: string | boolean;
+  @Prop(String) icon: string;
+  @Prop(Boolean) init: boolean;
+  @Prop(Boolean) disabled: boolean;
+  @Prop(Boolean) closable: boolean;
+
   @Prop({
     type: String,
-    required: true
-  }) label: string;
+    required: true,
+  })
+  label: string;
+
+  get isIcon(): boolean {
+    return !!(
+      this.closable ||
+      this.icon ||
+      this.$slots.left ||
+      this.$slots.right
+    );
+  }
 
   created() {
     const { tabs } = this;
@@ -37,7 +49,6 @@ export default class VueMappTab extends Vue {
   }
 
   beforeDestroy() {
-
     if (this.tabs) {
       this.tabs.removeTab(this);
     }
