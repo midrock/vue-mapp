@@ -1,6 +1,6 @@
+@import 'global/layout';
 @import 'global/helpers';
 @import 'global/html';
-@import 'global/layout';
 @import 'theme-list/default';
 @import 'theme-core/html';
 @import 'theme-core/box';

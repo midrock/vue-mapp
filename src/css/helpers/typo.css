@@ -1,9 +1,14 @@
 
+@define-mixin text-nowrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @define-mixin text-title {
   font-size: 1.42857143rem;
   line-height: 1.2;
 }
-
 
 @define-mixin text-small-1 {
   font-size: 0.92857143em;
