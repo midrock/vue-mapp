@@ -24,29 +24,31 @@ vm-app.vm-layout(
             ref="header"
         )
             .vm-layout__header-top
-                button.vm-layout__header-aside(
-                    v-if="aside && !$_asideFixed"
-                    @click="asideActive = !asideActive"
-                )
-                    i.material-icons menu
+                slot(name="header" v-if="$slots.header")
+                template(v-else)
+                    button.vm-layout__header-aside(
+                        v-if="aside && !$_asideFixed"
+                        @click="asideActive = !asideActive"
+                    )
+                        i.material-icons menu
 
-                .vm-layout__title(
-                    :class="{
-                        'is--vertical': $_subtitleUnderTitle    
-                    }"
-                )
-                    slot(v-if="$slots.title" name="title")
-                    template(v-else)
-                        span(v-if="$_showTitle") {{ title }}
-                        span.vm-layout__title-divider(
-                            v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
-                        ) -
-                        span(v-if="subtitle") {{ subtitle }}
-                .grow
-                .vm-layout__header-features(
-                    v-if="$slots['header-top']"
-                )
-                    slot(name="header-top")
+                    .vm-layout__title(
+                        :class="{
+                            'is--vertical': $_subtitleUnderTitle    
+                        }"
+                    )
+                        slot(v-if="$slots.title" name="title")
+                        template(v-else)
+                            span(v-if="$_showTitle") {{ title }}
+                            span.vm-layout__title-divider(
+                                v-if="$_showTitle && subtitle && !$_subtitleUnderTitle"
+                            ) -
+                            span(v-if="subtitle") {{ subtitle }}
+                    .grow
+                    .vm-layout__header-features(
+                        v-if="$slots['header-top']"
+                    )
+                        slot(name="header-top")
 
             .vm-layout__header-bottom(
                 v-show="$_showHeaderBottom"
