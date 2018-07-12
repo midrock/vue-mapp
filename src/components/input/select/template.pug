@@ -52,7 +52,7 @@
     v-bind="$attrs"
     ref="popup"
     rootClass="vm-select"
-    fillTrigger
+    :fillTrigger="true"
     :closeOnSelect="!multiple"
     :floatTrigger="filterInField"
     @outside="hide"
