@@ -15,11 +15,12 @@ export default class VueMappTab extends Vue {
   tabs: VueMappTabs;
 
   @Prop(String) name: string;
-  @Prop(String) headClass: string;
+  @Prop([String, Array]) headClass: string | string[];
   @Prop(String) icon: string;
   @Prop(Boolean) init: boolean;
   @Prop(Boolean) disabled: boolean;
   @Prop(Boolean) closable: boolean;
+  @Prop() data: any;
 
   @Prop({
     type: String,

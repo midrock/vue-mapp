@@ -158,7 +158,7 @@ export class VueMappLayout extends Vue {
 
     const that = this;
     // @ts-ignore
-    document.fonts.onloadingdone = function(fontFaceSetEvent) {};
+    document.fonts.onloadingdone = function (fontFaceSetEvent) { };
 
     // @ts-ignore
     document.fonts.ready.then(i => {

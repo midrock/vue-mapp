@@ -12,7 +12,9 @@ button.vm-button(
     @click="click"
 )
     vm-loader(v-if="loading")
-    vm-icon(v-if="icon") {{ icon }}
+    template(v-if="icon")
+       vm-icon {{ icon }}
+       slot
     
     .vm-button__label(v-else)
         slot

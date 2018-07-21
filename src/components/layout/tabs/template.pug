@@ -12,14 +12,16 @@
         :class="[tab.headClass, { 'is--active': tab === activeTab, 'is--icon': tab.isIcon }]"
         @click="tabClick(tab)"
       )
-        .vm-tab__icon 
-          vm-icon(v-if="tab.icon") {{ tab.icon }}
-          slot(name="tab-left" :tab="tab")
-        .vm-tab__label {{ tab.label }}
-        .vm-tab__icon
-          vm-icon.vm-tab__close(
-            v-if="tab.closable"
-            @click.native.stop="tab.$emit('close')"
-          ) close
+        slot(v-if="$scopedSlots.tab" name="tab" :tab="tab")
+        template(v-else)
+          .vm-tab__icon 
+            vm-icon(v-if="tab.icon") {{ tab.icon }}
+            slot(name="tab-left" :tab="tab")
+          .vm-tab__label {{ tab.label }}
+          .vm-tab__icon
+            vm-icon.vm-tab__close(
+              v-if="tab.closable"
+              @click.native.stop="tab.$emit('close')"
+            ) close
     slot(name="header-right")
   slot
