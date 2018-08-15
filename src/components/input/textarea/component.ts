@@ -1,6 +1,6 @@
 import InputElement from "component/input/input-element";
 import autosize from "src/helpers/autosize";
-import { Component, Watch } from "vue-property-decorator";
+import { Component, Watch, Prop } from "vue-property-decorator";
 import { VueMappInput } from "component/input/input";
 
 @Component({
@@ -12,6 +12,9 @@ import { VueMappInput } from "component/input/input";
 export class VueMappTextarea extends InputElement {
   inputValue: string | number = '';
   focused: boolean = false;
+
+  @Prop([String, Number]) rows: string | number;
+  @Prop(String) placeholder: string;
 
   $refs: {
     textarea: HTMLInputElement;

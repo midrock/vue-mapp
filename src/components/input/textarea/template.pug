@@ -10,6 +10,7 @@ vm-input.vm-textarea(
         :disabled="status === 'disabled'"
         :type="$_type"
         :name="name"
+        :rows="rows"
         :placeholder="placeholder"
         :maxlength="$_maxlength === Infinity ? null : $_maxlength"
         :readonly="status === 'readonly'"
