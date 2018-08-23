@@ -21,6 +21,9 @@ export class VueMappList extends Vue {
 
     @Prop([String, Boolean])
     expanded: string | boolean;
+
+    @Prop(Boolean)
+    disabled: boolean;
 }
 
 @Component({

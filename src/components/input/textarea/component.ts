@@ -61,7 +61,6 @@ export class VueMappTextarea extends InputElement {
   }
 
   onInput($event) {
-    console.log('input')
     if (this.$refs.textarea.value !== this.inputValue) {
       // this.VMInputCheckState = 'changed';
       this.$emit('input', $event.target.value);
@@ -77,6 +76,9 @@ export class VueMappTextarea extends InputElement {
   }
 
   mounted() {
-    autosize(this.$refs.textarea);
+    this.inputValue = this.value;
+    this.$nextTick(() => {
+      autosize(this.$refs.textarea);
+    })
   }
 }

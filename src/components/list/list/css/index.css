@@ -9,6 +9,14 @@
     flex-wrap: nowrap;
     list-style: none;
 
+    &:not(.is--disabled) {
+
+        .vm-list__item-head {
+            cursor: pointer;
+            @mixin action;
+        }
+    }
+
     &__item {
         min-height: 40px;
         height: auto;
@@ -52,13 +60,11 @@
             padding: 10px 16px;
             padding-right: 12px;
             position: relative;
-            cursor: pointer;
             user-select: none;
             color: inherit !important;
             text-transform: none;    
             text-decoration: none;
             line-height: 24px;
-            @mixin action;
 
             &:after {
                 content: '';

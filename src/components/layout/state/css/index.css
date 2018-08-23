@@ -1,0 +1,60 @@
+@import 'theme-list/default';
+@import './theme.css';
+
+$card-header-height: 60px;
+$card-padding: 20px;
+
+.vm-card {
+
+    &__wrapper {
+        position: relative;
+        border-radius: 2px;
+        box-shadow: $shadow-1;
+
+        &.is--hoverup {
+
+            &:hover {
+                box-shadow: $shadow-4;
+                transition: box-shadow $transition;
+            }
+        }
+
+        &.is--noshadow {
+            border-width: 1px;
+            border-style: solid;
+            box-shadow: none;
+        }
+    }
+
+    &__header {
+        box: horizontal middle;
+        height: $card-header-height;
+        padding-left: $card-padding;
+        padding-right: calc($card-padding / 2);
+
+        + .vm-card__content {
+            padding-top: 0;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        flex: 1 1 auto;
+        font-weight: 500;
+        font-size: $text-large-3;
+        line-height: $card-header-height;
+        @apply --text-nowrap;
+    }
+
+    &__icons {
+        margin-left: $card-padding;
+    }
+
+    &__content {
+        padding: $card-padding;
+    }
+
+    .vm-list__item-head {
+        padding-left: $card-padding;
+    }
+}
