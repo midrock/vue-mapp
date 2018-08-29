@@ -265,17 +265,14 @@ export class VueMappSelect extends InputElement {
 
 
   private onFieldInput(e) {
-    console.log('input')
     this.onFilterInput(e);
   }
 
   private onFieldFocus() {
-    console.log('focus')
     this.show();
   }
 
   private onFieldBlur() {
-    console.log('blur');
     this.opened ? null : this.hide()
   }
 
@@ -284,7 +281,7 @@ export class VueMappSelect extends InputElement {
       this.show();
     }
   }
-  
+
 
   // private onMenuExpanded(): void {
   //     this.scrollToActiveItem();

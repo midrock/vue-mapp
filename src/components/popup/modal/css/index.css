@@ -11,6 +11,11 @@
     background: rgba(0,0,0,.48);
     overflow: auto;
     font-size: 14px;
+    pointer-events: all;
+
+    * {
+        pointer-events: all;
+    }
 
     &__spacer {
         flex-grow: 1;

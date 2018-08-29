@@ -19,6 +19,7 @@
         border-style: solid;
         flex-shrink: 0;
         box-sizing: border-box;
+        flex: 0 0 auto;
 
         &:after {
             position: absolute;
