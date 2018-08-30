@@ -131,12 +131,12 @@ export default class VueMappDate extends InputElement {
     apply() {
         let value: string = '';
 
-        const jsonDate = this.inputDate.toJSON();
+        const jd = this.inputDate.toLocaleDateString();
 
-        if (this.type === 'month') {
-            value = jsonDate.slice(0, 8);
-        } else if (this.type === 'day') {
-            value = jsonDate.slice(0, 10);
+        value = jd.slice(6, 10) + '-' + jd.slice(3, 5)
+
+        if (this.type === 'day') {
+            value += '-' + jd.slice(0, 2);
         }
 
         if (this.emitValue !== value) {
@@ -345,7 +345,6 @@ export default class VueMappDate extends InputElement {
     }
 
     setDay(day: VMDateDayItem) {
-
         if (day.prev) {
             this.prevMonth();
         } else if (day.next) {
