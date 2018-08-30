@@ -356,8 +356,8 @@ export default class VueMappDate extends InputElement {
         this.changeState('time');
     }
 
-    setDate(unixDate: number) {
-        const date = new Date(unixDate);
+    setDate(_date: string | number) {
+        const date = new Date(_date);
 
         this.inputYear = date.getFullYear();
         this.inputMonth = date.getMonth();
@@ -408,6 +408,7 @@ export default class VueMappDate extends InputElement {
 
         if (value) {
             this.emitValue = value;
+            this.setDate(value);
         } else {
             this.now();
         }
