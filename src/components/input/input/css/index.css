@@ -169,6 +169,10 @@
       left: 16px;
     }
 
+    .vm-input__main {
+      padding: 8px;
+    }
+
     .vm-input__message {
       padding: 0 16px;
     }
@@ -183,8 +187,7 @@
     }
 
     input {
-      padding: 0 16px;
-      min-height: 48px;
+      padding: 0 8px;
     }
   }
 
