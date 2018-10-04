@@ -1,20 +1,22 @@
-import InputElement from "component/input/input-element";
-import autosize from "src/helpers/autosize";
-import { Component, Watch, Prop } from "vue-property-decorator";
-import { VueMappInput } from "component/input/input";
+import InputElement from 'component/input/input-element';
+import autosize from 'src/helpers/autosize';
+import { Component, Watch, Prop } from 'vue-property-decorator';
+import { VueMappInput } from 'component/input/input';
 
 @Component({
-  name: "vm-textarea",
+  name: 'vm-textarea',
   components: {
-    "vm-input": VueMappInput
-  }
+    'vm-input': VueMappInput,
+  },
 })
 export class VueMappTextarea extends InputElement {
   inputValue: string | number = '';
   focused: boolean = false;
 
-  @Prop([String, Number]) rows: string | number;
-  @Prop(String) placeholder: string;
+  @Prop([String, Number])
+  rows: string | number;
+  @Prop(String)
+  placeholder: string;
 
   $refs: {
     textarea: HTMLInputElement;
@@ -35,17 +37,25 @@ export class VueMappTextarea extends InputElement {
     }
   }
 
-  @Watch("box")
+  @Watch('box')
   updateView() {
     this.$nextTick(() => {
       autosize.update(this.$refs.textarea);
     });
   }
 
+  @Watch('value')
+  updateFromPropValue(value) {
+    if (value !== this.inputValue) {
+      this.inputValue = value;
+      this.drawBox();
+    }
+  }
+
   onFocus($event) {
     if (/readonly|disabled/.test(this.status)) return;
     this.focused = true;
-    this.$emit("focus", $event);
+    this.$emit('focus', $event);
   }
 
   onBlur($event) {
@@ -57,7 +67,7 @@ export class VueMappTextarea extends InputElement {
       this.validate();
     }
 
-    this.$emit("blur", $event);
+    this.$emit('blur', $event);
   }
 
   onInput($event) {
@@ -72,13 +82,13 @@ export class VueMappTextarea extends InputElement {
   drawBox() {
     this.$nextTick(() => {
       this.$refs.input.drawBoxSvg();
-    })
+    });
   }
 
   mounted() {
     this.inputValue = this.value;
     this.$nextTick(() => {
       autosize(this.$refs.textarea);
-    })
+    });
   }
 }
