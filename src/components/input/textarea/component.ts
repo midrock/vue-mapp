@@ -39,15 +39,14 @@ export class VueMappTextarea extends InputElement {
 
   @Watch('box')
   updateView() {
-    this.$nextTick(() => {
-      autosize.update(this.$refs.textarea);
-    });
+    this.$nextTick(this.updateAutosize);
   }
 
   @Watch('value')
   updateFromPropValue(value) {
     if (value !== this.inputValue) {
       this.inputValue = value;
+      this.updateAutosize();
       this.drawBox();
     }
   }
@@ -85,10 +84,15 @@ export class VueMappTextarea extends InputElement {
     });
   }
 
+  updateAutosize() {
+    autosize.update(this.$refs.textarea);
+  }
+
   mounted() {
     this.inputValue = this.value;
     this.$nextTick(() => {
       autosize(this.$refs.textarea);
+      this.updateAutosize();
     });
   }
 }
