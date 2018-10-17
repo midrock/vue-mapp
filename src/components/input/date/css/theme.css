@@ -1,68 +1,55 @@
 .vm-date {
-    
-    &__header {
+  &__header {
+    background: $primary;
+    color: $primary-text;
+  }
+
+  &__toolbar {
+    &-title,
+    button {
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &__years {
+    &-item {
+      &.is--active {
+        color: $primary;
+      }
+    }
+  }
+
+  &__time {
+    &-div {
+      color: $default-text-light;
+    }
+  }
+
+  &__day {
+    &-wrapper {
+      &:hover:not(.is--active) {
+        background: $default-bg-dark;
+      }
+
+      &.is--active {
         background: $primary;
-        color: $primary-text;
+        color: #fff;
+      }
+    }
+  }
+
+  &__days {
+    &-weekday {
     }
 
-    &__toolbar {
-
-        &-title, button {
-
-            &:hover {
-                color: $primary;
-            }
+    &-item {
+      &.is--now {
+        &:after {
+          border-color: $primary;
         }
+      }
     }
-
-    &__years {
-
-        &-item {
-
-            &.is--active {
-                color: $primary;
-            }
-        }
-    }
-
-    &__time {
-
-        &-div {
-            color: $default-text-light;
-        }
-    }
-
-    &__day {
-
-        &-wrapper {
-
-            &:hover:not(.is--active) {
-                background: $default-bg-dark;
-            }
-
-            &.is--active {
-                background: $primary;
-                color: #FFF;
-            }
-        }
-    }
-
-    &__days {
-
-        &-weekday {
-        
-        }
-
-        &-item {
-
-            
-            
-            &.is--now {
-
-                &:after {
-                    border-color: $primary;
-                }
-            }
-        }
-    }
+  }
 }

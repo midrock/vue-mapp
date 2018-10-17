@@ -19,7 +19,10 @@ vm-menu.vm-date(
 
     .vm-date__header.box-primary
         .vm-date__header-year(
-            :class="{ 'is--active': state === 'year' }"
+            :class="{ 
+                'is--active': state === 'year',
+                'is--disabled': years.length === 1,
+            }"
             @click="changeState('year')"
         ) {{ inputYear }}
 
@@ -50,16 +53,25 @@ vm-menu.vm-date(
     .vm-date__wrapper
         .vm-date__toolbar(v-if="state !== 'year'")
             vm-button(
+                :class="{
+                    'vm-date__toolbar-button--hidden': !prevArrowEnabled,
+                }"
                 icon="keyboard_arrow_left"
                 :noshadow="true"
                 @click="toolbarLeftClick"
             )
 
             .vm-date__toolbar-title(
+                :class="{
+                    'vm-date__toolbar-title--disabled': !prevStateEnabled
+                }"
                 @click="prevState"
             ) {{ toolbarTitle }}
 
             vm-button(
+                :class="{
+                    'vm-date__toolbar-button--hidden': !nextArrowEnabled,
+                }"
                 icon="keyboard_arrow_right"
                 :noshadow="true"
                 @click="toolbarRightClick"
@@ -102,6 +114,7 @@ vm-menu.vm-date(
                     )
                         .vm-date__day-wrapper(
                             :class="{
+                                'is--disabled': day.disabled,
                                 'is--outside': day.prev || day.next,
                                 'is--active': day.value === inputDay && !day.next && !day.prev,
                                 'is--now': day.value === (new Date()).getDate()  

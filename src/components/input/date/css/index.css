@@ -6,278 +6,303 @@ $date-toolbar-height: 56px;
 $date-content-height: 240px;
 
 .vm-date {
+  &__popup {
+    width: 460px;
+  }
 
-    &__popup {
-        width: 460px;
+  &__header {
+    width: 160px;
+    flex: 0 0 auto;
+    padding: 20px;
+    font-weight: 500;
+    position: relative;
+    display: none;
+
+    @media (--sm-view) {
+      display: block;
     }
 
-    &__header {
-        width: 160px;
-        flex: 0 0 auto;
-        padding: 20px;
+    & > div {
+      opacity: 0.72;
+      cursor: pointer;
+
+      &.is--active {
+        opacity: 1;
+        cursor: default;
+      }
+    }
+
+    &-year,
+    &-time {
+      font-size: 16px;
+
+      &.is--disabled {
+        pointer-events: none;
+      }
+    }
+
+    &-time {
+      margin-top: 20px;
+
+      span:nth-child(2) {
+        padding: 0 2px;
+      }
+    }
+
+    &-date {
+      margin-top: 16px;
+    }
+
+    &-daymonth {
+      font-size: 22px;
+      line-height: 1.22em;
+      margin-top: 12px;
+    }
+
+    &-month {
+      margin-left: 8px;
+      font-size: 0.8em;
+
+      .vm-date__wrapper[data-vm-state='month'] & {
+        opacity: 1;
+        cursor: default;
+      }
+    }
+
+    &-weekday {
+      line-height: 32px;
+    }
+  }
+
+  &__content {
+  }
+
+  &__wrapper {
+    flex: 1 1 auto;
+    max-width: 300px;
+    width: 300px;
+  }
+
+  &__footer {
+    box: horizontal right;
+    padding: 8px 16px;
+  }
+
+  &__toolbar {
+    box: horizontal middle;
+    height: $date-toolbar-height;
+    padding: 0 10px;
+
+    &-title {
+      cursor: pointer;
+      height: 100%;
+      flex: 1 1 auto;
+      text-align: center;
+      line-height: $date-toolbar-height;
+      font-weight: 500;
+      text-transform: capitalize;
+
+      &--disabled {
+        cursor: default;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+
+    &-button {
+      &--hidden {
+        visibility: hidden;
+      }
+    }
+
+    .vm-button {
+      width: 48px !important;
+      height: 100%;
+      flex: 0 0 auto;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  &__years {
+    height: calc($date-toolbar-height + $date-content-height);
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-style: solid;
+    border-width: 0 0 1px;
+
+    &-item {
+      text-align: center;
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      text-decoration: none;
+      @mixin action;
+
+      &:after {
+        content: '';
+      }
+
+      &.is--active {
+        font-size: 26px;
+        height: 64px;
+        line-height: 64px;
         font-weight: 500;
+      }
+    }
+  }
+
+  &__months {
+    box: horizontal wrap;
+    padding: 0 16px;
+    font-weight: 500;
+    height: $date-content-height;
+
+    button {
+      width: 33.3333%;
+      margin: 10px 0;
+    }
+
+    [disabled] {
+      opacity: 0.14;
+    }
+  }
+
+  &__time {
+    height: calc(100% - $date-toolbar-height);
+    box: horizonatal center middle;
+
+    &-wrapper {
+      box: horizontal;
+    }
+
+    &-div {
+      margin: 0 16px;
+      font-size: 40px;
+      font-weight: 500;
+    }
+
+    &-item {
+      font-size: 48px;
+    }
+  }
+
+  &__day {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    flex-basis: 14.2857142%;
+    padding: 2px;
+
+    &-wrapper {
+      size: 100%;
+      border-radius: 4px;
+      line-height: 28px;
+      cursor: pointer;
+      will-change: opacity;
+
+      &.is--outside {
+        opacity: 0.32;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &.is--disabled {
+        opacity: 0.14;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__days {
+    padding: 0 16px 12px;
+    height: $date-content-height;
+
+    &-weekdays {
+      box: horizontal;
+      width: 100%;
+      flex: 0 0 100%;
+      opacity: 0.64;
+      margin-bottom: 4px;
+    }
+
+    &-weekday {
+      cursor: default;
+    }
+
+    &-item[data-vm-day] {
+      cursor: pointer;
+      position: relative;
+    }
+
+    &-item,
+    &-weekday {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 12px;
+      flex-basis: 14.2857142%;
+      line-height: 32px;
+    }
+
+    &-item {
+      border-radius: 2px;
+
+      &:after {
+        content: attr(data-vm-day);
+      }
+
+      &.is--now,
+      &.is--active {
         position: relative;
-        display: none;
 
-        @media(--sm-view) {
-            display: block;
+        &:after {
+          border-radius: 2px;
+          position: absolute;
+          size: calc(100% - 4px);
+          top: 2px;
+          left: 2px;
         }
+      }
 
-        & > div {
-            opacity: .72;
-            cursor: pointer;
-
-            &.is--active {
-                opacity: 1;
-                cursor: default;
-            }
-        }
-
-        &-year, &-time {
-            font-size: 16px;
-        }
-
-        &-time {
-            margin-top: 20px;
-
-            span:nth-child(2) {
-                padding: 0 2px;
-            }
-        }
-
-        &-date {
-            margin-top: 16px;
-        }
-
-        &-daymonth {
-            font-size: 22px;
-            line-height: 1.22em;
-            margin-top: 12px;
-        }
-
-        &-month {
-            margin-left: 8px;
-            font-size: 0.8em;
-
-            .vm-date__wrapper[data-vm-state="month"] & {
-                opacity: 1;
-                cursor: default;
-            }
-        }
-
-        &-weekday {
-            line-height: 32px;
-        }
-    }
-
-    &__content {
-        
-    }
-
-    &__wrapper {
-        flex: 1 1 auto;
-        max-width: 300px;
-        width: 300px;
-    }
-
-    &__footer {
-        box: horizontal right;
-        padding: 8px 16px;
-    }
-
-    &__toolbar {
-        box: horizontal middle;
-        height: $date-toolbar-height;
-        padding: 0 10px;
-
-        &-title {
-            cursor: pointer;
-            height: 100%;
-            flex: 1 1 auto;
-            text-align: center;
-            line-height: $date-toolbar-height;
-            font-weight: 500;
-            text-transform: capitalize;
-        }
-
-        .vm-button {
-            width: 48px !important;
-            height: 100%;
-            flex: 0 0 auto;
-
-            &:after {
-                content: none;
-            }
-        }
-    }
-
-    &__years {
-        height: calc($date-toolbar-height + $date-content-height);
-        overflow-y: auto;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+      &.is--now:after {
+        border-width: 1px;
         border-style: solid;
-        border-width: 0 0 1px;
-
-        &-item {
-            text-align: center;
-            font-size: 16px;
-            height: 40px;
-            line-height: 40px;
-            cursor: pointer;
-            text-decoration: none;
-            @mixin action;
-
-            &:after {
-                content: '';
-            }
-
-            &.is--active {
-                font-size: 26px;
-                height: 64px;
-                line-height: 64px;
-                font-weight: 500;
-            }
-        }
+      }
     }
 
-    &__months {
-        box: horizontal wrap;
-        padding: 0 16px;
-        font-weight: 500;
-        height: $date-content-height;
-
-        button {
-            width: 33.3333%;
-            margin: 10px 0;
-        }
+    &-items {
+      box: horizontal wrap;
     }
+  }
 
-    &__time {
-        height: calc(100% - $date-toolbar-height);
-        box: horizonatal center middle;
+  input {
+    cursor: pointer;
+  }
 
-        &-wrapper {
-            box: horizontal;
-        }
+  .vm-date__header-today {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+  }
 
-        &-div {
-            margin: 0 16px;
-            font-size: 40px;
-            font-weight: 500;
-        }
+  .vm-popup__content {
+    box: horizontal;
+  }
 
-        &-item {
-            font-size: 48px;
-        }
+  .vm-input {
+    .vm-field & {
+      padding-top: 0;
     }
-
-    &__day {
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 13px;
-        flex-basis: 14.2857142%;
-        padding: 2px;
-
-
-        &-wrapper {
-            size: 100%;
-            border-radius: 2px;
-            line-height: 28px;
-            cursor: pointer;
-            will-change: opacity;
-
-            &.is--outside {
-                opacity: .32;
-                
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
-    }
-
-    &__days {
-        padding: 0 16px 12px;
-        height: $date-content-height;
-
-        &-weekdays {
-            box: horizontal;
-            width: 100%;
-            flex: 0 0 100%;
-            opacity: .64;
-            margin-bottom: 4px;
-        }
-
-        &-weekday {
-            cursor: default;
-        }
-
-        &-item[data-vm-day] {
-            cursor: pointer;
-            position: relative;
-        }
-
-        &-item, &-weekday {
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: 500;
-            font-size: 12px;
-            flex-basis: 14.2857142%;
-            line-height: 32px;
-        }
-
-        &-item {
-            border-radius: 2px;
-
-            &:after {
-                content: attr(data-vm-day);
-            }
-
-
-            &.is--now, &.is--active {
-                position: relative;
-
-                &:after {
-                    border-radius: 2px;
-                    position: absolute;
-                    size: calc(100% - 4px);
-                    top: 2px;
-                    left: 2px;
-                }
-            }
-
-            &.is--now:after {
-                border-width: 1px;
-                border-style: solid;
-            }
-        }
-
-        &-items {
-            box: horizontal wrap;
-        }
-    }
-
-    input {
-        cursor: pointer;
-    }
-
-    .vm-date__header-today {
-        position: absolute;
-        bottom: 8px;
-        left: 8px;
-    }
-
-    .vm-popup__content {
-        box: horizontal;
-    }
-
-    .vm-input {
-
-        .vm-field & {
-            padding-top: 0;
-        }
-    }
+  }
 }

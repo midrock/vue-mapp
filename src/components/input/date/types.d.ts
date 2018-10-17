@@ -1,22 +1,10 @@
+export type VMDateState = 'year' | 'month' | 'day' | 'time';
 
-export type VMDateState = 
-    | 'year'
-    | 'month'
-    | 'day'
-    | 'time'
-    ;
-
-export type VMDateType =
-    | 'year'
-    | 'month'
-    | 'date'
-    | 'datetime'
-    ;
+export type VMDateType = 'year' | 'month' | 'date' | 'datetime';
 
 export interface VMDateConfig {
-    date?: VMDateState;
+  date?: VMDateState;
 }
-
 
 // const states: VMDateState[] = [
 //     VMDateState.YEAR,
@@ -26,7 +14,9 @@ export interface VMDateConfig {
 // ];
 
 export interface VMDateDayItem {
-    prev?: boolean;
-    next?: boolean;
-    value: number;
+  prev?: boolean;
+  next?: boolean;
+  value: number;
+  disabled?: boolean;
+  date: Date;
 }
