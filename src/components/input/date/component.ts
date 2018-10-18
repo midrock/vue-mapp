@@ -116,16 +116,16 @@ export default class VueMappDate extends InputElement {
   fixedState: VMDateState;
 
   @Prop({
-    type: String,
+    type: [String, Date],
     default: '1900-01-01',
   })
-  startDate: string;
+  startDate: string | Date;
 
   @Prop({
-    type: [String, Number],
+    type: [String, Date],
     default: '2100-01-01',
   })
-  endDate: string;
+  endDate: string | Date;
 
   @Watch('value')
   updateValue(newValue: string) {
@@ -195,7 +195,7 @@ export default class VueMappDate extends InputElement {
     if (state === 'time') {
       return `${this.inputDay} ${dict.month[this.inputMonth][1]} ${
         this.inputYear
-      }`;
+        }`;
     }
 
     return `${dict.month[this.inputMonth][0]} ${this.inputYear}`;
@@ -445,8 +445,8 @@ export default class VueMappDate extends InputElement {
 
   get years(): number[] {
     const years: number[] = [];
-    const startYear = new Date(this.startDate).getFullYear();
-    const endYear = new Date(this.endDate).getFullYear();
+    const startYear = this.$_startDate.getFullYear();
+    const endYear = this.$_endDate.getFullYear();
 
     for (let i = startYear; i <= endYear; i++) {
       years.push(i);
