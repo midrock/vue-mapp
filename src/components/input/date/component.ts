@@ -6,6 +6,7 @@ import { VueMappIcon } from 'component/typo/icon';
 import { VueMappMenu } from 'component/popup/menu';
 import { VueMappInput } from 'component/input/input';
 import { pad } from 'src/helpers/parse';
+import date from '.';
 
 const dict = {
   month: [
@@ -32,6 +33,38 @@ const dict = {
     'воскресение',
   ],
 };
+
+
+type CompareLevel = 'day' | 'month' | 'year' | 'time';
+
+function toDate(value: string | number | Date): Date {
+  return value instanceof Date ? value : new Date(value);
+}
+
+function compare(_date1: string | number | Date, _date2: string | number | Date, level: CompareLevel = 'day') {
+  if (!_date1 || !_date2) {
+    console.warn('vm-date#compare: 2 arguments expected');
+    return;
+  }
+
+  const date1 = toDate(_date1);
+  const date2 = toDate(_date2);
+
+  const runners = {
+    year: () => date1.getFullYear() === date2.getFullYear(),
+    month: () => {
+      return date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth()
+    },
+    day: () => {
+      return date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate()
+    }
+  }
+
+  return Function.prototype.apply.call(runners[level]);
+}
 
 @Component({
   name: 'vm-date',
@@ -92,8 +125,10 @@ export default class VueMappDate extends InputElement {
 
   @Prop(String)
   placeholder: string;
+
   @Prop(String)
   emitFormat: string;
+
   @Prop(String)
   fieldFormat: string;
 
@@ -140,6 +175,10 @@ export default class VueMappDate extends InputElement {
       this.inputHours,
       this.inputMinutes
     );
+  }
+
+  get emitValueDate(): Date | null {
+    return this.emitValue && new Date(this.emitValue) || null;
   }
 
   apply() {
@@ -271,24 +310,30 @@ export default class VueMappDate extends InputElement {
     const lastDayOfMonth = new Date(inputYear, inputMonth + 1, 0);
     const prevMonthDaysCount: number = (firstDayOfMonth.getDay() || 7) - 1;
 
-    for (let i = prevMonthDaysCount; i >= 0; i--) {
-      const prevDay = new Date(inputYear, inputMonth, -i);
+    if (prevMonthDaysCount > 0) {
+      for (let i = prevMonthDaysCount; i >= 0; i--) {
+        const prevDay = new Date(inputYear, inputMonth, -i);
 
-      days.push({
-        prev: true,
-        value: prevDay.getDate(),
-        disabled: !this.$_filterDate(prevDay),
-        date: prevDay,
-      });
+        days.push({
+          key: prevDay.toJSON().slice(0, 10),
+          prev: true,
+          value: prevDay.getDate(),
+          disabled: !this.$_filterDate(prevDay),
+          date: prevDay,
+        });
+      }
     }
 
     for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
       const currentDay = new Date(inputYear, inputMonth, i);
 
       days.push({
+        key: currentDay.toJSON().slice(0, 10),
         value: currentDay.getDate(),
         disabled: !this.$_filterDate(currentDay),
         date: currentDay,
+        active: this.emitValue && compare(this.emitValue, currentDay),
+        today: compare(new Date(), currentDay),
       });
     }
 
@@ -298,6 +343,7 @@ export default class VueMappDate extends InputElement {
       const nextDay = new Date(inputYear, inputMonth + 1, i);
 
       days.push({
+        key: nextDay.toJSON().slice(0, 10),
         next: true,
         value: nextDay.getDate(),
         disabled: !this.$_filterDate(nextDay),

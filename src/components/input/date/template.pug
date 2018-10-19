@@ -27,13 +27,14 @@ vm-menu.vm-date(
         ) {{ inputYear }}
 
         .vm-date__header-date(
+            v-if="emitValueDate"
             :class="{ 'is--active': /day|month/.test(state) }"
             @click="changeState('day')"
         )
             .vm-date__header-daymonth
-                span.vm-date__header-day {{ inputDay }}
-                span.vm-date__header-month {{ inputMonth | decMonth }}
-            .vm-date__header-weekday {{ inputDate | weekday }}
+                span.vm-date__header-day {{ emitValueDate.getDate() }}
+                span.vm-date__header-month {{ emitValueDate.getMonth() | decMonth }}
+            .vm-date__header-weekday {{ emitValueDate | weekday }}
 
         .vm-date__header-time(
             v-if="type === 'time'"
@@ -109,15 +110,16 @@ vm-menu.vm-date(
                 
                 .vm-date__days-items
                     .vm-date__day(
-                        v-for="(day, idx) in days"
-                        :key="idx"
+                        v-for="day in days"
+                        :key="day.key"
                     )
                         .vm-date__day-wrapper(
+                            :data-value="day.key"
                             :class="{
                                 'is--disabled': day.disabled,
                                 'is--outside': day.prev || day.next,
-                                'is--active': day.value === inputDay && !day.next && !day.prev,
-                                'is--now': day.value === (new Date()).getDate()  
+                                'is--active': day.active,
+                                'is--now': day.today,
                             }"
                             @click="setDay(day)"
                         ) {{ day.value || '' }}

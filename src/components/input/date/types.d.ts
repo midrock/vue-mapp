@@ -18,5 +18,8 @@ export interface VMDateDayItem {
   next?: boolean;
   value: number;
   disabled?: boolean;
+  active?: boolean;
+  today?: boolean;
   date: Date;
+  key: string;
 }
