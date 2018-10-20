@@ -162,6 +162,12 @@ export default class VueMappDate extends InputElement {
   })
   endDate: string | Date;
 
+  @Prop({
+    type: String,
+    default: 'small',
+  })
+  view: string;
+
   @Watch('value')
   updateValue(newValue: string) {
     this.emitValue = newValue;
@@ -252,6 +258,10 @@ export default class VueMappDate extends InputElement {
     }
 
     return this.filter(date);
+  }
+
+  $_showFooter() {
+    return true
   }
 
   changeState(state: VMDateState) {

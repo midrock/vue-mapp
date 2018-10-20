@@ -1,4 +1,5 @@
 vm-menu.vm-date(
+    v-bind="$attrs"
     ref="menu"
     contentClass="vm-date__popup"
 )
@@ -17,7 +18,9 @@ vm-menu.vm-date(
             :disabled="disabled"
         )
 
-    .vm-date__header.box-primary
+    .vm-date__header.box-primary(
+        v-if="view === 'extended'"
+    )
         .vm-date__header-year(
             :class="{ 
                 'is--active': state === 'year',
@@ -132,7 +135,9 @@ vm-menu.vm-date(
                     .vm-date__time-div :
                     .vm-date__time-item {{ inputMinuts | pad }}
 
-        .vm-date__footer
+        .vm-date__footer(
+            v-if="$_showFooter"
+        )
             vm-button(
                 @click="clear"
             ) Очистить

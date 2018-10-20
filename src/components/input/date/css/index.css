@@ -7,7 +7,7 @@ $date-content-height: 240px;
 
 .vm-date {
   &__popup {
-    width: 460px;
+    /* width: 460px; */
   }
 
   &__header {
