@@ -46,8 +46,10 @@ export class VueMappTextarea extends InputElement {
   updateFromPropValue(value) {
     if (value !== this.inputValue) {
       this.inputValue = value;
-      this.updateAutosize();
-      this.drawBox();
+      this.$nextTick(() => {
+        this.updateAutosize();
+        this.drawBox();
+      })
     }
   }
 
