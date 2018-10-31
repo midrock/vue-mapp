@@ -2,9 +2,17 @@
 @import "./theme.css";
 
 .vm-textarea {
+
+  &.is--box {
+
+    textarea {
+      padding: 16px;
+    }
+  }
+
   textarea {
     size: 100%;
-    padding: 0;
+    padding: 4px 0;
     display: block;
     border: none;
     flex-grow: 1;
@@ -14,7 +22,6 @@
     z-index: 1;
     min-height: 32px;
     flex: 1 1;
-    padding: 16px;
     line-height: 24px;
     resize: none;
     @apply --text-nowrap;
