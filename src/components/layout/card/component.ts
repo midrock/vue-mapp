@@ -8,4 +8,7 @@ export default class VueMappCard extends Vue {
 
   @Prop([String, Boolean])
   hoverup: string | boolean;
+
+  @Prop(String)
+  title: string;
 }

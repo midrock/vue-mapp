@@ -6,11 +6,12 @@
         }"
     )
         .vm-card__header(
-            v-if="$slots.title || $slots.header"
+            v-if="$slots.title || $slots.header || title"
         )
             .vm-card__title(
-                v-if="$slots.title"
+                v-if="$slots.title || title"
             ) 
+                | {{ title }}
                 slot(name="title")
 
             slot(name="header")
