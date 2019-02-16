@@ -8,9 +8,6 @@
         .vm-input__label(
             v-if="$_label"
             ref="label"
-            :class="{
-                'is--noanimate': noanimate    
-            }"
         ) 
             | {{ $_label }}
             span(v-if="$_required") *
