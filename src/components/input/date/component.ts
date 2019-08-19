@@ -321,7 +321,7 @@ export default class VueMappDate extends InputElement {
     const prevMonthDaysCount: number = (firstDayOfMonth.getDay() || 7) - 1;
 
     if (prevMonthDaysCount > 0) {
-      for (let i = prevMonthDaysCount; i >= 0; i--) {
+      for (let i = prevMonthDaysCount; i > 0; i--) {
         const prevDay = new Date(inputYear, inputMonth, -i);
 
         days.push({
