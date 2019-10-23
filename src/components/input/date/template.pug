@@ -16,13 +16,14 @@ vm-menu.vm-date(
             slot="right"
             icon="event"
             :disabled="disabled"
+            :tabindex="tabindex"
         )
 
     .vm-date__header.box-primary(
         v-if="view === 'extended'"
     )
         .vm-date__header-year(
-            :class="{ 
+            :class="{
                 'is--active': state === 'year',
                 'is--disabled': years.length === 1,
             }"
@@ -42,7 +43,7 @@ vm-menu.vm-date(
         .vm-date__header-time(
             v-if="type === 'time'"
             :class="{
-                'is--active': state === 'time'    
+                'is--active': state === 'time'
             }"
             @click="changeState('time')"
         )
@@ -85,14 +86,14 @@ vm-menu.vm-date(
             ul.vm-date__years(
                 v-show="state === 'year'"
                 ref="years"
-            ) 
+            )
                 li.vm-date__years-item.fill-action(
                     v-for="year in years"
                     :key="year"
                     :class="{ 'is--active': year === inputYear }"
                     @click="setYear(year)"
                 ) {{ year }}
-            
+
             .vm-date__months(
                 v-if="state === 'month'"
             )
@@ -110,7 +111,7 @@ vm-menu.vm-date(
                     .vm-date__days-weekday(
                         v-for="idx in [0, 1, 2, 3, 4, 5, 6]"
                     ) {{ idx | shortWeekdayNameByIndex }}
-                
+
                 .vm-date__days-items
                     .vm-date__day(
                         v-for="day in days"
@@ -126,7 +127,7 @@ vm-menu.vm-date(
                             }"
                             @click="setDay(day)"
                         ) {{ day.value || '' }}
-            
+
             .vm-date__time(
                 v-if="state === 'time'"
             )

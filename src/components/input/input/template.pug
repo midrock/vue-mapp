@@ -8,13 +8,13 @@
         .vm-input__label(
             v-if="$_label"
             ref="label"
-        ) 
+        )
             | {{ $_label }}
             span(v-if="$_required") *
 
         .vm-input__left(v-if="$slots.left")
             slot(name="left")
-        
+
         slot(name="main" v-if="$slots.main")
         .vm-input__main(v-else)
             slot(name="entry")
@@ -30,6 +30,7 @@
                 :value="inputValue"
                 :spellcheck="spellcheck"
                 :autocomplete="autocomplete"
+                tabindex="-1"
                 @focus="onFocus"
                 @blur="onBlur"
                 @input="onInput"
@@ -47,7 +48,7 @@
 
         svg(v-if="$_box")
             path.vm-input__outline(ref="svgboxpath")
-        
+
         .vm-input__divider(v-if="!$_box")
             .vm-input__divider-loader(
                 v-if="loading || validateStatus === 'process'"

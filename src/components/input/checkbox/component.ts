@@ -17,7 +17,12 @@ export default class VueMappCheckbox extends InputElement {
 
     @Prop(Boolean) iconRight: boolean;
     @Prop([Boolean, Array]) model: boolean | any[];
-    
+    @Prop({
+        type: String,
+        default: '-1',
+    })
+    tabindex: string;
+
     @Watch('model')
     updateValue(newValue) {
         this.emitValue = newValue;

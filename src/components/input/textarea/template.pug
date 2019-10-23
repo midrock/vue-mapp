@@ -3,6 +3,7 @@ vm-input.vm-textarea(
     :label="label"
     :box="box"
     :expanded="focused || !!inputValue"
+    tabindex="-1"
 )
     textarea(
         ref="textarea"
@@ -17,6 +18,7 @@ vm-input.vm-textarea(
         :spellcheck="spellcheck"
         :autocomplete="autocomplete"
         :value="inputValue"
+        :tabindex="tabindex"
         @focus="onFocus"
         @blur="onBlur"
         @input="onInput"

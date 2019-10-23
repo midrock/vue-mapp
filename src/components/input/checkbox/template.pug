@@ -3,19 +3,22 @@
     :readonly="status === 'readonly'"
     :class="{
         'is--checked': checked,
-        'is--right': iconRight    
+        'is--right': iconRight
     }"
     @click="click"
 )
-    .vm-checkbox__icon
+    .vm-checkbox__icon(
+        :tabindex="tabindex"
+        @keyup.enter="click"
+    )
         .vm-checkbox__checkmark(v-if="checked")
 
     .vm-checkbox__label(
         v-if="label || $slots.default"
-    ) 
+    )
         | {{ label }}
         slot
-    
+
     input(
         v-show="false"
         type="checkbox"

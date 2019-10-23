@@ -168,6 +168,12 @@ export default class VueMappDate extends InputElement {
   })
   view: string;
 
+  @Prop({
+    type: String,
+    default: '-1',
+  })
+  tabindex: string;
+
   @Watch('value')
   updateValue(newValue: string) {
     this.emitValue = newValue;
