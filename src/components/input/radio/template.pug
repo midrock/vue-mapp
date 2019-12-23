@@ -1,12 +1,25 @@
 .vm-radio(
     :disabled="status === 'disabled'"
     :class="{
-        'is--checked': emitValue
+        'is--checked': emitValue,
+        'is--focused': isFocused,
     }"
     @click="click"
 )
     .vm-radio__icon
-    .vm-radio__label(
+    label.vm-radio__label(
         v-if="$slots.default || label"
     ) {{ label }}
         slot
+    input.vm-radio__input(
+        type="radio"
+        :name="name"
+        :value="value"
+        :disabled="disabled"
+        :checked="checked"
+        @input="click"
+        @keyup.enter="click"
+        @keyup.space="click"
+        @focus="isFocused = true"
+        @blur="isFocused = false"
+    )

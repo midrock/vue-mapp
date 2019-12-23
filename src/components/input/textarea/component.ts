@@ -15,8 +15,12 @@ export class VueMappTextarea extends InputElement {
 
   @Prop([String, Number])
   rows: string | number;
+
   @Prop(String)
   placeholder: string;
+
+  @Prop([String, Number])
+  tabindex: string | number;
 
   $refs: {
     textarea: HTMLInputElement;

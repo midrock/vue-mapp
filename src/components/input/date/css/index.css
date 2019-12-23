@@ -89,27 +89,9 @@ $date-content-height: 240px;
   }
 
   &__toolbar {
-    box: horizontal middle;
+    box: horizontal middle space-between;
     height: $date-toolbar-height;
     padding: 0 10px;
-
-    &-title {
-      cursor: pointer;
-      height: 100%;
-      flex: 1 1 auto;
-      text-align: center;
-      line-height: $date-toolbar-height;
-      font-weight: 500;
-      text-transform: capitalize;
-
-      &--disabled {
-        cursor: default;
-
-        &:hover {
-          color: inherit;
-        }
-      }
-    }
 
     &-button {
       &--hidden {
@@ -117,13 +99,32 @@ $date-content-height: 240px;
       }
     }
 
-    .vm-button {
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 48px !important;
       height: 100%;
       flex: 0 0 auto;
 
       &:after {
         content: none;
+      }
+    }
+
+    &-title {
+      cursor: pointer;
+      text-align: center;
+      font-weight: 500;
+      text-transform: capitalize;
+      width: auto !important;
+
+      &--disabled {
+        cursor: default;
+
+        &:hover {
+          color: inherit;
+        }
       }
     }
   }
@@ -138,6 +139,8 @@ $date-content-height: 240px;
     border-width: 0 0 1px;
 
     &-item {
+      display: block;
+      width: 100%;
       text-align: center;
       font-size: 16px;
       height: 40px;
@@ -155,6 +158,10 @@ $date-content-height: 240px;
         height: 64px;
         line-height: 64px;
         font-weight: 500;
+      }
+
+      &.is--focused {
+        background: rgba(0,0,0,.1);
       }
     }
   }
@@ -208,6 +215,9 @@ $date-content-height: 240px;
       line-height: 28px;
       cursor: pointer;
       will-change: opacity;
+      border-radius: 4px;
+      font-size: inherit;
+      overflow: hidden;
 
       &.is--outside {
         opacity: 0.32;

@@ -9,10 +9,23 @@
   padding: 0 8px;
   height: 24px;
   line-height: 1;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: $text-small-2;
+  border: none;
+  position: relative;
 
   + .vm-tag {
     margin-left: 8px;
   }
+}
+
+button.vm-tag:focus:after { 
+  content: '';
+  position: absolute;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border: 2px solid rgba(0,0,0,.1);
+  left: -4px;
+  top: -4px;
+  border-radius: 4px;
 }

@@ -60,6 +60,34 @@
         }
     }
 
+    &__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: -1;
+    }
+    
+
+    &.is--focused &__icon:before {
+        position: absolute;
+        content: '';
+        background: currentColor;
+        opacity: 0.08;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        top: -11px;
+        left: -11px;
+    }
+
+    &.is--focused.is--checked &__icon:before {
+        top: -9px;
+        left: -9px;
+    }
+
     .vm-column & {
         padding-right: 0;
     }

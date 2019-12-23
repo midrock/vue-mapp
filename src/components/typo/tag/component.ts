@@ -5,4 +5,7 @@ import { Vue, Component } from 'vue-property-decorator';
 })
 export class VueMappTag extends Vue {
 
+    get isAction() {
+        return !!this.$listeners.click
+    }
 }

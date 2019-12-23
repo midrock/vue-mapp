@@ -1,13 +1,14 @@
 .vm-menu
     .vm-menu__trigger(
         ref="trigger"
+        :class="{
+            'vm-menu__trigger--disabled': disabled    
+        }"
         @click="clickOnTrigger"
         @mouseover="mouseoverTrigger"
         @mouseout="mouseoutTrigger"
     )
-        slot(
-            name="trigger"
-        )
+        slot(name="trigger")
     vm-popup(
         v-if="opened"
         v-bind="$attrs"

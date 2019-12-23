@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import { VMDateState, VMDateDayItem } from './types';
 import InputElement from 'component/input/input-element';
 import { VueMappButton } from 'component/input/button';
@@ -6,7 +6,6 @@ import { VueMappIcon } from 'component/typo/icon';
 import { VueMappMenu } from 'component/popup/menu';
 import { VueMappInput } from 'component/input/input';
 import { pad } from 'src/helpers/parse';
-import date from '.';
 
 const dict = {
   month: [
@@ -107,10 +106,14 @@ export default class VueMappDate extends InputElement {
   inputDay: number = 1;
   inputHours: number = 1;
   inputMinutes: number = 1;
+  
+  focusedYear: number = 0;
 
   $refs: {
     years: HTMLDivElement;
+    popup: HTMLElement;
     menu: VueMappMenu;
+    clear: Vue;
   };
 
   get fieldValue(): string {
@@ -300,6 +303,8 @@ export default class VueMappDate extends InputElement {
         const scrollYearElement = years.children[scrollYearOrder];
 
         this.$nextTick(() => {
+          console.log(scrollYearElement)
+          if (!scrollYearElement) return
           // @ts-ignore
           const { offsetTop, offsetHeight } = scrollYearElement;
 
@@ -582,6 +587,63 @@ export default class VueMappDate extends InputElement {
     this.setDate(Date.now());
   }
 
+  async addKeyListeners() {
+    document.addEventListener('keyup', this.onKeyUp, true)
+
+    this.$nextTick(() => {
+      this.focusFirstInput()
+    })
+  }
+
+  removeKeyListeners() {
+    document.removeEventListener('keyup', this.onKeyUp, true)
+  }
+
+  focusFirstInput() {
+    const popup = this.$el.querySelector('.vm-popup')
+
+    if (popup) {
+      const firstInput = popup.querySelector('input:not(:disabled), button:not(:disabled)') as HTMLElement
+
+      if (firstInput) {
+        firstInput.focus()
+      }
+    }
+  }
+
+  focusLastInput() {
+    const popup = this.$el.querySelector('.vm-popup')
+
+    if (popup) {
+      const inputs = popup.querySelectorAll('input:not(:disabled), button:not(:disabled)')
+      
+      if (inputs.length > 0) {
+        const lastInput = inputs[inputs.length - 1]
+
+        if (lastInput) {
+          // @ts-ignore
+          lastInput.focus()
+        }
+      }
+    }
+  }
+
+  onKeyUp(e) {
+
+    if (e.key === 'Tab') {
+      const popup = this.$el.querySelector('.vm-popup')
+
+      if (popup && !popup.contains(e.target)) {
+
+        if (e.shiftKey) {
+          this.focusLastInput()
+        } else {
+          this.focusFirstInput()
+        }
+      }
+    }
+  }
+
   created() {
     const { value } = this;
 
@@ -593,5 +655,11 @@ export default class VueMappDate extends InputElement {
     } else {
       this.now();
     }
+
+    this.focusedYear = this.inputYear
+  }
+
+  beforeDestroy() {
+    this.removeKeyListeners()
   }
 }

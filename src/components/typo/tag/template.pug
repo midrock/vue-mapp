@@ -1,2 +1,5 @@
-.vm-tag
+component.vm-tag(
+    :is="isAction ? 'button' : 'div'"
+    v-on="$listeners"
+)
     slot

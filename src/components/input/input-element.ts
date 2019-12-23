@@ -2,7 +2,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { VMInputState, VMInputCheckState } from './types';
 import VueMappForm from 'component/input/form/component';
 import VueMappField from 'component/input/field/component';
-import { nullLiteral } from 'babel-types';
 
 @Component({
     inject: {

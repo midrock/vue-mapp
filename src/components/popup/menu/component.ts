@@ -18,6 +18,7 @@ export default class VueMappMenu extends Vue {
     opened: boolean = false;
 
     @Prop(Boolean) manual: boolean;
+    @Prop(Boolean) disabled: boolean;
 
     $refs: {
         popup: VueMappPopup,
@@ -37,6 +38,7 @@ export default class VueMappMenu extends Vue {
         }
 
         this.opened = true;
+        this.$emit('show')
     }
 
     hide() {

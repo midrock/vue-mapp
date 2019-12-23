@@ -3,6 +3,9 @@ vm-input.vm-textarea(
     :label="label"
     :box="box"
     :expanded="focused || !!inputValue"
+    :class="{
+        'vm-textarea--focused': focused,    
+    }"
 )
     textarea(
         ref="textarea"

@@ -58,6 +58,7 @@ export class VueMappInput extends InputElement {
     @Prop([String, Number]) min: string | number;
     @Prop([String, Number]) max: string | number;
     @Prop([String, Number]) value: string | number;
+    @Prop([String, Number]) tabindex: string | number;
 
     @Prop({
         type: String,

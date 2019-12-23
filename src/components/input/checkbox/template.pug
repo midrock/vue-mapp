@@ -3,6 +3,7 @@
     :readonly="status === 'readonly'"
     :class="{
         'is--checked': checked,
+        'is--focused': isFocused,
         'is--right': iconRight    
     }"
     @click="click"
@@ -16,12 +17,15 @@
         | {{ label }}
         slot
     
-    input(
-        v-show="false"
+    input.vm-checkbox__input(
         type="checkbox"
         ref="input"
         :disabled="freezed"
         :checked="checked"
         :name="name"
         @click="click"
+        @keyup.enter="click"
+        @keyup.space="click"
+        @focus="isFocused = true"
+        @blur="isFocused = false"
     )

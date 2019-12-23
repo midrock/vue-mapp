@@ -1,12 +1,17 @@
 vm-menu.vm-date(
     v-bind="$attrs"
     ref="menu"
+    :disabled="disabled"
     contentClass="vm-date__popup"
+    @show="addKeyListeners"
+    @hide="removeKeyListeners"
 )
     vm-input(
+        :tabindex="-1"
         slot="trigger"
         :label="label"
         :value="fieldValue"
+        :disabled="disabled"
         :placeholder="placeholder"
         :box="box"
         :size="size"
@@ -15,7 +20,6 @@ vm-menu.vm-date(
         vm-button.vm-date__trigger(
             slot="right"
             icon="event"
-            :disabled="disabled"
         )
 
     .vm-date__header.box-primary(
@@ -56,40 +60,41 @@ vm-menu.vm-date(
 
     .vm-date__wrapper
         .vm-date__toolbar(v-if="state !== 'year'")
-            vm-button(
-                :class="{
-                    'vm-date__toolbar-button--hidden': !prevArrowEnabled,
-                }"
-                icon="keyboard_arrow_left"
-                :noshadow="true"
-                @click="toolbarLeftClick"
-            )
+            .vm-date__toolbar-arrow
+                vm-button(
+                    v-if="prevArrowEnabled"
+                    icon="keyboard_arrow_left"
+                    :noshadow="true"
+                    @click="toolbarLeftClick"
+                )
 
-            .vm-date__toolbar-title(
+            vm-button.vm-date__toolbar-title(
                 :class="{
                     'vm-date__toolbar-title--disabled': !prevStateEnabled
                 }"
                 @click="prevState"
             ) {{ toolbarTitle }}
 
-            vm-button(
-                :class="{
-                    'vm-date__toolbar-button--hidden': !nextArrowEnabled,
-                }"
-                icon="keyboard_arrow_right"
-                :noshadow="true"
-                @click="toolbarRightClick"
-            )
+            .vm-date__toolbar-arrow
+                vm-button(
+                    v-if="nextArrowEnabled"
+                    icon="keyboard_arrow_right"
+                    :noshadow="true"
+                    @click="toolbarRightClick"
+                )
 
         .vm-date__content
-            ul.vm-date__years(
+            .vm-date__years(
                 v-show="state === 'year'"
                 ref="years"
             ) 
-                li.vm-date__years-item.fill-action(
+                button.vm-date__years-item.fill-action(
                     v-for="year in years"
                     :key="year"
-                    :class="{ 'is--active': year === inputYear }"
+                    :class="{ 
+                        'is--active': year === inputYear,
+                        'is--focused': year === focusedYear,
+                    }"
                     @click="setYear(year)"
                 ) {{ year }}
             
@@ -116,8 +121,9 @@ vm-menu.vm-date(
                         v-for="day in days"
                         :key="day.key"
                     )
-                        .vm-date__day-wrapper(
+                        button.vm-date__day-wrapper(
                             :data-value="day.key"
+                            :disabled="day.disabled"
                             :class="{
                                 'is--disabled': day.disabled,
                                 'is--outside': day.prev || day.next,
@@ -139,5 +145,6 @@ vm-menu.vm-date(
             v-if="$_showFooter"
         )
             vm-button(
+                ref="clear"
                 @click="clear"
             ) Очистить

@@ -33,4 +33,8 @@ $menu-base-width: 56px;
             transform: rotateX(180deg);
         }
     }
+
+    &__trigger--disabled {
+        pointer-events: none;
+    }
 }

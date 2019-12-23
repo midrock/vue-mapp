@@ -10,6 +10,7 @@ import { Component, Prop, Watch } from 'vue-property-decorator';
 })
 export default class VueMappCheckbox extends InputElement {
     emitValue: boolean = false;
+    isFocused: boolean = false
 
     $refs: {
         input: HTMLInputElement
