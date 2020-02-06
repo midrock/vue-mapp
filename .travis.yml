@@ -13,7 +13,9 @@ deploy:
     email: "iteam4u@ya.ru"
     api_key: $NPM_KEY
     skip_cleanup: true
+    tag: next
+    edge: true
     on:
       branch: dev
       repo: midrock/vue-mapp
-      tags: true
+      
