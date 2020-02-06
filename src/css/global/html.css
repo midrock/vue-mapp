@@ -56,7 +56,7 @@ button {
     outline: none !important;
 }
 
-[tabindex]:focus {
+/* [tabindex]:focus {
     outline-width: 2px;
     outline-style: solid;
-}
+} */

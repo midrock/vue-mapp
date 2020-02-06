@@ -15,7 +15,23 @@ function dialog(params: VMDialogParams) {
     dialog.$once('action', () => {
         dialog.$el.remove();
         dialog.$destroy();
+
+        const focusedElement = document.querySelector('[data-focused]')
+
+        if (focusedElement) {
+            // @ts-ignore
+            focusedElement.focus()
+            // @ts-ignore
+            delete focusedElement.dataset.focused
+        }
     });
+
+    
+    // @ts-ignore
+    if (params.event && params.event.target) {
+        // @ts-ignore
+        params.event.target.dataset.focused = true
+    }
 
     document.body.appendChild(div);
     dialog.$mount(div);

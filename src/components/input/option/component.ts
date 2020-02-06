@@ -21,6 +21,7 @@ export class VueMappOption extends InputElement {
   get text(): string {
     const { $el } = this;
 
+    // @ts-ignore
     return this.label || ($el && $el.innerText) || '';
   }
 

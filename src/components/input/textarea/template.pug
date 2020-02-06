@@ -20,6 +20,7 @@ vm-input.vm-textarea(
         :spellcheck="spellcheck"
         :autocomplete="autocomplete"
         :value="inputValue"
+        :tabindex="status === 'readonly' ? -1 : undefined"
         @focus="onFocus"
         @blur="onBlur"
         @input="onInput"

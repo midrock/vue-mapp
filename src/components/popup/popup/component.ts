@@ -193,7 +193,7 @@ export default class VueMappPopup extends Vue {
   beforeDestroy() {
     window.removeEventListener("resize", this.setPosition);
     document.removeEventListener("scroll", this.checkPopup, true);
-    document.removeEventListener("keydown", this.onKeyPress);
+    document.removeEventListener("keydown", this.onKeyPress, true);
     document.removeEventListener("click", this.checkPopup);
   }
 
@@ -214,7 +214,7 @@ export default class VueMappPopup extends Vue {
 
       window.addEventListener("resize", this.setPosition);
       document.addEventListener("scroll", this.checkPopup, true);
-      document.addEventListener("keydown", this.onKeyPress);
+      document.addEventListener("keydown", this.onKeyPress, true);
     });
 
     if (this.nooverlay) {
