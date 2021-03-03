@@ -43,7 +43,7 @@
         "postcss-position": "^1.0.0",
         "postcss-simple-vars": "^4.1.0",
         "postcss-size": "^2.0.0",
-        "pug": "^2.0.3",
+        "pug": "^3.0.1",
         "ts-jest": "^22.4.2",
         "ts-node": "^4.1.0",
         "typescript": "^2.5.3",
