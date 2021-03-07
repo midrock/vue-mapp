@@ -13,7 +13,7 @@ deploy:
     email: "iteam4u@ya.ru"
     api_token: $NPM_KEY
     api_key: $NPM_KEY
-    cleanup: true
+    cleanup: false
     tag: next
     edge: true
     on:
