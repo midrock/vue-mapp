@@ -12,7 +12,7 @@ deploy:
   - provider: npm
     email: "iteam4u@ya.ru"
     api_token: $NPM_KEY
-    key: $NPM_KEY
+    api_key: $NPM_KEY
     cleanup: true
     tag: next
     edge: true
