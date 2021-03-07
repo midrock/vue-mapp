@@ -11,10 +11,12 @@ cache:
 deploy:
   - provider: npm
     email: "iteam4u@ya.ru"
-    api_token: "$NPM_KEY"
-    skip_cleanup: true
+    api_token: $NPM_KEY
+    key: $NPM_KEY
+    cleanup: true
     tag: next
     edge: true
     on:
+      all_branches: true
       branch: dev
       repo: midrock/vue-mapp
