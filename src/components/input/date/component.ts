@@ -120,7 +120,11 @@ export default class VueMappDate extends InputElement {
     const { emitValue } = this;
 
     if (emitValue) {
-      return new Date(emitValue).toLocaleDateString();
+      const year = this.inputYear
+      const month = `0${this.inputMonth + 1}`.slice(-2)
+      const day = `0${this.inputDay}`.slice(-2)
+      
+      return `${day}/${month}/${year}`
     } else {
       return '';
     }
@@ -193,12 +197,14 @@ export default class VueMappDate extends InputElement {
   apply() {
     let value: string = '';
 
-    const jd = this.inputDate.toLocaleDateString();
-
-    value = jd.slice(6, 10) + '-' + jd.slice(3, 5);
+    const year = this.inputYear
+    const month = `0${this.inputMonth + 1}`.slice(-2)
+    const day = `0${this.inputDay}`.slice(-2)
 
     if (this.type === 'day') {
-      value += '-' + jd.slice(0, 2);
+      value = `${year}-${month}-${day}`
+    } else {
+      value = `${year}-${month}`
     }
 
     if (this.emitValue !== value) {
