@@ -90,6 +90,7 @@ vm-menu.vm-date(
             ) 
                 button.vm-date__years-item.fill-action(
                     v-for="year in years"
+                    type="button"
                     :key="year"
                     :class="{ 
                         'is--active': year === inputYear,
@@ -122,6 +123,7 @@ vm-menu.vm-date(
                         :key="day.key"
                     )
                         button.vm-date__day-wrapper(
+                            type="button"
                             :data-value="day.key"
                             :disabled="day.disabled"
                             :class="{
