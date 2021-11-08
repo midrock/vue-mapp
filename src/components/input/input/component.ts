@@ -121,14 +121,14 @@ export class VueMappInput extends InputElement {
     private get $_template(): Template {
 
         // add template from config
-        // if (typeof this.template === 'string' && 
+        // if (typeof this.template === 'string' &&
         //     this.$mapp &&
         //     this.$mapp.inputTemplates instanceof Object) {
 
         //     return this.$mapp.inputTemplates[this.template];
         // } else if (typeof this.template === 'object') {
         //     return this.template;
-        // } 
+        // }
         return {};
     }
 
@@ -328,7 +328,9 @@ export class VueMappInput extends InputElement {
             if (this.type === 'number') {
 
                 if (typeof inputValue === 'string') {
-                    inputValue = parseInt(inputValue) || '';
+                    const numValue = parseInt(inputValue)
+
+                    inputValue = numValue >= 0 ? numValue : '';
                 }
 
             } else if (this.$_mask &&
